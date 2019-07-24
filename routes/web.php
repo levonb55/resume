@@ -11,6 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+//Route::get('/', function () {
+//    return view('pages.index');
+//});
+
+//Public routes
+Route::get('/', 'PageController@home')->name('home');
+Route::get('resume', 'PageController@resume')->name('resume');
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');

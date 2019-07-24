@@ -1,0 +1,26 @@
+.example1 {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+}
+.example1 hr {
+    border-top: dotted 2px #000000;
+    /*text-decoration: underline;*/
+}
+.resum_main{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.resum_main span{
+    color: #005cbf;
+    font-weight: 500;
+
+}
+h2 {
+    color: #005cbf;
+
+}
