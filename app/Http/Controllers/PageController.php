@@ -25,4 +25,9 @@ class PageController extends Controller
     public function jobs() {
         return view('pages.jobs');
     }
+
+    //Gets contact page
+    public function contact() {
+        return view('pages.contact');
+    }
 }
