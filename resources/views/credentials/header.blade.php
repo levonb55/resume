@@ -1,9 +1,9 @@
 @extends('layouts.main')
 
-@section('title', 'Create Header')
+@section('title', 'Add Header')
 
 @section('extra-styles')
-        <link rel="stylesheet" href="css/Lcss.css">
+    <link rel="stylesheet" href="css/Lcss.css">
     <link rel="stylesheet" href="css/dashboard.css">
 @endsection
 
@@ -109,7 +109,7 @@
                         <a href="{{ route('create-resume') }}" class="back_left">
                             <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
                         </a>
-                        <a href="experience.html" class="continue_right">
+                        <a href="{{ route('experience') }}" class="continue_right">
                             <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>
                         </a>
                     </div>

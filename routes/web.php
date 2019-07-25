@@ -31,7 +31,8 @@ Route::get('register', 'Auth\LoginController@showLoginForm')->name('register');
 //Private routes
 Route::get('choose-template', 'CredentialController@chooseTemplate')->name('choose-template');
 Route::get('create-resume', 'CredentialController@createResume')->name('create-resume');
-Route::get('header', 'CredentialController@createHeader')->name('header');
+Route::get('header', 'CredentialController@header')->name('header');
+Route::get('experience', 'CredentialController@experience')->name('experience');
 
 
 //Route::get('/home', 'HomeController@index')->name('home');

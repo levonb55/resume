@@ -16,7 +16,13 @@ class CredentialController extends Controller
         return view('credentials.create-resume');
     }
 
-    public function createHeader() {
+    //Gets resume header page
+    public function header() {
         return view('credentials.header');
+    }
+
+    //Gets resume experience page
+    public function experience() {
+        return view('credentials.experience');
     }
 }
