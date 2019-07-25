@@ -11,8 +11,13 @@ class PageController extends Controller
         return view('pages.index');
     }
 
-    //Gets old resume page
+    //Gets resume page
     public function resume() {
         return view('pages.resume');
+    }
+
+    //Gets cover letter page
+    public function coverLetter() {
+        return view('pages.cover-letter');
     }
 }

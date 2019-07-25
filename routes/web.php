@@ -21,6 +21,7 @@
 //Public routes
 Route::get('/', 'PageController@home')->name('home');
 Route::get('resume', 'PageController@resume')->name('resume');
+Route::get('cover-letter', 'PageController@coverLetter')->name('cover-letter');
 
 Auth::routes();
 
