@@ -8,4 +8,5 @@
       integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
 <link rel="stylesheet" href="{{asset('assets/libs/css/bootstrap.min.css')}}">
 <link rel="stylesheet" href="{{asset('assets/libs/css/owl.carousel.min.css')}}">
+@yield('extra-styles')
 <link rel="stylesheet" href="{{asset('css/style.css')}}">

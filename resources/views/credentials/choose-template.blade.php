@@ -1,6 +1,6 @@
-@extends('layouts/main')
+@extends('layouts.main')
 
-@section('title', 'Resume')
+@section('title', 'Choose Template')
 
 @section('content')
 <main>
@@ -28,6 +28,6 @@
 			</div>
 		</div>
 	</div>
-	<button class="btn btn-blue"><a href="dashboard.html">Choose Template</a></button>
+	<button class="btn btn-blue"><a href="{{ route('create-resume') }}">Choose Template</a></button>
 </main>
 @endsection

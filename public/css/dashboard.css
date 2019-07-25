@@ -445,21 +445,21 @@
     width: 46%;
 }
 /* The container */
-.container {
-    display: block;
-    position: relative;
-    padding-left: 25px;
-    margin: 0;
-    cursor: pointer;
-    font-size: 12px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    text-align: left;
-    width: unset;
-    font-family: Roboto-Regular;
-}
+/*.container {*/
+/*    display: block;*/
+/*    position: relative;*/
+/*    padding-left: 25px;*/
+/*    margin: 0;*/
+/*    cursor: pointer;*/
+/*    font-size: 12px;*/
+/*    -webkit-user-select: none;*/
+/*    -moz-user-select: none;*/
+/*    -ms-user-select: none;*/
+/*    user-select: none;*/
+/*    text-align: left;*/
+/*    width: unset;*/
+/*    font-family: Roboto-Regular;*/
+/*}*/
 
 /* Hide the browser's default checkbox */
 .container input {

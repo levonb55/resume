@@ -20,12 +20,17 @@
 
 //Public routes
 Route::get('/', 'PageController@home')->name('home');
-Route::get('resume', 'PageController@resume')->name('resume');
 Route::get('cover-letter', 'PageController@coverLetter')->name('cover-letter');
 Route::get('jobs', 'PageController@jobs')->name('jobs');
 Route::get('contact', 'PageController@contact')->name('contact');
 
+//Authentication routes
 Auth::routes();
 Route::get('register', 'Auth\LoginController@showLoginForm')->name('register');
+
+//Private routes
+Route::get('choose-template', 'CredentialController@chooseTemplate')->name('choose-template');
+Route::get('create-resume', 'CredentialController@createResume')->name('create-resume');
+
 
 //Route::get('/home', 'HomeController@index')->name('home');
