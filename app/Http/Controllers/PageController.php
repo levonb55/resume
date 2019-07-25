@@ -20,4 +20,9 @@ class PageController extends Controller
     public function coverLetter() {
         return view('pages.cover-letter');
     }
+
+    //Gets jobs page
+    public function jobs() {
+        return view('pages.jobs');
+    }
 }

@@ -15,7 +15,7 @@
                     <a class="nav-link" href="{{ route('cover-letter') }}">COVER LETTER</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="jobs.html">JOBS</a>
+                    <a class="nav-link" href="{{ route('jobs') }}">JOBS</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="Contact_us.html">CONTACT US</a>
