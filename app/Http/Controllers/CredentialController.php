@@ -25,4 +25,9 @@ class CredentialController extends Controller
     public function experience() {
         return view('credentials.experience');
     }
+
+    //Gets review experience page
+    public function reviewExperience() {
+        return view('credentials.review-experience');
+    }
 }

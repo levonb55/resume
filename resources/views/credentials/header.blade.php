@@ -221,3 +221,7 @@
         </div>
     </section>
 @endsection
+
+@section('extra-scripts')
+    <script src="{{ asset('js/header.js') }}"></script>
+@endsection

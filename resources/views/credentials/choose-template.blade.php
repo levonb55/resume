@@ -31,3 +31,7 @@
 	<button class="btn btn-blue"><a href="{{ route('create-resume') }}">Choose Template</a></button>
 </main>
 @endsection
+
+@section('extra-scripts')
+	<script src="{{asset('js/carousel.js')}}"></script>
+@endsection
