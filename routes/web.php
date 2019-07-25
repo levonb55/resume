@@ -26,5 +26,6 @@ Route::get('jobs', 'PageController@jobs')->name('jobs');
 Route::get('contact', 'PageController@contact')->name('contact');
 
 Auth::routes();
+Route::get('register', 'Auth\LoginController@showLoginForm')->name('register');
 
 //Route::get('/home', 'HomeController@index')->name('home');
