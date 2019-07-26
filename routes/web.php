@@ -34,6 +34,7 @@ Route::get('create-resume', 'CredentialController@createResume')->name('create-r
 Route::get('header', 'CredentialController@header')->name('header');
 Route::get('experience', 'CredentialController@experience')->name('experience');
 Route::get('review-experience', 'CredentialController@reviewExperience')->name('review-experience');
+Route::get('education', 'CredentialController@education')->name('education');
 
 
 //Route::get('/home', 'HomeController@index')->name('home');
