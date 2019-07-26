@@ -2,6 +2,10 @@
 
 @section('title', 'Choose Template')
 
+@section('extra-styles')
+	<link rel="stylesheet" href="{{asset('assets/libs/css/owl.carousel.min.css')}}">
+@endsection
+
 @section('content')
 <main>
 	<div class="container main-content">

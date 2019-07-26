@@ -5,6 +5,7 @@
 @section('extra-styles')
     <link rel="stylesheet" href="{{ asset('css/Lcss.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/libs/css/jquery-ui.min.css') }}">
 @endsection
 
 @section('content')

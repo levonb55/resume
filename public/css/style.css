@@ -2,7 +2,7 @@
     font-family: 'Metropolis Semi Bold';
     src: url('Metropolis-SemiBold.otf');
     src: local('Metropolis Semi Bold'), local('Metropolis-SemiBold'),
-    url('../fonts/Metropolis-SemiBold.otf') format('truetype');
+    url('../assets/fonts/Metropolis-SemiBold.otf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
@@ -10,7 +10,7 @@
     font-family: 'Metropolis Medium';
     src: url('Metropolis-Medium.otf');
     src: local('Metropolis Medium'), local('Metropolis-Medium'),
-    url('../fonts/Metropolis-Medium.otf') format('truetype');
+    url('../assets/fonts/Metropolis-Medium.otf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
@@ -18,7 +18,7 @@
     font-family: 'Metropolis';
     src: url('Metropolis-Regular.otf');
     src: local('Metropolis'), local('Metropolis-Regular'),
-    url('../fonts/Metropolis-Regular.otf') format('truetype');
+    url('../assets/fonts/Metropolis-Regular.otf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
@@ -26,7 +26,7 @@
     font-family: 'Metropolis Light';
     src: url('Metropolis-Light.otf');
     src: local('Metropolis Light'), local('Metropolis-Light'),
-    url('../fonts/Metropolis-Light.otf') format('truetype');
+    url('../assets/fonts/Metropolis-Light.otf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
