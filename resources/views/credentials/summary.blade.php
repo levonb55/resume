@@ -157,7 +157,7 @@
                     <a href="{{ route('skills') }}" class="back_left">
                         <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
                     </a>
-                    <a href="finalize.html" class="continue_right">
+                    <a href="{{ route('finalize') }}" class="continue_right">
                         <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>
                     </a>
                 </div>

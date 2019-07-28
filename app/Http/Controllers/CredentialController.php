@@ -50,4 +50,9 @@ class CredentialController extends Controller
     public function summary() {
         return view('credentials.summary');
     }
+
+    //Gets finalize page
+    public function finalize() {
+        return view('credentials.finalize');
+    }
 }
