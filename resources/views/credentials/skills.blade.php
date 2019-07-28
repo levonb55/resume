@@ -164,5 +164,4 @@
 @section('extra-scripts')
     <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
     <script src="{{ asset('js/editor-config.js') }}"></script>
-    <script src="{{ asset('js/skills.js') }}"></script>
 @endsection

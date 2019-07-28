@@ -2,13 +2,6 @@ $("#add_desc").on("click", function () {
     $("#add_textarea").toggleClass("hidden");
 });
 
-$(document).on("click", ".text_button button", function () {
-    var add = $(this).siblings("p").html();
-    var editorId = $(this).parents('.box1').siblings('.box2').find('textarea').attr('id');
-    // CKEDITOR.instances['textarea-1'].insertText(add);
-    CKEDITOR.instances[editorId].insertText(add);
-});
-
 var counter = 2;
 $("#clone_aparat").on("click", function () {
     var index = counter++;
