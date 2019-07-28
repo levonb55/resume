@@ -624,9 +624,14 @@
     justify-content: center;
     cursor: pointer;
 }
+
+.preview-wrapper {
+    width: 95%;
+}
+
 .preview {
-    width: 90%;
-    margin: 0 auto;
+    /*width: 63%;*/
+    /*margin: 0 auto;*/
     display: flex;
     justify-content: flex-end;
 }

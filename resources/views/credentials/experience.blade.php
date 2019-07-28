@@ -64,7 +64,7 @@
             <div class="clon">
                 <div class="start_header">
                     <div class="header_inputs">
-                        <h2>let's work on your experience</h2>
+                        <h2>Let's work on your experience</h2>
                         <p>Start with your most recent job first. You can also add volunteer work, internships, or extracurricular
                             activities.</p>
 
@@ -144,8 +144,9 @@
                         </div>
                     </div>
                 </div>
-
-                @include('partials._preview-resume')
+                <div class="preview-wrapper">
+                    @include('partials._preview-resume')
+                </div>
 {{--                <div class="preview">--}}
 {{--                    <p data-toggle="modal" data-target="#exampleModalCenter">--}}
 {{--                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">--}}
@@ -191,7 +192,7 @@
                         </div>
                         <div class="box2">
                             <div id="editor-container">
-                      <textarea cols="80" rows="100" id="textarea1">
+                      <textarea cols="80" rows="100" id="textarea-1">
     text
                     </textarea>
 
@@ -224,7 +225,6 @@
 @endsection
 
 @section('extra-scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
-    <script src="{{asset('js/wysiwyg.js')}}"></script>
+    <script src="{{asset('js/experience.js')}}"></script>
 @endsection

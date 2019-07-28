@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-    <section class="dashboard_content">
+    <section class="dashboard_content mx-auto">
         <div class="check">
             <div class="step-container">
 

@@ -1,5 +1,5 @@
 <div class="preview">
-    <p data-toggle="modal" data-target="#exampleModalCenter">
+    <p class="preview-resume" data-toggle="modal" data-target="#exampleModalCenter">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
             <defs><style>.a{fill:#18358a;}</style></defs><g transform="translate(10.554 9.374)">
                 <path class="a" d="M278.4,247.557a3.532,3.532,0,0,0-.376-4.549,3.641,3.641,0,0,0-5.009,0,3.536,3.536,0,0,0,4.549,5.384l3.024,2.953.835-.835Z" transform="translate(-271.979 -242.01)"/>

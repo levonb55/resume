@@ -148,7 +148,9 @@
                         </div>
                     </div>
                 </div>
-                @include('partials._preview-resume')
+                <div class="preview-wrapper">
+                    @include('partials._preview-resume')
+                </div>
 {{--                <div class="preview" >--}}
 {{--                    <p data-toggle="modal" data-target="#exampleModalCenter">--}}
 {{--                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">--}}
@@ -170,10 +172,14 @@
                 <a href="{{ route('review-experience') }}" class="back_left">
                     <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
                 </a>
-                <a href="edu_summary.html" class="continue_right">
+                <a href="{{ route('review-education') }}" class="continue_right">
                     <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>
                 </a>
             </div>
         </section>
     </main>
+@endsection
+
+@section('extra-scripts')
+    <script src="{{asset('js/education.js')}}"></script>
 @endsection
