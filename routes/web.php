@@ -36,6 +36,7 @@ Route::get('experience', 'CredentialController@experience')->name('experience');
 Route::get('review-experience', 'CredentialController@reviewExperience')->name('review-experience');
 Route::get('education', 'CredentialController@education')->name('education');
 Route::get('review-education', 'CredentialController@reviewEducation')->name('review-education');
+Route::get('skills', 'CredentialController@skills')->name('skills');
 
 
 //Route::get('/home', 'HomeController@index')->name('home');

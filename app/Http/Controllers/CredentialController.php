@@ -40,4 +40,9 @@ class CredentialController extends Controller
     public function reviewEducation() {
         return view('credentials.review-education');
     }
+
+    //Gets skills page
+    public function skills() {
+        return view('credentials.skills');
+    }
 }

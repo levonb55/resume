@@ -121,7 +121,7 @@
                 <a href="{{ route('education') }}" class="back_left">
                     <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
                 </a>
-                <a href="skills.html" class="continue_right">
+                <a href="{{ route('skills') }}" class="continue_right">
                     <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>
                 </a>
             </div>

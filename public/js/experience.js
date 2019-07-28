@@ -1,18 +1,6 @@
-var editor_config = {
-    toolbar: [
-        {name: 'basicstyles', items: ['Bold','Italic','Underline','Strike','-','RemoveFormat']},
-        {name: 'format', items: ['Format']},
-        {name: 'paragraph', items: ['Indent','Outdent','-','BulletedList','NumberedList']},
-        {name: 'link', items: ['Link','Unlink']},
-        {name: 'undo', items: ['Undo','Redo']}
-    ],
-
-};
-
 $("#add_desc").on("click", function () {
     $("#add_textarea").toggleClass("hidden");
 });
-CKEDITOR.replace('textarea-1', editor_config);
 
 $(document).on("click", ".text_button button", function () {
     var add = $(this).siblings("p").html();
