@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Add Skills')
+@section('title', 'Summary')
 
 @section('extra-styles')
     <link rel="stylesheet" href="{{ asset('css/Lcss.css') }}">
@@ -38,15 +38,15 @@
                         <div class="step active1" data-step="4">
                             <span class="fas fa-check"></span>
                         </div>
-                        <div class="step-separator" data-step="4"></div>
+                        <div class="step-separator active1" data-step="4"></div>
                         <div class="steps_number active2">SKILLS</div>
                     </div>
                     <div class="d-inline-block">
-                        <div class="step" data-step="5">
-                            5
+                        <div class="step active1" data-step="5">
+                            <span class="fas fa-check"></span>
                         </div>
                         <div class="step-separator" data-step="5"></div>
-                        <div class="steps_number">SUMMARY</div>
+                        <div class="steps_number active2">SUMMARY</div>
                     </div>
 
                     <div class="d-inline-block">
@@ -65,7 +65,7 @@
             <div class="the_company">
                 <div class="second_block">
                     <div>
-                        <h2>Let’s pick your top skills</h2>
+                        <h2>Let’s finish with a strong summary</h2>
                         <h3>Search recommended skills by job title, industry, or keyword</h3>
                     </div>
                     <div class="tips_box">
@@ -118,21 +118,26 @@
                         </form>
                         <div class="add_text">
                             <div class="text_button">
-                                <p>Graphic design</p>
+                                <p>[Job title] with background as [Job title 1] and [Job title 2] looking to join a growing entrepreneurial organization as part of the Executive team.</p>
                                 <button>Add</button>
                             </div>
                             <div class="text_button">
-                                <p>Mobile & Web design</p>
+                                <p>[Job title] with background as [Job title 1] and [Job title 2] looking to join a growing entrepreneurial organization as part of the Executive team.</p>
                                 <button>Add</button>
                             </div>
                             <div class="text_button">
-                                <p>E-commerce design</p>
+                                <p>[Job title] with background as [Job title 1] and [Job title 2] looking to join a growing entrepreneurial organization as part of the Executive team.</p>
                                 <button>Add</button>
                             </div>
                             <div class="text_button">
-                                <p>Interactive prototypes</p>
+                                <p>[Job title] with background as [Job title 1] and [Job title 2] looking to join a growing entrepreneurial organization as part of the Executive team.</p>
                                 <button>Add</button>
                             </div>
+                            <div class="text_button">
+                                <p>[Job title] with background as [Job title 1] and [Job title 2] looking to join a growing entrepreneurial organization as part of the Executive team.</p>
+                                <button>Add</button>
+                            </div>
+
 
                         </div>
 
@@ -140,7 +145,7 @@
                     </div>
                     <div class="box2">
                         <div id="editor-container">
-                        <textarea cols="80" rows="100" id="textarea-1">
+                        <textarea cols="100" rows="" id="textarea-1">
                             Type in your responsibilities, achievements and job details. Need help? Use the pre-written
                             examples by clicking the Add button on the left side.
                         </textarea>
@@ -149,10 +154,10 @@
                     </div>
                 </div>
                 <div class="back_continue experience_page">
-                    <a href="{{ route('review-education') }}" class="back_left">
+                    <a href="{{ route('skills') }}" class="back_left">
                         <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
                     </a>
-                    <a href="{{ route('summary') }}" class="continue_right">
+                    <a href="finalize.html" class="continue_right">
                         <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>
                     </a>
                 </div>
@@ -164,5 +169,5 @@
 @section('extra-scripts')
     <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
     <script src="{{ asset('js/editor-config.js') }}"></script>
-    <script src="{{ asset('js/skills.js') }}"></script>
+    <script src="{{ asset('js/summary.js') }}"></script>
 @endsection

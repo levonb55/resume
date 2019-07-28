@@ -45,4 +45,9 @@ class CredentialController extends Controller
     public function skills() {
         return view('credentials.skills');
     }
+
+    //Gets summary page
+    public function summary() {
+        return view('credentials.summary');
+    }
 }
