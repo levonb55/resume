@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -48,11 +50,28 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+       return Validator::make($data, [
+            'first_name' => ['required', 'string', 'min:2', 'max:255'],
+            'last_name' => ['required', 'string', 'min:2', 'max:255'],
+            'email' => ['required', 'string', 'email', 'min:2', 'max:255', 'unique:users'],
+            'address' => ['required', 'string', 'min:2', 'max:255'],
+            'password' => ['required', 'string', 'min:8', 'max:60', 'confirmed'],
         ]);
+    }
+
+    public function register(Request $request)
+    {
+        $validator = $this->validator($request->all())->validate();
+
+        if (!$validator) {
+            return response()->json(['error'=>$validator->errors()->all()]);
+        }
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        return response()->json(['success'=>'Added a new record.']);
     }
 
     /**
@@ -64,8 +83,10 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'email' => $data['email'],
+            'address' => $data['address'],
             'password' => Hash::make($data['password']),
         ]);
     }

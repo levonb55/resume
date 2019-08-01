@@ -37,12 +37,23 @@
 
                         <!--                    REGISTRATION-->
                         <div class="registraion d-none" id="registration_form">
-                            <form action="">
-                                <input type="text" placeholder="Full Name" required>
-                                <input type="email" placeholder="Email" required>
-                                <input type="text" placeholder="Address" required>
-                                <input type="password" placeholder="Password" required>
-                                <input type="password" placeholder="Password" required>
+                            <form method="POST" action="{{ route('register') }}" id="register">
+                                <input type="text" name="first_name" value="{{ old('first_name') }}" placeholder="First Name" required>
+                                <span class="text-danger mb-2 error" id="first_name_error"></span>
+
+                                <input type="text" name="last_name" value="{{ old('last_name') }}" placeholder="Last Name" required>
+                                <span class="text-danger mb-2 error" id="last_name_error"></span>
+
+                                <input type="email" name="email" value="{{ old('email') }}" placeholder="Email" required>
+                                <span class="text-danger mb-2 error" id="email_error"></span>
+
+                                <input type="text" name="address" value="{{ old('address') }}" placeholder="Address" required>
+                                <span class="text-danger mb-2 error" id="address_error"></span>
+
+                                <input type="password" name="password" placeholder="Password" required>
+                                <span class="text-danger mb-2 error" id="password_error"></span>
+
+                                <input type="password" name="password_confirmation" placeholder="Password Confirmation" required>
 
                                 <div class="pr_add bord_button">
                                     <button class="btn btn-blue" type="submit">REGISTER</button>
@@ -58,4 +69,8 @@
             </div>
         </section>
     </main>
+@endsection
+
+@section('extra-scripts')
+    <script src="{{ asset('js/login.js') }}"></script>
 @endsection
