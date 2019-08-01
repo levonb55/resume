@@ -30,16 +30,19 @@ Route::get('register', 'Auth\LoginController@showLoginForm')->name('register');
 Route::get('logout', 'Auth\LoginController@logout');
 
 //Private routes
-Route::get('choose-template', 'CredentialController@chooseTemplate')->name('choose-template');
-Route::get('create-resume', 'CredentialController@createResume')->name('create-resume');
-Route::get('header', 'CredentialController@header')->name('header');
-Route::get('experience', 'CredentialController@experience')->name('experience');
-Route::get('review-experience', 'CredentialController@reviewExperience')->name('review-experience');
-Route::get('education', 'CredentialController@education')->name('education');
-Route::get('review-education', 'CredentialController@reviewEducation')->name('review-education');
-Route::get('skills', 'CredentialController@skills')->name('skills');
-Route::get('summary', 'CredentialController@summary')->name('summary');
-Route::get('finalize', 'CredentialController@finalize')->name('finalize');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('choose-template', 'CredentialController@chooseTemplate')->name('choose-template');
+    Route::get('create-resume', 'CredentialController@createResume')->name('create-resume');
+    Route::get('header', 'CredentialController@header')->name('header');
+    Route::get('experience', 'CredentialController@experience')->name('experience');
+    Route::get('review-experience', 'CredentialController@reviewExperience')->name('review-experience');
+    Route::get('education', 'CredentialController@education')->name('education');
+    Route::get('review-education', 'CredentialController@reviewEducation')->name('review-education');
+    Route::get('skills', 'CredentialController@skills')->name('skills');
+    Route::get('summary', 'CredentialController@summary')->name('summary');
+    Route::get('finalize', 'CredentialController@finalize')->name('finalize');
+});
+
 
 
 //Route::get('/home', 'HomeController@index')->name('home');

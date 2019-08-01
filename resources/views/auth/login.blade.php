@@ -32,7 +32,7 @@
                                         <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                         <label for="remember">Remember Me</label>
                                     </div>
-                                    <a href="{{ route('password.request') }}">Forgot password</a>
+                                    <a href="{{ route('password.request') }}">Forgot password?</a>
 
                                 </div>
                                 <div class="pr_add bord_button">
