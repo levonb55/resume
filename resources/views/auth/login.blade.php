@@ -13,17 +13,26 @@
                             <p class="Registration1"> Registration</p>
                         </div>
 
-                        <!--                    LOGIN-->
+                        <!-- LOGIN -->
                         <div class="login" id="login_form">
-                            <form action="">
-                                <input type="email" placeholder="Email" required>
-                                <input type="password" placeholder="Password" required>
+                            <form method="POST" action="{{ route('login') }}">
+                                @csrf
+                                <input type="email" name="email" value="{{ old('email') }}" placeholder="Email" required autocomplete="email" autofocus>
+                                @error('email')
+                                    <span class="text-danger mb-2"> {{ $message }} </span>
+                                @enderror
+
+                                <input type="password" name="password" placeholder="Password" required>
+                                @error('password')
+                                    <span class="text-danger mb-2"> {{ $message }} </span>
+                                @enderror
+
                                 <div class="form_check">
                                     <div>
-                                        <input type="checkbox" id="form_check">
-                                        <label for="form_check">Remember Me</label>
+                                        <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                        <label for="remember">Remember Me</label>
                                     </div>
-                                    <a href="#">Forgot password</a>
+                                    <a href="{{ route('password.request') }}">Forgot password</a>
 
                                 </div>
                                 <div class="pr_add bord_button">

@@ -27,6 +27,7 @@ Route::get('contact', 'PageController@contact')->name('contact');
 //Authentication routes
 Auth::routes();
 Route::get('register', 'Auth\LoginController@showLoginForm')->name('register');
+Route::get('logout', 'Auth\LoginController@logout');
 
 //Private routes
 Route::get('choose-template', 'CredentialController@chooseTemplate')->name('choose-template');
