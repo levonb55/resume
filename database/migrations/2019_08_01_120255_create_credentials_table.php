@@ -19,7 +19,7 @@ class CreateCredentialsTable extends Migration
             $table->unsignedTinyInteger('template_id')->default(1);
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
-            $table->string('street_address')->nullable();
+            $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('zip')->nullable();

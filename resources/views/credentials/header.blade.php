@@ -64,54 +64,82 @@
             <div class="header_inputs">
                 <h2>Let’s start with your header</h2>
                 <p>Include your full name and at least one way for employers to reach you.</p>
-                <form class="form_header">
+                <form action="{{ route('header.store') }}" method="POST" class="form_header">
+                    @csrf
                     <div class="name">
                         <div class="first_name">
                             <label>First name</label>
-                            <input type="text" id="first_inp" placeholder="Dorothy">
+                            <input type="text" id="first_inp" name="first_name" value="{{$credential ? $credential->first_name : ''}}" required>
+                            @error('first_name')
+                                <span class="text-danger header-error"> {{ $message }} </span>
+                            @enderror
                         </div>
                         <div class="first_name">
                             <label>Last name</label>
-                            <input type="text" id="last_input" placeholder="Hloomberg">
+                            <input type="text" id="last_input" name="last_name" value="{{$credential ? $credential->last_name : ''}}" required>
+                            @error('last_name')
+                                <span class="text-danger header-error"> {{ $message }} </span>
+                            @enderror
                         </div>
                     </div>
                     <div class="address_input">
                         <label>Street Address</label>
-                        <input type="text" id="street_address" placeholder="21756 Osten str., h. 50">
+                        <input type="text" id="street_address" name="address" value="{{$credential ? $credential->address : ''}}">
+                        @error('address')
+                            <span class="text-danger header-error"> {{ $message }} </span>
+                        @enderror
                     </div>
                     <div class="address_sity">
                         <div class="sity_input">
                             <label>City</label>
-                            <input type="text" id="city_address" placeholder="Yerevan">
+                            <input type="text" id="city_address" name="city" value="{{$credential ? $credential->city : ''}}">
+                            @error('city')
+                                <span class="text-danger header-error"> {{ $message }} </span>
+                            @enderror
                         </div>
                         <div class="state_zip">
                             <div class="zip">
                                 <label>State</label>
-                                <input type="number" id="state_address" placeholder="ER">
+                                <input type="text" id="state_address" name="state" value="{{$credential ? $credential->state : ''}}">
+                                @error('state')
+                                    <span class="text-danger header-error"> {{ $message }} </span>
+                                @enderror
                             </div>
                             <div class="zip">
                                 <label>Zip Code</label>
-                                <input type="email" id="zip_code" placeholder="0082">
+                                <input type="text" id="zip_code" name="zip" value="{{$credential ? $credential->zip : ''}}">
+                                @error('zip')
+                                    <span class="text-danger header-error"> {{ $message }} </span>
+                                @enderror
                             </div>
                         </div>
                     </div>
                     <div class="name">
                         <div class="first_name">
                             <label>Email </label>
-                            <input type="email" id="email_address" placeholder="DorothyHloomberg@gmail.com">
+                            <input type="email" id="email_address" name="email" value="{{$credential ? $credential->email : ''}}" required>
+                            @error('email')
+                                <span class="text-danger header-error"> {{ $message }} </span>
+                            @enderror
                         </div>
                         <div class="first_name">
                             <label>Phone </label>
-                            <input type="number" id="phone" placeholder="+374 44 44 44 44">
+                            <input type="text" id="phone" name="phone" value="{{$credential ? $credential->phone : ''}}">
+                            @error('phone')
+                                <span class="text-danger header-error"> {{ $message }} </span>
+                            @enderror
                         </div>
                     </div>
                     <div class="back_continue back_continue1">
                         <a href="{{ route('create-resume') }}" class="back_left">
                             <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
                         </a>
-                        <a href="{{ route('experience') }}" class="continue_right">
-                            <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>
-                        </a>
+{{--                        <a href="{{ route('experience') }}" class="continue_right">--}}
+{{--                            <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>--}}
+{{--                        </a>--}}
+                        <button type="submit" class="btn continue_right text-white">
+                            Continue <span class="fas fa-long-arrow-alt-right"></span>
+                        </button>
                     </div>
 
                 </form>

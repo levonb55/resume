@@ -12,6 +12,6 @@ class Credential extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'template_id'
+        'user_id', 'template_id', 'first_name', 'last_name', 'address', 'city', 'state', 'zip', 'email', 'phone'
     ];
 }

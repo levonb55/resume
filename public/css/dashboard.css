@@ -384,12 +384,12 @@
 
 .state_zip {
     display: flex;
-    width: 49%;
+    width: 58%;
     justify-content: space-between;
 }
 
 .sity_input {
-    width: 49%;
+    width: 40%;
 }
 
 .zip {
@@ -402,9 +402,15 @@
     border: 1px solid #C9C9C9;
     color: rgba(33, 37, 41, 0.5098039215686274);
     width: 100%;
-    margin-bottom: 29px;
+    /*margin-bottom: 29px;*/
     font-size: 14px;
     border-radius: 4px;
+}
+.form_header > div {
+    margin-bottom: 29px;
+}
+.header-error {
+    font-size: 12px;
 }
 
 .back_continue1 {

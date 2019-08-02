@@ -38,10 +38,10 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the template record associated with the user.
+     * Get the credential record associated with the user.
      */
-    public function template()
+    public function credential()
     {
-        return $this->hasOne('App\Template');
+        return $this->hasOne('App\Models\Credential');
     }
 }

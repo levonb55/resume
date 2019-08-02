@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreResumeHeader;
 use App\Models\Credential;
 use App\Models\Template;
 use App\Models\User;
@@ -40,7 +41,18 @@ class CredentialController extends Controller
 
     //Gets resume header page
     public function header() {
-        return view('credentials.header');
+        $credential = Auth::user()->credential;
+        return view('credentials.header', compact('credential'));
+    }
+
+    //Stores header
+    public function storeHeader(StoreResumeHeader $request) {
+
+        Credential::updateOrCreate(['user_id' => Auth::id()], request([
+           'first_name', 'last_name', 'address', 'city', 'state', 'zip', 'email', 'phone'
+        ]));
+
+        return redirect()->route('experience');
     }
 
     //Gets resume experience page
