@@ -36,4 +36,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the template record associated with the user.
+     */
+    public function template()
+    {
+        return $this->hasOne('App\Template');
+    }
 }

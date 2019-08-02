@@ -130,7 +130,7 @@
                 </div>
             </div>
             <div class="back_continue">
-                <a href="{{ route('choose-template') }}" class="back_left">
+                <a href="{{ route('templates') }}" class="back_left">
                     <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
                 </a>
                 <a href="{{ route('header') }}" class="continue_right">

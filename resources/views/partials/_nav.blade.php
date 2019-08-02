@@ -9,7 +9,7 @@
                     <a class="nav-link" href="{{ route('home') }}">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('choose-template') }}">RESUME</a>
+                    <a class="nav-link" href="{{ route('templates') }}">RESUME</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('cover-letter') }}">COVER LETTER</a>

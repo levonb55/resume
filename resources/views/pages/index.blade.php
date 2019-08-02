@@ -15,7 +15,7 @@
 				<div class="col-sm-12 col-md-6">
 					<h1 class="mb-4">Create your professional resume</h1>
 					<p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis sit amet lorem eget efficitur. Integer auctor et diam sit amet pretium. Sed blandit elementum massa, quis pretium risus suscipit quis. Aenean </p>
-					<a href="{{ route('choose-template') }}" class="btn btn-light">Start now</a>
+					<a href="{{ route('templates') }}" class="btn btn-light">Start now</a>
 				</div>
 			</div>
 	</div>

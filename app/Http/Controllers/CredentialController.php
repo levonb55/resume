@@ -2,13 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Credential;
+use App\Models\Template;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Auth;
 
 class CredentialController extends Controller
 {
-    //Gets choose-template page
-    public function chooseTemplate() {
-        return view('credentials.choose-template');
+    //Gets templates page
+    public function getTemplates() {
+        $templates = Template::all();
+        return view('credentials.templates', compact('templates'));
+    }
+
+    public function chooseTemplate(Request $request) {
+        $request->validate([
+            'template' => 'sometimes|required|integer|min:1',
+        ]);
+
+        $userId = Auth::id();
+
+        Credential::updateOrCreate([ 'user_id' => $userId],[
+            'user_id' => $userId,
+            'template_id' => $request->input('template')
+        ]);
+
+        return redirect()->route('create-resume');
     }
 
     //Gets create-resume page
