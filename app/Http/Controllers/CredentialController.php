@@ -22,12 +22,14 @@ class CredentialController extends Controller
         ]);
 
         $userId = Auth::id();
+        $template = $request->input('template');
 
-        Credential::updateOrCreate([ 'user_id' => $userId],[
-            'user_id' => $userId,
-            'template_id' => $request->input('template')
-        ]);
-
+        if( $template) {
+            Credential::updateOrCreate(['user_id' => $userId], [
+                'user_id' => $userId,
+                'template_id' => $template
+            ]);
+        }
         return redirect()->route('create-resume');
     }
 
