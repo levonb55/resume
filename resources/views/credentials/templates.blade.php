@@ -51,8 +51,8 @@
 			startPosition: {{ auth()->user()->credential ? auth()->user()->credential->template_id - 1 : 1 }},
 			nav: true,
 			navText: [
-				'<img src="../assets/images/left-arrow.png">',
-				'<img src="../assets/images/right-arrow.png">'
+				'<img src="./assets/images/left-arrow.png">',
+				'<img src="./assets/images/right-arrow.png">'
 			],
 			navContainer: '.main-content .custom-nav',
 			mouseDrag: false,
