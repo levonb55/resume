@@ -20,33 +20,33 @@ $('#owl1').owlCarousel({
         }
     }
 });
-$('#owl6').owlCarousel({
-    items: 3,
-    loop: true,
-    margin: 10,
-    dots: false,
-    center: true,
-    nav: true,
-    navText: [
-        '<img src="../assets/images/left-arrow.png">',
-        '<img src="../assets/images/right-arrow.png">'
-
-    ],
-    navContainer: '.main-content .custom-nav',
-    mouseDrag: false,
-    responsiveClass: true,
-    responsive: {
-        0: {
-            items: 1,
-        },
-        600: {
-            items: 2,
-        },
-        1000: {
-            items: 3,
-        }
-    }
-});
+// $('#owl6').owlCarousel({
+//     items: 3,
+//     loop: true,
+//     margin: 10,
+//     dots: false,
+//     center: true,
+//     nav: true,
+//     navText: [
+//         '<img src="../assets/images/left-arrow.png">',
+//         '<img src="../assets/images/right-arrow.png">'
+//
+//     ],
+//     navContainer: '.main-content .custom-nav',
+//     mouseDrag: false,
+//     responsiveClass: true,
+//     responsive: {
+//         0: {
+//             items: 1,
+//         },
+//         600: {
+//             items: 2,
+//         },
+//         1000: {
+//             items: 3,
+//         }
+//     }
+// });
 $('#owl2').owlCarousel({
     startPosition: 0,
     margin: 20,

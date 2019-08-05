@@ -11,6 +11,9 @@ use Auth;
 
 class CredentialController extends Controller
 {
+
+    const TEMPLATE = 1;
+
     //Gets templates page
     public function getTemplates() {
         $templates = Template::all();
@@ -22,15 +25,13 @@ class CredentialController extends Controller
             'template' => 'sometimes|required|integer|min:1',
         ]);
 
-        $userId = Auth::id();
         $template = $request->input('template');
 
-        if( $template) {
-            Credential::updateOrCreate(['user_id' => $userId], [
-                'user_id' => $userId,
-                'template_id' => $template
-            ]);
-        }
+        Credential::updateOrCreate(['user_id' => auth()->id()], [
+            'user_id' => auth()->id(),
+            'template_id' => $template ? $template : self::TEMPLATE
+        ]);
+
         return redirect()->route('create-resume');
     }
 
