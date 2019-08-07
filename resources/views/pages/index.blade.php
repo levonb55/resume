@@ -183,3 +183,8 @@
 	</section>
 </main>
 @endsection
+
+@section('extra-scripts')
+	<script src="{{asset('assets/libs/js/owl.carousel.min.js')}}"></script>
+	<script src="{{asset('js/carousel.js')}}"></script>
+@endsection

@@ -145,89 +145,106 @@
                 </form>
             </div>
             <div class=" cv_template example1">
-                <div class="cv-scroll">
-                    <div class="head1">
-                        <div class="name_res">
-                            <h2 id="first_text2">James </h2>
-                            <h2 id="last_name2">Miller</h2>
-                        </div>
 
-                        <p>
-                            <span class="address" id="address_person">44 Shirley Ave,</span>
-                            <span id="sity_sity">New York</span>
-                            <span id="state">Arizona</span>
-                            <span class="mail_zip" id="zip_zip">0465/55,</span>
-                            <span class="telephone" id="phone_phone"> +465555555668,</span>
-                            <span class="mail"  id="email_email">jamask@mail.ru</span>
-                        </p>
+                @if($credential)
+{{--                    @component('components.resume-templates.template' . $credential->template_id)--}}
+{{--                    @endcomponent--}}
+                    @includeIf('components.resumes.template' . $credential->template_id, [
+                        'first_name' => $credential->first_name,
+                        'last_name' => $credential->last_name,
+                        'address'   => $credential->address,
+                        'city'      => $credential->city,
+                        'state'     => $credential->state,
+                        'zip'       => $credential->zip,
+                        'email'     => $credential->email,
+                        'phone'     => $credential->phone
+                    ])
+                @else
+                    <div class="cv-scroll">
+                        <div class="head1">
+                            <div class="name_res">
+                                <h2 id="first_text2">James </h2>
+                                <h2 id="last_name2">Miller</h2>
+                            </div>
+
+                            <p>
+                                <span class="address" id="address_person">44 Shirley Ave,</span>
+                                <span id="sity_sity">New York</span>
+                                <span id="state">Arizona</span>
+                                <span class="mail_zip" id="zip_zip">0465/55,</span>
+                                <span class="telephone" id="phone_phone"> +465555555668,</span>
+                                <span class="mail"  id="email_email">jamask@mail.ru</span>
+                            </p>
+
+                        </div>
+                        <div class="resum">
+                            <div class="sec_resum">
+                                <h4>Professional Summary</h4>
+                                <hr>
+
+
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos eum, facere, fugiat in maxime mollitia odio perferendis possimus provident quisquam reprehenderit sit. Et in laudantium magni odit suscipit totam vitae?</p>
+
+                            </div>
+                            <div class="sec_resum">
+                                <h4>Employment history</h4>
+                                <hr>
+
+                                <div class="resum_main">
+                                    <div class="left_resum  ">
+                                        <p class="font-weight-bold">It Technician</p>
+                                        <span>Oct 2015-apr 2016</span>
+                                        <p>Operate and maintain information systems</p>
+                                        <p>Facilitiang system utilization</p>
+                                    </div>
+                                    <div class="right_resum">
+                                        <p>bingham</p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="sec_resum">
+                                <h4>Education</h4>
+                                <hr>
+
+                                <div class="resum_main">
+                                    <div class="left_resum  ">
+                                        <p class="font-weight-bold">It Technician</p>
+                                        <span>Oct 2015-apr 2016</span>
+                                        <p>Operate and maintain information systems</p>
+                                        <p>Facilitiang system utilization</p>
+                                    </div>
+                                    <div class="right_resum">
+                                        <p>bingham</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="sec_resum">
+                                <h4>Honors</h4>
+                                <hr>
+                                <div class="resum_main">
+                                    <div class="left_resum  ">
+                                        <p class="font-weight-bold">It Technician</p>
+                                        <span>Oct 2015-apr 2016</span>
+                                        <p>Operate and maintain information systems</p>
+                                        <p>Facilitiang system utilization</p>
+                                    </div>
+                                    <div class="right_resum">
+                                        <p>bingham</p>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
 
                     </div>
-                    <div class="resum">
-                        <div class="sec_resum">
-                            <h4>Professional Summary</h4>
-                            <hr>
+                @endif
 
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos eum, facere, fugiat in maxime mollitia odio perferendis possimus provident quisquam reprehenderit sit. Et in laudantium magni odit suscipit totam vitae?</p>
-
-                        </div>
-                        <div class="sec_resum">
-                            <h4>Employment history</h4>
-                            <hr>
-
-                            <div class="resum_main">
-                                <div class="left_resum  ">
-                                    <p class="font-weight-bold">It Technician</p>
-                                    <span>Oct 2015-apr 2016</span>
-                                    <p>Operate and maintain information systems</p>
-                                    <p>Facilitiang system utilization</p>
-                                </div>
-                                <div class="right_resum">
-                                    <p>bingham</p>
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <div class="sec_resum">
-                            <h4>Education</h4>
-                            <hr>
-
-                            <div class="resum_main">
-                                <div class="left_resum  ">
-                                    <p class="font-weight-bold">It Technician</p>
-                                    <span>Oct 2015-apr 2016</span>
-                                    <p>Operate and maintain information systems</p>
-                                    <p>Facilitiang system utilization</p>
-                                </div>
-                                <div class="right_resum">
-                                    <p>bingham</p>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="sec_resum">
-                            <h4>Honors</h4>
-                            <hr>
-                            <div class="resum_main">
-                                <div class="left_resum  ">
-                                    <p class="font-weight-bold">It Technician</p>
-                                    <span>Oct 2015-apr 2016</span>
-                                    <p>Operate and maintain information systems</p>
-                                    <p>Facilitiang system utilization</p>
-                                </div>
-                                <div class="right_resum">
-                                    <p>bingham</p>
-
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                    </div>
-
-                </div>
             </div>
 
             <!--       <div class="heade_template">-->
