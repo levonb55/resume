@@ -36,7 +36,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
 
-            'disablepreventback' => \App\Http\Middleware\DisablePreventBack::class,
+            \App\Http\Middleware\DisablePreventBack::class,
         ],
 
         'api' => [

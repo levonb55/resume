@@ -147,18 +147,9 @@
             <div class=" cv_template example1">
 
                 @if($credential)
-{{--                    @component('components.resume-templates.template' . $credential->template_id)--}}
-{{--                    @endcomponent--}}
-                    @includeIf('components.resumes.template' . $credential->template_id, [
-                        'first_name' => $credential->first_name,
-                        'last_name' => $credential->last_name,
-                        'address'   => $credential->address,
-                        'city'      => $credential->city,
-                        'state'     => $credential->state,
-                        'zip'       => $credential->zip,
-                        'email'     => $credential->email,
-                        'phone'     => $credential->phone
-                    ])
+
+                    @includeIf('components.resumes.template' . auth()->user()->credential->template_id)
+
                 @else
                     <div class="cv-scroll">
                         <div class="head1">

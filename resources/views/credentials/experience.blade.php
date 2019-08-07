@@ -145,7 +145,8 @@
                     </div>
                 </div>
                 <div class="preview-wrapper">
-                    @include('partials._preview-resume')
+{{--                    @include('partials._preview-resume')--}}
+                    @include('partials._resume-modal')
                 </div>
 {{--                <div class="preview">--}}
 {{--                    <p data-toggle="modal" data-target="#exampleModalCenter">--}}

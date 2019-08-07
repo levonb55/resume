@@ -1,5 +1,5 @@
-<div class="text-primary">
-    <h1>Template 1</h1>
+<div class="text-success">
+    <h1>Template 3</h1>
     <h2 id="first_text2">{{ $credential->first_name }}</h2>
     <h2 id="last_name2">{{ $credential->last_name }}</h2>
     <span class="address" id="address_person">{{ $credential->address }}</span>
