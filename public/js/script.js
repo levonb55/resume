@@ -361,107 +361,107 @@ $(document).ready(function () {
 
 //    prewiew
 
-    $(document).on("click", ".preview-resume", function () {
-        var mod = "<!-- Modal -->\n" +
-            "<div class=\"modal fade\" id=\"exampleModalCenter\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">\n" +
-            "  <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\n" +
-            "    <div class=\"modal-content\">\n" +
-            "      <div class=\"modal-body\">\n" +
-            "        <div class=\" cv_template example1\">\n" +
-            "           <div>\n" +
-            "                <div class=\"head1\">\n" +
-            "                    <div class=\"name_res\">\n" +
-            "                        <h2 id=\"first_text2\">James </h2>\n" +
-            "                        <h2 id=\"last_name2\">Miller</h2>\n" +
-            "                    </div>\n" +
-            "\n" +
-            "                   <p>\n" +
-            "                       <span class=\"address\" id=\"address_person\">44 Shirley Ave,</span>\n" +
-            "                       <span id=\"sity_sity\">New York</span>\n" +
-            "                       <span id=\"state\">Arizona</span>\n" +
-            "                       <span class=\"mail_zip\" id=\"zip_zip\">0465/55,</span>\n" +
-            "                       <span class=\"telephone\" id=\"phone_phone\"> +465555555668,</span>\n" +
-            "                       <span class=\"mail\" id=\"email_email\">jamask@mail.ru</span>\n" +
-            "                   </p>\n" +
-            "\n" +
-            "                </div>\n" +
-            "                <div class=\"resum\">\n" +
-            "                   <div class=\"sec_resum\">\n" +
-            "                       <h4>Professional Summary</h4>\n" +
-            "                       <hr>\n" +
-            "\n" +
-            "\n" +
-            "                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos eum, facere, fugiat in maxime mollitia odio perferendis possimus provident quisquam reprehenderit sit. Et in laudantium magni odit suscipit totam vitae?</p>\n" +
-            "\n" +
-            "                   </div>\n" +
-            "                   <div class=\"sec_resum\">\n" +
-            "                       <h4>Employment history</h4>\n" +
-            "                       <hr>\n" +
-            "\n" +
-            "                       <div class=\"resum_main\">\n" +
-            "                           <div class=\"left_resum  \">\n" +
-            "                               <p class=\"font-weight-bold\">It Technician</p>\n" +
-            "                               <span>Oct 2015-apr 2016</span>\n" +
-            "                               <p>Operate and maintain information systems</p>\n" +
-            "                               <p>Facilitiang system utilization</p>\n" +
-            "                           </div>\n" +
-            "                           <div class=\"right_resum\">\n" +
-            "                               <p>bingham</p>\n" +
-            "                           </div>\n" +
-            "                       </div>\n" +
-            "\n" +
-            "\n" +
-            "                   </div>\n" +
-            "                   <div class=\"sec_resum\">\n" +
-            "                       <h4>Education</h4>\n" +
-            "                       <hr>\n" +
-            "\n" +
-            "                       <div class=\"resum_main\">\n" +
-            "                           <div class=\"left_resum  \">\n" +
-            "                               <p class=\"font-weight-bold\">It Technician</p>\n" +
-            "                               <span>Oct 2015-apr 2016</span>\n" +
-            "                               <p>Operate and maintain information systems</p>\n" +
-            "                               <p>Facilitiang system utilization</p>\n" +
-            "                           </div>\n" +
-            "                           <div class=\"right_resum\">\n" +
-            "                               <p>bingham</p>\n" +
-            "                           </div>\n" +
-            "                       </div>\n" +
-            "\n" +
-            "                   </div>\n" +
-            "                   <div class=\"sec_resum\">\n" +
-            "                       <h4>Honors</h4>\n" +
-            "                       <hr>\n" +
-            "                       <div class=\"resum_main\">\n" +
-            "                           <div class=\"left_resum  \">\n" +
-            "                               <p class=\"font-weight-bold\">It Technician</p>\n" +
-            "                               <span>Oct 2015-apr 2016</span>\n" +
-            "                               <p>Operate and maintain information systems</p>\n" +
-            "                               <p>Facilitiang system utilization</p>\n" +
-            "                           </div>\n" +
-            "                           <div class=\"right_resum\">\n" +
-            "                               <p>bingham</p>\n" +
-            "\n" +
-            "                           </div>\n" +
-            "                       </div>\n" +
-            "\n" +
-            "\n" +
-            "                   </div>\n" +
-            "\n" +
-            "                </div>\n" +
-            "\n" +
-            "                </div>\n" +
-            "           </div>" +
-            "      </div>\n" +
-            "    </div>\n" +
-            "  </div>\n" +
-            "</div>";
-        $(this).parents(".preview").append(mod);
-
-
-
-
-    })
+    // $(document).on("click", ".preview-resume", function () {
+    //     var mod = "<!-- Modal -->\n" +
+    //         "<div class=\"modal fade\" id=\"exampleModalCenter\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">\n" +
+    //         "  <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\n" +
+    //         "    <div class=\"modal-content\">\n" +
+    //         "      <div class=\"modal-body\">\n" +
+    //         "        <div class=\" cv_template example1\">\n" +
+    //         "           <div>\n" +
+    //         "                <div class=\"head1\">\n" +
+    //         "                    <div class=\"name_res\">\n" +
+    //         "                        <h2 id=\"first_text2\">James </h2>\n" +
+    //         "                        <h2 id=\"last_name2\">Miller</h2>\n" +
+    //         "                    </div>\n" +
+    //         "\n" +
+    //         "                   <p>\n" +
+    //         "                       <span class=\"address\" id=\"address_person\">44 Shirley Ave,</span>\n" +
+    //         "                       <span id=\"sity_sity\">New York</span>\n" +
+    //         "                       <span id=\"state\">Arizona</span>\n" +
+    //         "                       <span class=\"mail_zip\" id=\"zip_zip\">0465/55,</span>\n" +
+    //         "                       <span class=\"telephone\" id=\"phone_phone\"> +465555555668,</span>\n" +
+    //         "                       <span class=\"mail\" id=\"email_email\">jamask@mail.ru</span>\n" +
+    //         "                   </p>\n" +
+    //         "\n" +
+    //         "                </div>\n" +
+    //         "                <div class=\"resum\">\n" +
+    //         "                   <div class=\"sec_resum\">\n" +
+    //         "                       <h4>Professional Summary</h4>\n" +
+    //         "                       <hr>\n" +
+    //         "\n" +
+    //         "\n" +
+    //         "                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos eum, facere, fugiat in maxime mollitia odio perferendis possimus provident quisquam reprehenderit sit. Et in laudantium magni odit suscipit totam vitae?</p>\n" +
+    //         "\n" +
+    //         "                   </div>\n" +
+    //         "                   <div class=\"sec_resum\">\n" +
+    //         "                       <h4>Employment history</h4>\n" +
+    //         "                       <hr>\n" +
+    //         "\n" +
+    //         "                       <div class=\"resum_main\">\n" +
+    //         "                           <div class=\"left_resum  \">\n" +
+    //         "                               <p class=\"font-weight-bold\">It Technician</p>\n" +
+    //         "                               <span>Oct 2015-apr 2016</span>\n" +
+    //         "                               <p>Operate and maintain information systems</p>\n" +
+    //         "                               <p>Facilitiang system utilization</p>\n" +
+    //         "                           </div>\n" +
+    //         "                           <div class=\"right_resum\">\n" +
+    //         "                               <p>bingham</p>\n" +
+    //         "                           </div>\n" +
+    //         "                       </div>\n" +
+    //         "\n" +
+    //         "\n" +
+    //         "                   </div>\n" +
+    //         "                   <div class=\"sec_resum\">\n" +
+    //         "                       <h4>Education</h4>\n" +
+    //         "                       <hr>\n" +
+    //         "\n" +
+    //         "                       <div class=\"resum_main\">\n" +
+    //         "                           <div class=\"left_resum  \">\n" +
+    //         "                               <p class=\"font-weight-bold\">It Technician</p>\n" +
+    //         "                               <span>Oct 2015-apr 2016</span>\n" +
+    //         "                               <p>Operate and maintain information systems</p>\n" +
+    //         "                               <p>Facilitiang system utilization</p>\n" +
+    //         "                           </div>\n" +
+    //         "                           <div class=\"right_resum\">\n" +
+    //         "                               <p>bingham</p>\n" +
+    //         "                           </div>\n" +
+    //         "                       </div>\n" +
+    //         "\n" +
+    //         "                   </div>\n" +
+    //         "                   <div class=\"sec_resum\">\n" +
+    //         "                       <h4>Honors</h4>\n" +
+    //         "                       <hr>\n" +
+    //         "                       <div class=\"resum_main\">\n" +
+    //         "                           <div class=\"left_resum  \">\n" +
+    //         "                               <p class=\"font-weight-bold\">It Technician</p>\n" +
+    //         "                               <span>Oct 2015-apr 2016</span>\n" +
+    //         "                               <p>Operate and maintain information systems</p>\n" +
+    //         "                               <p>Facilitiang system utilization</p>\n" +
+    //         "                           </div>\n" +
+    //         "                           <div class=\"right_resum\">\n" +
+    //         "                               <p>bingham</p>\n" +
+    //         "\n" +
+    //         "                           </div>\n" +
+    //         "                       </div>\n" +
+    //         "\n" +
+    //         "\n" +
+    //         "                   </div>\n" +
+    //         "\n" +
+    //         "                </div>\n" +
+    //         "\n" +
+    //         "                </div>\n" +
+    //         "           </div>" +
+    //         "      </div>\n" +
+    //         "    </div>\n" +
+    //         "  </div>\n" +
+    //         "</div>";
+    //     $(this).parents(".preview").append(mod);
+    //
+    //
+    //
+    //
+    // })
 })
 $(".str_button").on("click",function () {
     $(this).children(".fa-check").toggleClass("d-none");
