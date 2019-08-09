@@ -12,16 +12,19 @@
 			@csrf
 			<div class="container main-content">
 				<div class="row owl-carousel" id="owl6">
-
 					@foreach ($templates as $template)
-						<div>
-							<img src="{{asset('assets/images/resume.jpg')}}">
-							<div class="form-check text-center">
-								<label class="form-check-label">
-									<input type="radio" class="form-check-input" name="template" value="{{ $template->id }}">
-									{{ $template->name }}
-								</label>
-							</div>
+						<div id="templateDiv{{$template->id}}">
+							<label>
+								<img
+									@if(auth()->user()->credential)
+										class="imgClickHandle {{auth()->user()->credential->template_id === $template->id ? 'active-template' : null}}"
+									@else
+										class="imgClickHandle"
+									@endif
+									src="{{asset('assets/images/resume.jpg')}}"
+								>
+								<input type="radio" name="template" class="d-none" value="{{ $template->id }}">
+							</label>
 						</div>
 					@endforeach
 
@@ -33,7 +36,8 @@
 				</div>
 			</div>
 
-			<button class="btn btn-blue d-block mx-auto" type="submit">Next</button>
+			<div class="text-center my-4">Click on an image to choose a template.</div>
+			<button class="btn btn-blue d-block mx-auto" type="submit" >Next</button>
 		</form>
 	</main>
 @endsection
@@ -68,6 +72,12 @@
 					items: 3,
 				}
 			}
+		});
+
+		//Highlights template
+		$('.imgClickHandle').on('click',function () {
+			$('.imgClickHandle').removeClass('active-template');
+			$(this).addClass('active-template');
 		});
 	</script>
 @endsection

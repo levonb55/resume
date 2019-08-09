@@ -93,17 +93,17 @@
                                 <div class="time_input">
                                     <div class="data_input">
                                         <label>Start Date</label>
-                                        <input type="text" placeholder="">
+                                        <input type="date" id="start" name="trip-start" value="2019-08-09">
                                     </div>
-                                    <div class="data_input">
+                                    <div class="data_input end_date1">
                                         <label>End Date</label>
-                                        <input type="text" placeholder="">
+                                        <input type="date"  name="trip-start" value="2019-08-09">
                                     </div>
                                 </div>
                             </form>
 
-                            <label for="ch1" class="containera">I currently work here
-                                <input type="checkbox" id="ch1">
+                            <label  for="ch1" class="containera Work_here">I currently work here
+                                <input type="checkbox" class="ch1" id="ch1">
                                 <span class="checkmark"></span>
                             </label>
 

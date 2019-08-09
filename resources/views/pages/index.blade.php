@@ -2,6 +2,10 @@
 
 @section('title', 'Resume')
 
+@section('extra-styles')
+	<link rel="stylesheet" href="{{ asset('assets/libs/css/owl.carousel.min.css') }}">
+@endsection
+
 @section('nav')
 @stop
 
@@ -185,6 +189,6 @@
 @endsection
 
 @section('extra-scripts')
-{{--	<script src="{{asset('assets/libs/js/owl.carousel.min.js')}}"></script>--}}
-{{--	<script src="{{asset('js/carousel.js')}}"></script>--}}
+	<script src="{{asset('assets/libs/js/owl.carousel.min.js')}}"></script>
+	<script src="{{asset('js/carousel.js')}}"></script>
 @endsection

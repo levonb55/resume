@@ -9,6 +9,11 @@ $("#clone_aparat").on("click", function () {
     CKEDITOR.replace('textarea-' + index, editor_config);
 });
 
+//Hides end date
+$(".ch1").click(function () {
+    $(this).parent().siblings(".form_header").children(".time_input").children(".end_date1").toggleClass("d-none");
+});
+
 function addExperience(index) {
     return `
     <div class="clon">
@@ -43,11 +48,11 @@ function addExperience(index) {
                         <div class="time_input">
                             <div class="data_input">
                                 <label>Start Date</label>
-                                <input type="text" placeholder="">
+                                <input type="date" id="start" name="trip-start" value="2019-08-09">
                             </div>
                             <div class="data_input">
                                 <label>End Date</label>
-                                <input type="text" placeholder="">
+                                <input type="date"  name="trip-start" value="2019-08-09">
                             </div>
                         </div>
                     </form>

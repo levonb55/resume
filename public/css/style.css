@@ -861,6 +861,10 @@ main{
 
 }
 
+button.owl-dot.active {
+    background: #ffcd9e;
+}
+
 .form_check {
     display: flex;
     justify-content: space-between;
@@ -924,7 +928,9 @@ main{
 }
 /*login end*/
 
-
+.active-template {
+    box-shadow: 0 0 50px;
+}
 
 
 
