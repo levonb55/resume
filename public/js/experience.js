@@ -106,7 +106,9 @@ function addExperience(index) {
             <div class="search_job">
                 <div class="box1">
                     <form class="job">
-                        <input type="search" placeholder="Search by job title, industry or kayword">
+                        <input type="search" placeholder="Search by job title, industry or keyword" class="prof-search dropdown-toggle" data-toggle="dropdown">
+                        <ul class="dropdown-menu">
+                        </ul>
                         <span class="fas fa-search"></span>
                     </form>
                     <div class="add_text">
@@ -134,7 +136,7 @@ function addExperience(index) {
                 </div>
                 <div class="box2">
                     <div id="editor-container">
-                        <textarea cols="80" rows="100" id="textarea-${index}">text</textarea>
+                        <textarea cols="80" rows="100" id="textarea-${index}"></textarea>
                     </div>
                 </div>
             </div>
@@ -142,3 +144,40 @@ function addExperience(index) {
     </div>
     `;
 }
+
+//Brings up professions
+$(document).on('keyup', '.prof-search', function() {
+    let url = 'https://api-embeddedbuilder.resume-now.com/api/v1/content/jobtitleorindustry?jobTitle=' + $(this).val() + '&cultureCd=en-US';
+    $.get(url)
+        .then(response => {
+            let result = response.map(data => {
+                return "<li>" + data['title'] + "</li>";
+            });
+
+            $(this).siblings('ul').html(result);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+});
+
+//Suggests functions based on the selected profession
+$(document).on('click', 'li', function (e) {
+    let selectedTitle = e.target.innerHTML;
+    let url = 'https://api-embeddedbuilder.resume-now.com/api/v1/content/texttunercontent?user_uid=02e22a28-e725-4be3-93cd-c7e7f9194c2f&sectionTypeCD=EXPR&productCD=RSM&Jobtitle=' + selectedTitle + '&searchItemType=jobTitle&documentID=1fa05c72-f0d4-49df-96de-1971f8cf9928&cultureCD=en-US';
+
+    $(this).parents('form').find('.prof-search').val(selectedTitle);
+    $.get(url)
+        .then(response => {
+            let result = response.result.map(data => {
+                return `
+                    <div class="text_button">
+                        <p>${data.text}</p>
+                        <button>Add</button>
+                    </div>
+                `;
+            });
+
+            $(this).parents('.search_job').find('.add_text').html(result);
+        })
+});

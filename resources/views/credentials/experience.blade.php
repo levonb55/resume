@@ -162,8 +162,12 @@
                     <div class="search_job">
                         <div class="box1">
                             <form class="job">
-                                <input type="search" placeholder="Search by job title, industry or kayword">
-                                <span class="fas fa-search"></span>
+                                <div class="dropdown">
+                                    <input type="search" placeholder="Search by job title, industry or keyword" class="prof-search dropdown-toggle" data-toggle="dropdown">
+                                    <ul class="dropdown-menu">
+                                    </ul>
+                                    <span class="fas fa-search"></span>
+                                </div>
                             </form>
                             <div class="add_text">
                                 <div class="text_button">
