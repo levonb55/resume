@@ -193,10 +193,7 @@
                         </div>
                         <div class="box2">
                             <div id="editor-container">
-                      <textarea cols="80" rows="100" id="textarea-1">
-    text
-                    </textarea>
-
+                                <textarea cols="53" rows="16" id="textarea-1"></textarea>
                             </div>
                         </div>
                     </div>
@@ -226,7 +223,8 @@
 @endsection
 
 @section('extra-scripts')
-    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+{{--    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>--}}
+    <script src="{{ asset('assets/libs/ckeditor/ckeditor.js') }}"></script>
     <script src="{{asset('js/editor-config.js')}}"></script>
     <script src="{{asset('js/experience.js')}}"></script>
 @endsection
