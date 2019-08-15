@@ -1605,3 +1605,18 @@ button.btn.btn_tool {
         flex-direction: unset;
     }
 }
+
+
+.job .dropdown-menu li {
+    list-style: none;
+    color: #000;
+    padding: 1px 10px;
+    cursor: pointer;
+}
+.job .dropdown-menu li:hover {
+    background: gainsboro;
+ }
+
+.text_button button{
+    cursor: pointer;
+}

@@ -165,6 +165,8 @@
                                 <div class="dropdown">
                                     <input type="search" placeholder="Search by job title, industry or keyword" class="prof-search dropdown-toggle" data-toggle="dropdown">
                                     <ul class="dropdown-menu">
+                                        <li>Financial Analyst</li>
+                                        <li>Medical Officer</li>
                                     </ul>
                                     <span class="fas fa-search"></span>
                                 </div>

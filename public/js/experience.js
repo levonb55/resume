@@ -108,6 +108,8 @@ function addExperience(index) {
                     <form class="job">
                         <input type="search" placeholder="Search by job title, industry or keyword" class="prof-search dropdown-toggle" data-toggle="dropdown">
                         <ul class="dropdown-menu">
+                            <li>Financial Analyst</li>
+                            <li>Medical Officer</li>
                         </ul>
                         <span class="fas fa-search"></span>
                     </form>
@@ -172,7 +174,7 @@ $(document).on('click', 'li', function (e) {
             let result = response.result.map(data => {
                 return `
                     <div class="text_button">
-                        <p>${data.text}</p>
+                        <p>${data.text.replace(/(<([^>]+)>)/ig,"")}</p>
                         <button>Add</button>
                     </div>
                 `;
