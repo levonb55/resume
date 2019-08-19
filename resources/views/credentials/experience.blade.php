@@ -76,30 +76,36 @@
                                         <div class="first_name">
                                             <label>Job Title</label>
                                             <input type="text" placeholder="UI/UX design" name="experience1[title]">
+                                            <span class="text-danger mb-2 error" id="experience1_title"></span>
                                         </div>
                                         <div class="first_name">
                                             <label>Employer</label>
                                             <input type="text" placeholder="Web Projects" name="experience1[employer]">
+                                            <span class="text-danger mb-2 error" id="experience1_employer"></span>
                                         </div>
                                     </div>
                                     <div class="name">
                                         <div class="first_name">
                                             <label>City</label>
                                             <input type="text" placeholder="Chicago" name="experience1[city]">
+                                            <span class="text-danger mb-2 error" id="experience1_city"></span>
                                         </div>
                                         <div class="first_name">
                                             <label>State</label>
                                             <input type="text" placeholder="Illinois" name="experience1[state]">
+                                            <span class="text-danger mb-2 error" id="experience1_state"></span>
                                         </div>
                                     </div>
                                     <div class="time_input">
                                         <div class="data_input">
                                             <label>Start Date</label>
                                             <input type="date" id="start" name="experience1[start_date]">
+                                            <span class="text-danger mb-2 error" id="experience1_start_date"></span>
                                         </div>
                                         <div class="data_input end_date1">
                                             <label>End Date</label>
                                             <input type="date"  name="experience1[end_date]">
+                                            <span class="text-danger mb-2 error" id="experience1_end_date"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -202,6 +208,7 @@
                             <div class="box2">
                                 <div id="editor-container">
                                     <textarea cols="53" rows="16" id="textarea-1" name="experience1[description]"></textarea>
+                                    <span class="text-danger mb-2 error" id="experience1_description"></span>
                                 </div>
                             </div>
                         </div>

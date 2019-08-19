@@ -7,8 +7,13 @@ use Illuminate\Support\Facades\Validator;
 
 class ExperienceController extends Controller
 {
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store(Request $request) {
-        return response()->json($request->all());
+
         $inputQuantity = count($request->all()) - 1;
         $errors = [];
 
@@ -23,45 +28,16 @@ class ExperienceController extends Controller
                 'description' => 'nullable|string|min:10|max:1000'
             ]);
 
-            if($validator->errors()->all()) {
-                $errors['experience'.$i][] = $validator->errors()->all();
+            if($validator->fails()) {
+                $errors['experience'.$i] = $validator->getMessageBag()->toArray();
             }
         }
 
-//        return $errors;
-        $arr = [
-            'fname' => 'John',
-            'lname' => 'Doe'
-        ];
-        var_dump($errors);
-        return response()->json($errors);
-
-
-        $arr = [
-          'fname' => 'John',
-          'lname' => 'Doe'
-        ];
-        return response()->json($arr);
         if(count($errors)) {
             return response()->json($errors);
         } else {
             return response()->json('Success');
         }
 
-//        $validator = Validator::make($request->all(), [
-//            'title' => 'required|string|min:2|max:255',
-//            'employer' => 'required|string|min:2|max:255',
-//            'city' => 'nullable|string|min:2|max:255',
-//            'state' => 'nullable|string|min:2|max:255',
-//            'start' => 'required|date',
-//            'end' => 'nullable|date',
-//            'description' => 'nullable|string|min:10|max:1000'
-//        ]);
-
-        if (!$validator) {
-            return response()->json(['error'=>$validator->errors()->all()]);
-        }
-
-        return response()->json($request->all());
     }
 }

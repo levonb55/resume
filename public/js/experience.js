@@ -29,30 +29,36 @@ function addExperience(index) {
                             <div class="first_name">
                                 <label>Job Title</label>
                                 <input type="text" placeholder="UI/UX design" name="experience${counter}[title]">
+                                <span class="text-danger mb-2 error" id="experience${counter}_title"></span>
                             </div>
                             <div class="first_name">
                                 <label>Employer</label>
                                 <input type="text" placeholder="Web Projects" name="experience${counter}[employer]">
+                                <span class="text-danger mb-2 error" id="experience${counter}_employer"></span>
                             </div>
                         </div>
                         <div class="name">
                             <div class="first_name">
                                 <label>City</label>
                                 <input type="text" placeholder="Chicago" name="experience${counter}[city]">
+                                <span class="text-danger mb-2 error" id="experience${counter}_city"></span>
                             </div>
                             <div class="first_name">
                                 <label>State</label>
                                 <input type="text" placeholder="Illinois" name="experience${counter}[state]">
+                                <span class="text-danger mb-2 error" id="experience${counter}_state"></span>
                             </div>
                         </div>
                         <div class="time_input">
                             <div class="data_input">
                                 <label>Start Date</label>
                                 <input type="date" id="start" name="experience${counter}[start_date]">
+                                <span class="text-danger mb-2 error" id="experience${counter}_start_date"></span>
                             </div>
                             <div class="data_input">
                                 <label>End Date</label>
                                 <input type="date"  name="experience${counter}[end_date]">
+                                <span class="text-danger mb-2 error" id="experience${counter}_end_date"></span>
                             </div>
                         </div>
                     </div>
@@ -139,6 +145,7 @@ function addExperience(index) {
                 <div class="box2">
                     <div id="editor-container">
                         <textarea cols="80" rows="100" id="textarea-${index}" name="experience${counter}[description]"></textarea>
+                        <span class="text-danger mb-2 error" id="experience${counter}_description"></span>
                     </div>
                 </div>
             </div>
@@ -198,26 +205,32 @@ $(document).on('click', 'li', function (e) {
             });
 
             $(this).parents('.search_job').find('.add_text').html(result);
-        })
+        });
 });
 
+
+//Adds experience
 $('#experience-form').on('submit', function (e) {
     e.preventDefault();
     let data = $(this).serialize();
-    
-    fetch(appUrl + '/experience', {
-       headers: {
-           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-           'Content-Type': 'application/json'
-       },
-       method: "POST",
-       body: JSON.stringify(data)
+
+    $.ajax({
+        method: 'POST',
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        url: appUrl + '/experience',
+        data: data
     })
-    .then(response => response.json())
-    .then(response => {
-       console.log(response, 'response');
+    .done(response => {
+        $('.error').empty();
+
+        for(data in response) {
+            $.each(response[data], function(key,value) {
+                $('#' + data + '_' + key).html(value);
+            });
+        }
     })
-    .catch(error => {
-       console.log(error);
+    .fail(error =>  {
+        console.log(error);
     });
+
 });
