@@ -2,9 +2,9 @@ $("#add_desc").on("click", function () {
     $("#add_textarea").toggleClass("hidden");
 });
 
-var counter = 2;
+var counter = 1;
 $("#clone_aparat").on("click", function () {
-    var index = counter++;
+    var index = ++counter;
     $('.clon_here').append(addExperience(index));
     CKEDITOR.replace('textarea-' + index, editor_config);
 });
@@ -24,38 +24,38 @@ function addExperience(index) {
                     activities.</p>
     
                 <div class="job_area">
-                    <form class="form_header">
+                    <div class="form_header">
                         <div class="name">
                             <div class="first_name">
                                 <label>Job Title</label>
-                                <input type="text" placeholder="UI/UX design">
+                                <input type="text" placeholder="UI/UX design" name="experience${counter}[title]">
                             </div>
                             <div class="first_name">
                                 <label>Employer</label>
-                                <input type="text" placeholder="Web Projects">
+                                <input type="text" placeholder="Web Projects" name="experience${counter}[employer]">
                             </div>
                         </div>
                         <div class="name">
                             <div class="first_name">
                                 <label>City</label>
-                                <input type="text" placeholder="Yerevan">
+                                <input type="text" placeholder="Chicago" name="experience${counter}[city]">
                             </div>
                             <div class="first_name">
                                 <label>State</label>
-                                <input type="text" placeholder="AR">
+                                <input type="text" placeholder="Illinois" name="experience${counter}[state]">
                             </div>
                         </div>
                         <div class="time_input">
                             <div class="data_input">
                                 <label>Start Date</label>
-                                <input type="date" id="start" name="trip-start" value="2019-08-09">
+                                <input type="date" id="start" name="experience${counter}[start_date]">
                             </div>
                             <div class="data_input">
                                 <label>End Date</label>
-                                <input type="date"  name="trip-start" value="2019-08-09">
+                                <input type="date"  name="experience${counter}[end_date]">
                             </div>
                         </div>
-                    </form>
+                    </div>
     
                     <label for="ch1" class="containera">I currently work here
                         <input type="checkbox" id="ch1">
@@ -105,14 +105,14 @@ function addExperience(index) {
             <h3>Tell us what you did and how you helped the company</h3>
             <div class="search_job">
                 <div class="box1">
-                    <form class="job">
+                    <div class="job">
                         <input type="search" placeholder="Search by job title, industry or keyword" class="prof-search dropdown-toggle" data-toggle="dropdown">
                         <ul class="dropdown-menu">
                             <li>Financial Analyst</li>
                             <li>Medical Officer</li>
                         </ul>
                         <span class="fas fa-search"></span>
-                    </form>
+                    </div>
                     <div class="add_text">
                         <div class="text_button">
                             <p>Completed all company insurance renewals including property, Workers' Compensation, general liability, cargo, aviation and K & R documents.</p>
@@ -138,7 +138,7 @@ function addExperience(index) {
                 </div>
                 <div class="box2">
                     <div id="editor-container">
-                        <textarea cols="80" rows="100" id="textarea-${index}"></textarea>
+                        <textarea cols="80" rows="100" id="textarea-${index}" name="experience${counter}[description]"></textarea>
                     </div>
                 </div>
             </div>
@@ -168,7 +168,7 @@ $(document).on('click', 'li', function (e) {
     let selectedTitle = e.target.innerHTML;
     let url = 'https://api-embeddedbuilder.resume-now.com/api/v1/content/texttunercontent?user_uid=02e22a28-e725-4be3-93cd-c7e7f9194c2f&sectionTypeCD=EXPR&productCD=RSM&Jobtitle=' + selectedTitle + '&searchItemType=jobTitle&documentID=1fa05c72-f0d4-49df-96de-1971f8cf9928&cultureCD=en-US';
 
-    $(this).parents('form').find('.prof-search').val(selectedTitle);
+    $(this).parents('.job').find('.prof-search').val(selectedTitle);
     $.get(url)
         .then(response => {
             let result = response.result.map(data => {
@@ -182,4 +182,25 @@ $(document).on('click', 'li', function (e) {
 
             $(this).parents('.search_job').find('.add_text').html(result);
         })
+});
+
+$('#experience-form').on('submit', function (e) {
+    e.preventDefault();
+    let data = $(this).serialize();
+    
+    fetch(appUrl + '/experience', {
+       headers: {
+           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+           'Content-Type': 'application/json'
+       },
+       method: "POST",
+       body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(response => {
+       console.log(response, 'response');
+    })
+    .catch(error => {
+       console.log(error);
+    });
 });

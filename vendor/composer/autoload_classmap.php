@@ -29,6 +29,7 @@ return array(
     'App\\Http\\Requests\\StoreResumeHeader' => $baseDir . '/app/Http/Requests/StoreResumeHeader.php',
     'App\\Http\\ViewComposers\\ResumeTemplateComposer' => $baseDir . '/app/Http/ViewComposers/ResumeTemplateComposer.php',
     'App\\Models\\Credential' => $baseDir . '/app/Models/Credential.php',
+    'App\\Models\\Experience' => $baseDir . '/app/Models/Experience.php',
     'App\\Models\\Template' => $baseDir . '/app/Models/Template.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

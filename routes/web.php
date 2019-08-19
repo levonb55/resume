@@ -37,6 +37,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('header', 'CredentialController@header')->name('header');
     Route::post('header', 'CredentialController@storeHeader')->name('header.store');
     Route::get('experience', 'CredentialController@experience')->name('experience');
+    Route::post('experience', 'ExperienceController@store')->name('experience.store');
     Route::get('review-experience', 'CredentialController@reviewExperience')->name('review-experience');
     Route::get('education', 'CredentialController@education')->name('education');
     Route::get('review-education', 'CredentialController@reviewEducation')->name('review-education');
