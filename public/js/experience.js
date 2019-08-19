@@ -149,19 +149,36 @@ function addExperience(index) {
 
 //Brings up professions
 $(document).on('keyup', '.prof-search', function() {
-    let url = 'https://api-embeddedbuilder.resume-now.com/api/v1/content/jobtitleorindustry?jobTitle=' + $(this).val() + '&cultureCd=en-US';
-    $.get(url)
-        .then(response => {
-            let result = response.map(data => {
-                return "<li>" + data['title'] + "</li>";
-            });
+    let inputVal = $(this).val();
+    if(!inputVal) {
+        $(this).siblings('ul').html('');
+        return;
+    }
 
-            $(this).siblings('ul').html(result);
-        })
-        .catch(error => {
-            console.log(error);
-        });
+    if(item = sessionStorage.getItem('job-' + inputVal)) {
+
+        $(this).siblings('ul').html(outputHintedJobs(JSON.parse(item)));
+    } else {
+        let url = 'https://api-embeddedbuilder.resume-now.com/api/v1/content/jobtitleorindustry?jobTitle=' + inputVal + '&cultureCd=en-US';
+        $.get(url)
+            .then(response => {
+                $(this).siblings('ul').html(outputHintedJobs(response));
+                sessionStorage.setItem('job-' + inputVal, JSON.stringify(response));
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
 });
+
+function outputHintedJobs(jobList) {
+    let result = jobList.map(data => {
+        return "<li>" + data['title'] + "</li>";
+    });
+
+    return result;
+}
 
 //Suggests functions based on the selected profession
 $(document).on('click', 'li', function (e) {
