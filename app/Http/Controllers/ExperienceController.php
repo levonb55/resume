@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Experience;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -36,6 +37,11 @@ class ExperienceController extends Controller
         if(count($errors)) {
             return response()->json($errors);
         } else {
+            for($i = 1; $i <= $inputQuantity; $i++) {
+                Experience::create(
+                    request(['title', 'employer', 'city', 'state', 'start_date', 'end_date', 'description'])
+                );
+            }
             return response()->json('Success');
         }
 

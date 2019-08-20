@@ -6,5 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Experience extends Model
 {
-    //
+
+    public $timestamps = false;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'title', 'employer', 'city', 'state', 'start_date', 'end_date', 'description'
+    ];
+
 }

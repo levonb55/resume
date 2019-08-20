@@ -416,6 +416,7 @@ class ComposerStaticInit0b7728406d069b41eff85aaad1b02a1d
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CredentialController' => __DIR__ . '/../..' . '/app/Http/Controllers/CredentialController.php',
+        'App\\Http\\Controllers\\ExperienceController' => __DIR__ . '/../..' . '/app/Http/Controllers/ExperienceController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\PageController' => __DIR__ . '/../..' . '/app/Http/Controllers/PageController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
