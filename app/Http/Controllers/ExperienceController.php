@@ -14,17 +14,18 @@ class ExperienceController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request) {
-
         $inputQuantity = count($request->all()) - 1;
         $errors = [];
 
         for($i = 1; $i <= $inputQuantity; $i++) {
             $validator = Validator::make($request->input('experience'.$i), [
-                'title' => 'required|string|min:2|max:255',
-                'employer' => 'required|string|min:2|max:255',
+                'title' => 'nullable|string|min:2|max:255',
+//                'employer' => 'required_with:title|string|min:2|max:255',
+                'employer' => 'required_with:title',
                 'city' => 'nullable|string|min:2|max:255',
                 'state' => 'nullable|string|min:2|max:255',
-                'start_date' => 'required|date',
+//                'start_date' => 'required_with:title|date',
+                'start_date' => 'required_with:title',
                 'end_date' => 'nullable|date|after:start_date',
                 'description' => 'nullable|string|min:10|max:1000'
             ]);
@@ -35,13 +36,24 @@ class ExperienceController extends Controller
         }
 
         if(count($errors)) {
-            return response()->json($errors);
-        } else {
+            return response()->json(['errors' => $errors], 422);
+        } elseif ($request->input('experience1')['title']) {
+
             for($i = 1; $i <= $inputQuantity; $i++) {
-                Experience::create(
-                    request(['title', 'employer', 'city', 'state', 'start_date', 'end_date', 'description'])
-                );
+                Experience::create([
+                    'user_id' => auth()->id(),
+                    'title' => $request->input('experience'.$i)['title'],
+                    'employer' => $request->input('experience'.$i)['employer'],
+                    'city' => $request->input('experience'.$i)['city'],
+                    'state' => $request->input('experience'.$i)['state'],
+                    'start_date' => $request->input('experience'.$i)['start_date'],
+                    'end_date' => $request->input('experience'.$i)['end_date'],
+                    'description' => $request->input('experience'.$i)['description']
+                ]);
             }
+
+            return response()->json('Success');
+        } else {
             return response()->json('Success');
         }
 

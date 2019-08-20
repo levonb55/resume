@@ -248,7 +248,8 @@ $("#add_desc").on("click",function () {
 })
 // CKEDITOR.replace('textarea1', editor_config );
 
-$(document).on("click", ".text_button button", function () {
+$(document).on("click", ".text_button button", function (e) {
+    e.preventDefault();
     var add = $(this).siblings("p").html();
     var editorId = $(this).parents('.box1').siblings('.box2').find('textarea').attr('id');
     CKEDITOR.instances[editorId].insertText(add);

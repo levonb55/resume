@@ -28,24 +28,24 @@ function addExperience(index) {
                         <div class="name">
                             <div class="first_name">
                                 <label>Job Title</label>
-                                <input type="text" placeholder="UI/UX design" name="experience${counter}[title]">
+                                <input type="text" name="experience${counter}[title]">
                                 <span class="text-danger mb-2 error" id="experience${counter}_title"></span>
                             </div>
                             <div class="first_name">
                                 <label>Employer</label>
-                                <input type="text" placeholder="Web Projects" name="experience${counter}[employer]">
+                                <input type="text" name="experience${counter}[employer]">
                                 <span class="text-danger mb-2 error" id="experience${counter}_employer"></span>
                             </div>
                         </div>
                         <div class="name">
                             <div class="first_name">
                                 <label>City</label>
-                                <input type="text" placeholder="Chicago" name="experience${counter}[city]">
+                                <input type="text" name="experience${counter}[city]">
                                 <span class="text-danger mb-2 error" id="experience${counter}_city"></span>
                             </div>
                             <div class="first_name">
                                 <label>State</label>
-                                <input type="text" placeholder="Illinois" name="experience${counter}[state]">
+                                <input type="text" name="experience${counter}[state]">
                                 <span class="text-danger mb-2 error" id="experience${counter}_state"></span>
                             </div>
                         </div>
@@ -221,16 +221,17 @@ $('#experience-form').on('submit', function (e) {
         data: data
     })
     .done(response => {
+        window.location.href = appUrl + '/review-experience';
+    })
+    .fail(error =>  {
         $('.error').empty();
+        let allErr = error.responseJSON.errors;
 
-        for(data in response) {
-            $.each(response[data], function(key,value) {
+        for(data in allErr) {
+            $.each(allErr[data], function(key,value) {
                 $('#' + data + '_' + key).html(value);
             });
         }
-    })
-    .fail(error =>  {
-        console.log(error);
     });
 
 });
