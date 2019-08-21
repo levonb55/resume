@@ -227,9 +227,9 @@
                 <a href="{{ route('header') }}" class="back_left">
                     <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
                 </a>
-                <a href="{{ route('review-experience') }}" class="continue_right">
-                    <p><input type="submit" value="Continue"> <span class="fas fa-long-arrow-alt-right"></span></p>
-                </a>
+                <button type="submit" value="Continue" class="continue_right">
+                    Continue<span class="fas fa-long-arrow-alt-right"></span>
+                </button>
             </div>
             </form>
         </section>

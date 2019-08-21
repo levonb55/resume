@@ -153,6 +153,11 @@
     background-color: #18358A;
     font-size: 16px;
     border-radius: 3px;
+    border: 0;
+    width: 186px;
+    height: 38px;
+    color: #fff;
+    cursor:pointer;
 }
 
 .back_left p {
