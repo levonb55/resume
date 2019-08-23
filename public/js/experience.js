@@ -163,13 +163,18 @@ $(document).on('keyup', '.prof-search', function() {
     }
 
     if(item = sessionStorage.getItem('job-' + inputVal)) {
-
-        $(this).siblings('ul').html(outputHintedJobs(JSON.parse(item)));
+        $(this).autocomplete({
+            source: outputHintedJobs(JSON.parse(item))
+        });
+        // $(this).siblings('ul').html(outputHintedJobs(JSON.parse(item)));
     } else {
         let url = 'https://api-embeddedbuilder.resume-now.com/api/v1/content/jobtitleorindustry?jobTitle=' + inputVal + '&cultureCd=en-US';
         $.get(url)
             .then(response => {
-                $(this).siblings('ul').html(outputHintedJobs(response));
+                $(this).autocomplete({
+                    source: outputHintedJobs(response)
+                });
+                // $(this).siblings('ul').html(outputHintedJobs(response));
                 sessionStorage.setItem('job-' + inputVal, JSON.stringify(response));
             })
             .catch(error => {
@@ -181,7 +186,7 @@ $(document).on('keyup', '.prof-search', function() {
 
 function outputHintedJobs(jobList) {
     let result = jobList.map(data => {
-        return "<li>" + data['title'] + "</li>";
+        return data['title'];
     });
 
     return result;

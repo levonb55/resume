@@ -5,6 +5,7 @@
 @section('extra-styles')
     <link rel="stylesheet" href="{{ asset('css/Lcss.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/libs/css/jquery-ui.min.css') }}">
 @endsection
 
 @section('content')
@@ -171,11 +172,7 @@
                             <div class="box1">
                                 <div class="job">
                                     <div class="dropdown">
-                                        <input type="search" placeholder="Search by job title, industry or keyword" class="prof-search dropdown-toggle" data-toggle="dropdown">
-                                        <ul class="dropdown-menu">
-                                            <li>Financial Analyst</li>
-                                            <li>Medical Officer</li>
-                                        </ul>
+                                        <input type="search" placeholder="Search by job title, industry or keyword" class="prof-search">
                                         <span class="fas fa-search"></span>
                                     </div>
                                 </div>
@@ -240,6 +237,7 @@
 
 @section('extra-scripts')
 {{--    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>--}}
+    <script src="{{ asset('assets/libs/js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('assets/libs/ckeditor/ckeditor.js') }}"></script>
     <script src="{{asset('js/editor-config.js')}}"></script>
     <script src="{{asset('js/experience.js')}}"></script>
