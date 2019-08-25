@@ -3,15 +3,17 @@ $("#add_desc").on("click", function () {
 });
 
 var counter = 1;
+
+//Adds experience
 $("#clone_aparat").on("click", function () {
     var index = ++counter;
     $('.clon_here').append(addExperience(index));
     CKEDITOR.replace('textarea-' + index, editor_config);
 });
 
-//Hides end date
-$(".ch1").click(function () {
-    $(this).parent().siblings(".form_header").children(".time_input").children(".end_date1").toggleClass("d-none");
+//Removes experience
+$(document).on('click', '.remove-experience', function () {
+    $(this).parents('.clon').hide('slow', function() { $(this).remove()});
 });
 
 function addExperience(index) {
@@ -19,7 +21,7 @@ function addExperience(index) {
     <div class="clon">
         <div class="start_header">
             <div class="header_inputs">
-                <h2>Let's work on your experience</h2>
+                <h2>Let's work on your experience <span class="remove-experience hand" title="Remove Experience"><i class="fas fa-times"></span></i></h2>
                 <p>Start with your most recent job first. You can also add volunteer work, internships, or extracurricular
                     activities.</p>
     
@@ -55,16 +57,16 @@ function addExperience(index) {
                                 <input type="date" id="start" name="experience${counter}[start_date]">
                                 <span class="text-danger mb-2 error" id="experience${counter}_start_date"></span>
                             </div>
-                            <div class="data_input">
+                             <div class="data_input">
                                 <label>End Date</label>
-                                <input type="date"  name="experience${counter}[end_date]">
-                                <span class="text-danger mb-2 error" id="experience${counter}_end_date"></span>
+                                <input type="date"  name="experience1[end_date]" class="exp-end-date">
+                                <span class="text-danger mb-2 error" id="experience1_end_date"></span>
                             </div>
                         </div>
                     </div>
     
-                    <label for="ch1" class="containera">I currently work here
-                        <input type="checkbox" id="ch1">
+                    <label  for="present${counter}" class="containera Work_here">I currently work here
+                        <input type="checkbox" class="exp-check" id="present${counter}">
                         <span class="checkmark"></span>
                     </label>
                 </div>
@@ -112,11 +114,7 @@ function addExperience(index) {
             <div class="search_job">
                 <div class="box1">
                     <div class="job">
-                        <input type="search" placeholder="Search by job title, industry or keyword" class="prof-search dropdown-toggle" data-toggle="dropdown">
-                        <ul class="dropdown-menu">
-                            <li>Financial Analyst</li>
-                            <li>Medical Officer</li>
-                        </ul>
+                        <input type="search" placeholder="Search by job title, industry or keyword" class="prof-search">                      
                         <span class="fas fa-search"></span>
                     </div>
                     <div class="add_text">
@@ -164,17 +162,22 @@ $(document).on('keyup', '.prof-search', function() {
 
     if(item = sessionStorage.getItem('job-' + inputVal)) {
         $(this).autocomplete({
-            source: outputHintedJobs(JSON.parse(item))
+            source: outputHintedJobs(JSON.parse(item)),
+            select: function (event, ui) {
+                getResponsibilites(ui.item.value, $(this).index(".prof-search"));
+            }
         });
-        // $(this).siblings('ul').html(outputHintedJobs(JSON.parse(item)));
     } else {
         let url = 'https://api-embeddedbuilder.resume-now.com/api/v1/content/jobtitleorindustry?jobTitle=' + inputVal + '&cultureCd=en-US';
         $.get(url)
             .then(response => {
                 $(this).autocomplete({
-                    source: outputHintedJobs(response)
+                    source: outputHintedJobs(response),
+                    select: function (event, ui) {
+                        getResponsibilites(ui.item.value, $(this).index(".prof-search"));
+                    }
                 });
-                // $(this).siblings('ul').html(outputHintedJobs(response));
+
                 sessionStorage.setItem('job-' + inputVal, JSON.stringify(response));
             })
             .catch(error => {
@@ -192,12 +195,10 @@ function outputHintedJobs(jobList) {
     return result;
 }
 
-//Suggests functions based on the selected profession
-$(document).on('click', 'li', function (e) {
-    let selectedTitle = e.target.innerHTML;
+//Suggests responsibilities based on the selected profession
+function getResponsibilites(selectedTitle, outputElIndex) {
     let url = 'https://api-embeddedbuilder.resume-now.com/api/v1/content/texttunercontent?user_uid=02e22a28-e725-4be3-93cd-c7e7f9194c2f&sectionTypeCD=EXPR&productCD=RSM&Jobtitle=' + selectedTitle + '&searchItemType=jobTitle&documentID=1fa05c72-f0d4-49df-96de-1971f8cf9928&cultureCD=en-US';
 
-    $(this).parents('.job').find('.prof-search').val(selectedTitle);
     $.get(url)
         .then(response => {
             let result = response.result.map(data => {
@@ -209,10 +210,9 @@ $(document).on('click', 'li', function (e) {
                 `;
             });
 
-            $(this).parents('.search_job').find('.add_text').html(result);
+            $('.add_text').eq(outputElIndex).html(result);
         });
-});
-
+}
 
 //Adds experience
 $('#experience-form').on('submit', function (e) {
@@ -237,6 +237,21 @@ $('#experience-form').on('submit', function (e) {
                 $('#' + data + '_' + key).html(value);
             });
         }
+
+        //Scrolls to the first error
+        let firstError = allErr[Object.keys(allErr)[0]];
+        $('#' + Object.getOwnPropertyNames(allErr)[0] + '_' + Object.getOwnPropertyNames(firstError)[0])[0]
+            .scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
     });
 
+});
+
+//Disables experience end date
+$(document).on('click', '.exp-check', function () {
+    $(this).parents('.job_area').find('.exp-end-date').attr('disabled', function(_, attr){ return !attr});
+});
+
+//Moves forward without experience
+$('#no-experience').on('click', function () {
+    window.location.href = appUrl + '/education';
 });

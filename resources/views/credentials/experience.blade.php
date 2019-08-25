@@ -64,6 +64,12 @@
                         <div class="next-step"></div>
                     </div>
                 </div>
+
+                <label  for="no-experience" class="containera Work_here ml-5">I Don't Have Experience
+                    <input type="checkbox" class="exp-check" id="no-experience">
+                    <span class="checkmark"></span>
+                </label>
+
                 <div class="clon">
                     <div class="start_header">
                         <div class="header_inputs">
@@ -103,27 +109,21 @@
                                             <input type="date" id="start" name="experience1[start_date]">
                                             <span class="text-danger mb-2 error" id="experience1_start_date"></span>
                                         </div>
-                                        <div class="data_input end_date1">
+                                        <div class="data_input">
                                             <label>End Date</label>
-                                            <input type="date"  name="experience1[end_date]">
+                                            <input type="date"  name="experience1[end_date]" class="exp-end-date">
                                             <span class="text-danger mb-2 error" id="experience1_end_date"></span>
                                         </div>
                                     </div>
                                 </div>
 
-                                <label  for="ch1" class="containera Work_here">I currently work here
-                                    <input type="checkbox" class="ch1" id="ch1">
+                                <label  for="present1" class="containera Work_here">I currently work here
+                                    <input type="checkbox" class="exp-check" id="present1">
                                     <span class="checkmark"></span>
                                 </label>
-
-
-
-
-
                             </div>
-
-
                         </div>
+
                         <div class="tips">
 
                             <div class="dropdown show">
