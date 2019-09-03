@@ -218,6 +218,7 @@ function getResponsibilites(selectedTitle, outputElIndex) {
 $('#experience-form').on('submit', function (e) {
     e.preventDefault();
     let data = $(this).serialize();
+    $(this).find(':submit').attr('disabled', true).addClass('disabled');
 
     $.ajax({
         method: 'POST',
@@ -242,6 +243,7 @@ $('#experience-form').on('submit', function (e) {
         let firstError = allErr[Object.keys(allErr)[0]];
         $('#' + Object.getOwnPropertyNames(allErr)[0] + '_' + Object.getOwnPropertyNames(firstError)[0])[0]
             .scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+        $(this).find(':submit').attr('disabled', false).removeClass('disabled');
     });
 
 });

@@ -10,6 +10,14 @@ class ExperienceController extends Controller
 {
 
     /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function experience() {
+        $experiences = Experience::where('user_id', auth()->id())->get();
+        return view('credentials.experience', compact('experiences'));
+    }
+
+    /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */

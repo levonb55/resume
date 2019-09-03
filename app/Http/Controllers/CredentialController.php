@@ -56,11 +56,6 @@ class CredentialController extends Controller
         return redirect()->route('experience');
     }
 
-    //Gets resume experience page
-    public function experience() {
-        return view('credentials.experience');
-    }
-
     //Gets review experience page
     public function reviewExperience() {
         return view('credentials.review-experience');
