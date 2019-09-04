@@ -169,7 +169,7 @@
                         </defs><path class="a" d="M16,7.619H8.381V0H7.619V7.619H0v.762H7.619V16h.762V8.381H16Z"/></svg>Add more education</p>
             </div>
             <div class="back_continue experience_page">
-                <a href="{{ route('review-experience') }}" class="back_left">
+                <a href="{{ route('experience.index') }}" class="back_left">
                     <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
                 </a>
                 <a href="{{ route('review-education') }}" class="continue_right">

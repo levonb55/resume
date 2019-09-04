@@ -18,4 +18,8 @@ class Experience extends Model
         'user_id', 'title', 'employer', 'city', 'state', 'start_date', 'end_date', 'description'
     ];
 
+    public static function countExperience()
+    {
+        return self::where('user_id', auth()->id())->count();
+    }
 }

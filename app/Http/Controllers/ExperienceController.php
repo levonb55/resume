@@ -12,9 +12,17 @@ class ExperienceController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function experience() {
-        $experiences = Experience::where('user_id', auth()->id())->get();
-        return view('credentials.experience', compact('experiences'));
+    public function index() {
+        $experienceCount = Experience::countExperience();
+        return view('experiences.index', compact('experienceCount'));
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function create()
+    {
+        return view('experiences.create');
     }
 
     /**

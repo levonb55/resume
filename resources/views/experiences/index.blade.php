@@ -161,9 +161,15 @@
 
             </ul>
             <div class="back_continue experience_page">
-                <a href="{{ route('experience') }}" class="back_left">
-                    <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
-                </a>
+                @if($experienceCount < 1)
+                    <a href="{{ route('experience.create') }}" class="back_left">
+                        <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
+                    </a>
+                @else
+                    <a href="{{ route('header') }}" class="back_left">
+                        <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
+                    </a>
+                @endif
                 <a href="{{ route('education') }}" class="continue_right">
                     <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>
                 </a>

@@ -65,12 +65,9 @@
                     </div>
                 </div>
 
-                @if(count($experiences) < 1)
-                    <label  for="no-experience" class="containera Work_here ml-5">I Don't Have Experience
-                        <input type="checkbox" class="exp-check" id="no-experience">
-                        <span class="checkmark"></span>
-                    </label>
-                @endif
+                <h4 class="containera ml-2">
+                    <a href="{{ route('experience.index') }}">I Don't Have Experience</a>
+                </h4>
 
                 <div class="clon">
                     <div class="start_header">

@@ -227,7 +227,7 @@ $('#experience-form').on('submit', function (e) {
         data: data
     })
     .done(response => {
-        window.location.href = appUrl + '/review-experience';
+        window.location.href = appUrl + '/experience';
     })
     .fail(error =>  {
         $('.error').empty();
@@ -251,9 +251,4 @@ $('#experience-form').on('submit', function (e) {
 //Disables experience end date
 $(document).on('click', '.exp-check', function () {
     $(this).parents('.job_area').find('.exp-end-date').attr('disabled', function(_, attr){ return !attr});
-});
-
-//Moves forward without experience
-$('#no-experience').on('click', function () {
-    window.location.href = appUrl + '/education';
 });

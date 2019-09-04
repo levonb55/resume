@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreResumeHeader;
 use App\Models\Credential;
+use App\Models\Experience;
 use App\Models\Template;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -43,7 +44,8 @@ class CredentialController extends Controller
     //Gets resume header page
     public function header() {
         $credential = Auth::user()->credential;
-        return view('credentials.header', compact('credential'));
+        $experienceCount = Experience::countExperience();
+        return view('credentials.header', compact('credential', 'experienceCount'));
     }
 
     //Stores header
@@ -53,12 +55,7 @@ class CredentialController extends Controller
            'first_name', 'last_name', 'address', 'city', 'state', 'zip', 'email', 'phone'
         ]));
 
-        return redirect()->route('experience');
-    }
-
-    //Gets review experience page
-    public function reviewExperience() {
-        return view('credentials.review-experience');
+        return redirect()->route('experience.create');
     }
 
     //Gets education page

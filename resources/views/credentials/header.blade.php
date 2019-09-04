@@ -137,9 +137,15 @@
 {{--                        <a href="{{ route('experience') }}" class="continue_right">--}}
 {{--                            <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>--}}
 {{--                        </a>--}}
-                        <button type="submit" class="btn continue_right text-white">
-                            Continue <span class="fas fa-long-arrow-alt-right"></span>
-                        </button>
+                        @if($experienceCount < 1)
+                            <button type="submit" class="btn continue_right text-white">
+                                Continue <span class="fas fa-long-arrow-alt-right"></span>
+                            </button>
+                        @else
+                            <a href="{{ route('experience.index') }}" class="continue_right">
+                                <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>
+                            </a>
+                        @endif
                     </div>
 
                 </form>
