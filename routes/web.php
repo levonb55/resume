@@ -39,6 +39,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('experience', 'ExperienceController@index')->name('experience.index');
     Route::post('experience', 'ExperienceController@store')->name('experience.store');
     Route::get('experience/create', 'ExperienceController@create')->name('experience.create');
+    Route::get('experience/{experience}/edit', 'ExperienceController@edit')->name('experience.edit');
+    Route::put('experience/{experience}', 'ExperienceController@update')->name('experience.update');
     Route::get('education', 'CredentialController@education')->name('education');
     Route::get('review-education', 'CredentialController@reviewEducation')->name('review-education');
     Route::get('skills', 'CredentialController@skills')->name('skills');

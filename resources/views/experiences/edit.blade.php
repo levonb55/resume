@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Add Experience')
+@section('title', 'Edit Experience')
 
 @section('extra-styles')
     <link rel="stylesheet" href="{{ asset('css/Lcss.css') }}">
@@ -11,8 +11,9 @@
 @section('content')
     <main>
         <section class="dashboard_content">
-            <form action="{{ route('experience.store') }}" method="POST" id="experience-form">
+            <form action="{{ route('experience.update', $experience->id) }}" method="POST">
                 @csrf
+                @method('PUT')
                 <div class="check">
                     <div class="step-container">
 
@@ -65,12 +66,6 @@
                     </div>
                 </div>
 
-                @if($experienceCount <= 0)
-                    <h4 class="containera ml-2">
-                        <a href="{{ route('experience.index') }}">I Don't Have Experience</a>
-                    </h4>
-                @endif
-
                 <div class="clon">
                     <div class="start_header">
                         <div class="header_inputs">
@@ -83,37 +78,37 @@
                                     <div class="name">
                                         <div class="first_name">
                                             <label>Job Title</label>
-                                            <input type="text" name="experience1[title]">
-                                            <span class="text-danger mb-2 error" id="experience1_title"></span>
+                                            <input type="text" value="{{ $experience->title }}" name="title">
+                                            <span class="text-danger mb-2 error"></span>
                                         </div>
                                         <div class="first_name">
                                             <label>Employer</label>
-                                            <input type="text" name="experience1[employer]">
-                                            <span class="text-danger mb-2 error" id="experience1_employer"></span>
+                                            <input type="text" value="{{ $experience->employer }}" name="employer">
+                                            <span class="text-danger mb-2 error"></span>
                                         </div>
                                     </div>
                                     <div class="name">
                                         <div class="first_name">
                                             <label>City</label>
-                                            <input type="text" name="experience1[city]">
-                                            <span class="text-danger mb-2 error" id="experience1_city"></span>
+                                            <input type="text" value="{{ $experience->city }}" name="city">
+                                            <span class="text-danger mb-2 error"></span>
                                         </div>
                                         <div class="first_name">
                                             <label>State</label>
-                                            <input type="text" name="experience1[state]">
-                                            <span class="text-danger mb-2 error" id="experience1_state"></span>
+                                            <input type="text" value="{{ $experience->state }}" name="state">
+                                            <span class="text-danger mb-2 error"></span>
                                         </div>
                                     </div>
                                     <div class="time_input">
                                         <div class="data_input">
                                             <label>Start Date</label>
-                                            <input type="date" id="start" name="experience1[start_date]">
-                                            <span class="text-danger mb-2 error" id="experience1_start_date"></span>
+                                            <input type="date" id="start" value="{{ $experience->start_date }}" name="start_date">
+                                            <span class="text-danger mb-2 error"></span>
                                         </div>
                                         <div class="data_input">
                                             <label>End Date</label>
-                                            <input type="date"  name="experience1[end_date]" class="exp-end-date">
-                                            <span class="text-danger mb-2 error" id="experience1_end_date"></span>
+                                            <input type="date" value="{{ $experience->end_date }}" name="end_date" class="exp-end-date">
+                                            <span class="text-danger mb-2 error"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -155,17 +150,17 @@
                         </div>
                     </div>
                     <div class="preview-wrapper">
-    {{--                    @include('partials._preview-resume')--}}
+                        {{--                    @include('partials._preview-resume')--}}
                         @include('partials._resume-modal')
                     </div>
-    {{--                <div class="preview">--}}
-    {{--                    <p data-toggle="modal" data-target="#exampleModalCenter">--}}
-    {{--                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">--}}
-    {{--                            <defs><style>.a{fill:#18358a;}</style></defs><g transform="translate(10.554 9.374)">--}}
-    {{--                                <path class="a" d="M278.4,247.557a3.532,3.532,0,0,0-.376-4.549,3.641,3.641,0,0,0-5.009,0,3.536,3.536,0,0,0,4.549,5.384l3.024,2.953.835-.835Z" transform="translate(-271.979 -242.01)"/>--}}
-    {{--                            </g><g transform="translate(10.603 0.346)"><path class="a" d="M272,8.789v4.416h4.377Z" transform="translate(-272 -8.789)"/>--}}
-    {{--                            </g><path class="a" d="M14.108,17.618A4.637,4.637,0,0,1,10.8,16.243a4.649,4.649,0,0,1,4.476-7.8V5.9H9.431V0H0V20H15.277V17.452A4.661,4.661,0,0,1,14.108,17.618ZM2.338,7.07H10.6V8.242H2.338Zm5.924,8.2H2.338V14.1H8.262Zm0-2.344H2.338V11.758H8.262Zm0-2.344H2.338V9.414H8.262Z"/></svg>Preview Resume</p>--}}
-    {{--                </div>--}}
+                    {{--                <div class="preview">--}}
+                    {{--                    <p data-toggle="modal" data-target="#exampleModalCenter">--}}
+                    {{--                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">--}}
+                    {{--                            <defs><style>.a{fill:#18358a;}</style></defs><g transform="translate(10.554 9.374)">--}}
+                    {{--                                <path class="a" d="M278.4,247.557a3.532,3.532,0,0,0-.376-4.549,3.641,3.641,0,0,0-5.009,0,3.536,3.536,0,0,0,4.549,5.384l3.024,2.953.835-.835Z" transform="translate(-271.979 -242.01)"/>--}}
+                    {{--                            </g><g transform="translate(10.603 0.346)"><path class="a" d="M272,8.789v4.416h4.377Z" transform="translate(-272 -8.789)"/>--}}
+                    {{--                            </g><path class="a" d="M14.108,17.618A4.637,4.637,0,0,1,10.8,16.243a4.649,4.649,0,0,1,4.476-7.8V5.9H9.431V0H0V20H15.277V17.452A4.661,4.661,0,0,1,14.108,17.618ZM2.338,7.07H10.6V8.242H2.338Zm5.924,8.2H2.338V14.1H8.262Zm0-2.344H2.338V11.758H8.262Zm0-2.344H2.338V9.414H8.262Z"/></svg>Preview Resume</p>--}}
+                    {{--                </div>--}}
 
                     <div class="the_company">
                         <h3>Tell us what you did and how you helped the company</h3>
@@ -205,7 +200,9 @@
                             </div>
                             <div class="box2">
                                 <div id="editor-container">
-                                    <textarea cols="53" rows="16" id="textarea-1" name="experience1[description]"></textarea>
+                                    <textarea cols="53" rows="16" id="textarea-1" name="description">
+                                        {{ $experience->description }}
+                                    </textarea>
                                     <span class="text-danger mb-2 error" id="experience1_description"></span>
                                 </div>
                             </div>
@@ -213,22 +210,15 @@
 
                     </div>
                 </div>
-                <div class="clon_here"></div>
-                <div class="more_experience" id="clone_aparat">
-                    <p>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                            <defs><style>.a{fill:#18358a;}</style>
-                            </defs><path class="a" d="M16,7.619H8.381V0H7.619V7.619H0v.762H7.619V16h.762V8.381H16Z"></path></svg>
-                        Add more experience</p>
-                </div>
+
                 <div class="back_continue experience_page">
-                <a href="{{ route('header') }}" class="back_left">
-                    <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
-                </a>
-                <button type="submit" value="Continue" class="continue_right">
-                    Continue<span class="fas fa-long-arrow-alt-right"></span>
-                </button>
-            </div>
+                    <a href="{{ route('experience.index') }}" class="back_left">
+                        <p>Cancel</p>
+                    </a>
+                    <button type="submit" value="Continue" class="continue_right">
+                        Continue<span class="fas fa-long-arrow-alt-right"></span>
+                    </button>
+                </div>
             </form>
         </section>
 
@@ -237,7 +227,6 @@
 @endsection
 
 @section('extra-scripts')
-{{--    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>--}}
     <script src="{{ asset('assets/libs/js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('assets/libs/ckeditor/ckeditor.js') }}"></script>
     <script src="{{asset('js/editor-config.js')}}"></script>

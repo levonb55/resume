@@ -13,8 +13,8 @@ class ExperienceController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index() {
-        $experienceCount = Experience::countExperience();
-        return view('experiences.index', compact('experienceCount'));
+        $experiences = auth()->user()->experiences;
+        return view('experiences.index', compact('experiences'));
     }
 
     /**
@@ -22,7 +22,8 @@ class ExperienceController extends Controller
      */
     public function create()
     {
-        return view('experiences.create');
+        $experienceCount = Experience::countExperience();
+        return view('experiences.create', compact('experienceCount'));
     }
 
     /**
@@ -38,11 +39,11 @@ class ExperienceController extends Controller
             $validator = Validator::make($experience, [
                 'title' => 'required|string|min:2|max:255',
                 'employer' => 'required|string|min:2|max:255',
-                'city' => 'nullable|string|min:2|max:255',
-                'state' => 'nullable|string|min:2|max:255',
+                'city' => 'required|string|min:2|max:255',
+                'state' => 'required|string|min:2|max:255',
                 'start_date' => 'required|date',
                 'end_date' => 'sometimes|nullable|date|after:start_date',
-                'description' => 'nullable|string|min:10|max:1000'
+                'description' => 'required|string|min:10|max:1000'
             ]);
 
             if($validator->fails()) {
@@ -71,5 +72,27 @@ class ExperienceController extends Controller
             return response()->json('Success');
         }
 
+    }
+
+    public function edit(Experience $experience)
+    {
+        return view('experiences.edit', compact('experience'));
+    }
+
+    public function update(Request $request, Experience $experience)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string|min:2|max:255',
+            'employer' => 'required|string|min:2|max:255',
+            'city' => 'required|string|min:2|max:255',
+            'state' => 'required|string|min:2|max:255',
+            'start_date' => 'required|date',
+            'end_date' => 'sometimes|nullable|date|after:start_date',
+            'description' => 'required|string|min:10|max:1000'
+        ]);
+
+        $experience->update(request(['title', 'employer', 'city', 'state', 'start_date', 'end_date', 'description']));
+
+        return redirect()->route('experience.index');
     }
 }

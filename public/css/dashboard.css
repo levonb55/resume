@@ -330,7 +330,8 @@
     display: flex;
 }
 .rew_sort_li_2 {
-    width: 30%;
+    width: 40%;
+    text-align: justify;
 }
 
 .start_header {

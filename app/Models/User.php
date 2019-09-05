@@ -44,4 +44,12 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\Credential');
     }
+
+    /**
+     * Get the experiences for the user.
+     */
+    public function experiences()
+    {
+        return $this->hasMany('App\Models\Experience');
+    }
 }
