@@ -11,8 +11,8 @@ $("#clone_aparat").on("click", function () {
     CKEDITOR.replace('textarea-' + index, editor_config);
 });
 
-//Removes experience
-$(document).on('click', '.remove-experience', function () {
+//Deletes experience
+$(document).on('click', '.delete-experience', function () {
     $(this).parents('.clon').hide('slow', function() { $(this).remove()});
 });
 
@@ -21,7 +21,7 @@ function addExperience(index) {
     <div class="clon">
         <div class="start_header">
             <div class="header_inputs">
-                <h2>Let's work on your experience <span class="remove-experience hand" title="Remove Experience"><i class="fas fa-times"></span></i></h2>
+                <h2>Let's work on your experience <span class="delete-experience hand" title="Remove Experience"><i class="fas fa-times"></span></i></h2>
                 <p>Start with your most recent job first. You can also add volunteer work, internships, or extracurricular
                     activities.</p>
     

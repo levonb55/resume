@@ -280,9 +280,9 @@ $(document).ready(function () {
         $(this).parents("#sortable").sortable();
         $(this).parents("#sortable").disableSelection();
     })
-    $(".tool3").on("click",function () {
-        $(this).parents(".red_item").remove();
-    })
+    // $(".tool3").on("click",function () {
+    //     $(this).parents(".red_item").remove();
+    // })
 
 
     //select accordeon

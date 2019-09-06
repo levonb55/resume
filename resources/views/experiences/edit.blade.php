@@ -79,36 +79,48 @@
                                         <div class="first_name">
                                             <label>Job Title</label>
                                             <input type="text" value="{{ $experience->title }}" name="title">
-                                            <span class="text-danger mb-2 error"></span>
+                                            @error('title')
+                                                <span class="text-danger mb-2"> {{ $message }} </span>
+                                            @enderror
                                         </div>
                                         <div class="first_name">
                                             <label>Employer</label>
                                             <input type="text" value="{{ $experience->employer }}" name="employer">
-                                            <span class="text-danger mb-2 error"></span>
+                                            @error('employer')
+                                                <span class="text-danger mb-2"> {{ $message }} </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="name">
                                         <div class="first_name">
                                             <label>City</label>
                                             <input type="text" value="{{ $experience->city }}" name="city">
-                                            <span class="text-danger mb-2 error"></span>
+                                            @error('city')
+                                                <span class="text-danger mb-2"> {{ $message }} </span>
+                                            @enderror
                                         </div>
                                         <div class="first_name">
                                             <label>State</label>
                                             <input type="text" value="{{ $experience->state }}" name="state">
-                                            <span class="text-danger mb-2 error"></span>
+                                            @error('state')
+                                                <span class="text-danger mb-2"> {{ $message }} </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="time_input">
                                         <div class="data_input">
                                             <label>Start Date</label>
                                             <input type="date" id="start" value="{{ $experience->start_date }}" name="start_date">
-                                            <span class="text-danger mb-2 error"></span>
+                                            @error('start_date')
+                                                <span class="text-danger mb-2"> {{ $message }} </span>
+                                            @enderror
                                         </div>
                                         <div class="data_input">
                                             <label>End Date</label>
                                             <input type="date" value="{{ $experience->end_date }}" name="end_date" class="exp-end-date">
-                                            <span class="text-danger mb-2 error"></span>
+                                            @error('end_date')
+                                                <span class="text-danger mb-2"> {{ $message }} </span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -203,6 +215,9 @@
                                     <textarea cols="53" rows="16" id="textarea-1" name="description">
                                         {{ $experience->description }}
                                     </textarea>
+                                    @error('description')
+                                        <span class="text-danger mb-2"> {{ $message }} </span>
+                                    @enderror
                                     <span class="text-danger mb-2 error" id="experience1_description"></span>
                                 </div>
                             </div>

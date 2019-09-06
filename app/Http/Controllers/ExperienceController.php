@@ -89,10 +89,16 @@ class ExperienceController extends Controller
             'start_date' => 'required|date',
             'end_date' => 'sometimes|nullable|date|after:start_date',
             'description' => 'required|string|min:10|max:1000'
-        ]);
+        ])->validate();
 
         $experience->update(request(['title', 'employer', 'city', 'state', 'start_date', 'end_date', 'description']));
 
         return redirect()->route('experience.index');
+    }
+
+    public function destroy(Experience $experience)
+    {
+        $experience->delete();
+        return back();
     }
 }
