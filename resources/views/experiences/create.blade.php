@@ -213,14 +213,17 @@
 
                     </div>
                 </div>
-                <div class="clon_here"></div>
-                <div class="more_experience" id="clone_aparat">
-                    <p>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                            <defs><style>.a{fill:#18358a;}</style>
-                            </defs><path class="a" d="M16,7.619H8.381V0H7.619V7.619H0v.762H7.619V16h.762V8.381H16Z"></path></svg>
-                        Add more experience</p>
-                </div>
+
+                @if($experienceCount < 1)
+                    <div class="clon_here"></div>
+                    <div class="more_experience" id="clone_aparat">
+                        <p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <defs><style>.a{fill:#18358a;}</style>
+                                </defs><path class="a" d="M16,7.619H8.381V0H7.619V7.619H0v.762H7.619V16h.762V8.381H16Z"></path></svg>
+                            Add more experience</p>
+                    </div>
+                @endif
                 <div class="back_continue experience_page">
                 <a href="{{ route('header') }}" class="back_left">
                     <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>

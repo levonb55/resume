@@ -23,6 +23,7 @@ class CreateExperiencesTable extends Migration
             $table->date('start_date');
             $table->date('end_date')->nullable();
             $table->text('description')->nullable();
+            $table->integer('order');
 
             $table->foreign('user_id')->references('id')->on('users');
         });

@@ -13,7 +13,7 @@ class ExperienceController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index() {
-        $experiences = auth()->user()->experiences;
+        $experiences = auth()->user()->experiences()->orderBy('order')->get();
         return view('experiences.index', compact('experiences'));
     }
 
@@ -65,7 +65,8 @@ class ExperienceController extends Controller
                     'state' => $experience['state'],
                     'start_date' => $experience['start_date'],
                     'end_date' => $experience['end_date'] ?? null,
-                    'description' => $experience['description']
+                    'description' => $experience['description'],
+                    'order' => auth()->user()->experiences->count() + 1
                 ]);
             }
 
@@ -100,5 +101,18 @@ class ExperienceController extends Controller
     {
         $experience->delete();
         return back();
+    }
+
+    public function reorderExperience(Request $request)
+    {
+        for($i = 0; $i < auth()->user()->experiences->count(); $i++) {
+            $ind = array_search(auth()->user()->experiences[$i]->order, $request->input('order'));
+            
+            auth()->user()->experiences[$i]->update([
+                'order' => $ind + 1
+            ]);
+        }
+
+        return response()->json('Reordered');
     }
 }

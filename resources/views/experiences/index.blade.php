@@ -76,7 +76,7 @@
             @if($experiences->count() >= 1)
                 <ul id="sortable">
                     @foreach($experiences as $experience)
-                        <li class="red_item rev_red_item ui-state-default">
+                        <li class="red_item rev_red_item ui-state-default" data-order="{{ $experience->order }}">
 
                         <div class="rew_sort_li_1">
                             <div class="rew_sort_num">
@@ -106,7 +106,7 @@
                                         <img src="{{ asset('assets/images/pencil-edit-button.png') }}" alt="Pen">
                                     </a>
                                 </div>
-                                <div class="tool2" title="Move">
+                                <div class="reorder-experience" title="Move">
                                     <img src="{{ asset('assets/images/move-option.png') }}" alt="">
                                 </div>
                                 <form action="{{ route('experience.destroy', $experience->id) }}" method="POST">
@@ -138,10 +138,18 @@
                         <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
                     </a>
                 @endif
+                <a href="{{ route('experience.create') }}" class="continue_right">
+                    <p><span class="fas fa-plus"> Add Experience </p>
+                </a>
                 <a href="{{ route('education') }}" class="continue_right">
                     <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>
                 </a>
             </div>
         </section>
     </main>
+@endsection
+
+@section('extra-scripts')
+    <script src="{{ asset('assets/libs/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/experience.js') }}"></script>
 @endsection

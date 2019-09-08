@@ -44,6 +44,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::put('experience/{experience}', 'ExperienceController@update')->name('experience.update');
         Route::delete('experience/{experience}', 'ExperienceController@destroy')->name('experience.destroy');
     });
+    Route::post('experience/reorder', 'ExperienceController@reorderExperience')->name('experience.reorder');
     Route::get('education', 'CredentialController@education')->name('education');
     Route::get('review-education', 'CredentialController@reviewEducation')->name('review-education');
     Route::get('skills', 'CredentialController@skills')->name('skills');
