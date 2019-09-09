@@ -253,6 +253,7 @@ $(document).on("click", ".text_button button", function (e) {
     var add = $(this).siblings("p").html();
     var editorId = $(this).parents('.box1').siblings('.box2').find('textarea').attr('id');
     CKEDITOR.instances[editorId].insertText(add);
+    $("#"+editorId).val(CKEDITOR.instances[editorId].getData());
 });
 
 $(document).ready(function () {

@@ -794,7 +794,11 @@ main{
 .log_reg p {
     cursor: pointer;
 }
-
+.red_tools button{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
 .log_reg .Login1:after {
     content: '/';
     /* border: 1px solid; */

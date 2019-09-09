@@ -30,28 +30,21 @@ class ExperienceController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $collection = collect($request->all());
         $experiences = $collection->slice(1)->all();
         $errors = [];
 
-        foreach($experiences as $key => $experience) {
-            $validator = Validator::make($experience, [
-                'title' => 'required|string|min:2|max:255',
-                'employer' => 'required|string|min:2|max:255',
-                'city' => 'required|string|min:2|max:255',
-                'state' => 'required|string|min:2|max:255',
-                'start_date' => 'required|date',
-                'end_date' => 'sometimes|nullable|date|after:start_date',
-                'description' => 'required|string|min:10|max:1000'
-            ]);
+        foreach ($experiences as $key => $experience) {
+            $validator = $this->makeValidation($experience);
 
-            if($validator->fails()) {
+            if ($validator->fails()) {
                 $errors[$key] = $validator->getMessageBag()->toArray();
             }
         }
 
-        if(count($errors)) {
+        if (count($errors)) {
 
             return response()->json(['errors' => $errors], 422);
 
@@ -82,15 +75,7 @@ class ExperienceController extends Controller
 
     public function update(Request $request, Experience $experience)
     {
-        $validator = Validator::make($request->all(), [
-            'title' => 'required|string|min:2|max:255',
-            'employer' => 'required|string|min:2|max:255',
-            'city' => 'required|string|min:2|max:255',
-            'state' => 'required|string|min:2|max:255',
-            'start_date' => 'required|date',
-            'end_date' => 'sometimes|nullable|date|after:start_date',
-            'description' => 'required|string|min:10|max:1000'
-        ])->validate();
+        $this->makeValidation($request->all())->validate();
 
         $experience->update(request(['title', 'employer', 'city', 'state', 'start_date', 'end_date', 'description']));
 
@@ -103,14 +88,29 @@ class ExperienceController extends Controller
         return back();
     }
 
+    public function makeValidation($experience)
+    {
+        return Validator::make($experience, [
+            'title' => 'required|string|min:2|max:255',
+            'employer' => 'required|string|min:2|max:255',
+            'city' => 'required|string|min:2|max:255',
+            'state' => 'required|string|min:2|max:255',
+            'start_date' => 'required|date',
+            'end_date' => 'sometimes|nullable|date|after:start_date',
+            'description' => 'required|string|min:10|max:1000'
+        ]);
+    }
+
     public function reorderExperience(Request $request)
     {
-        for($i = 0; $i < auth()->user()->experiences->count(); $i++) {
-            $ind = array_search(auth()->user()->experiences[$i]->order, $request->input('order'));
-            
-            auth()->user()->experiences[$i]->update([
-                'order' => $ind + 1
-            ]);
+        $orders = $request->input('order');
+        if ($orders) {
+            foreach ($orders as $order) {
+                if ($exp = Experience::where('id', $order['id'])->first()) {
+                    $exp->order = intval($order['order']);
+                    $exp->save();
+                }
+            }
         }
 
         return response()->json('Reordered');

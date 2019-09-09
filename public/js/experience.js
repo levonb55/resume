@@ -255,12 +255,16 @@ $(document).on('click', '.exp-check', function () {
 
 //Reorders experience
 $(".reorder-experience").on("mousedown",function () {
-    $(this).parents("#sortable").sortable({
+    $("#sortable").sortable({
         update: function () {
             let sortableItems = $('.ui-sortable-handle');
-            let order = [];
+            let order = {};
             for(let i = 0; i < sortableItems.length; i++) {
-                order.push(sortableItems.eq(i).data("order"));
+                let sort = sortableItems.eq(i);
+                order[i] = {
+                    'order':i+1,
+                    'id':sort.data("id")
+                }
             }
 
             $.ajax({
@@ -269,13 +273,10 @@ $(".reorder-experience").on("mousedown",function () {
                 url: appUrl + 'experience/reorder',
                 data: {order}
             })
-            .then((response) => {
-                console.log(response);
-            })
             .catch((error) => {
                 console.log(error);
             });
         }
     });
-    $(this).parents("#sortable").disableSelection();
+    $("#sortable").disableSelection();
 });

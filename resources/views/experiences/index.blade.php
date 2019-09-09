@@ -76,7 +76,7 @@
             @if($experiences->count() >= 1)
                 <ul id="sortable">
                     @foreach($experiences as $experience)
-                        <li class="red_item rev_red_item ui-state-default" data-order="{{ $experience->order }}">
+                        <li class="red_item rev_red_item ui-state-default" data-id="{{ $experience->id }}" data-order="{{ $experience->order }}">
 
                         <div class="rew_sort_li_1">
                             <div class="rew_sort_num">
@@ -109,7 +109,7 @@
                                 <div class="reorder-experience" title="Move">
                                     <img src="{{ asset('assets/images/move-option.png') }}" alt="">
                                 </div>
-                                <form action="{{ route('experience.destroy', $experience->id) }}" method="POST">
+                                <form action="{{ route('experience.destroy', $experience->id) }}" method="POST" title="Remove">
                                     @csrf
                                     @method('DELETE')
 {{--                                    <div class="tool3" title="Delete">--}}

@@ -225,13 +225,19 @@
                     </div>
                 @endif
                 <div class="back_continue experience_page">
-                <a href="{{ route('header') }}" class="back_left">
-                    <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
-                </a>
-                <button type="submit" value="Continue" class="continue_right">
-                    Continue<span class="fas fa-long-arrow-alt-right"></span>
-                </button>
-            </div>
+                    @if($experienceCount <= 0)
+                        <a href="{{ route('header') }}" class="back_left">
+                            <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
+                        </a>
+                    @else
+                        <a href="{{ route('experience.index') }}" class="back_left">
+                            <p>Cancel</p>
+                        </a>
+                    @endif
+                    <button type="submit" value="Continue" class="continue_right">
+                        Continue<span class="fas fa-long-arrow-alt-right"></span>
+                    </button>
+                </div>
             </form>
         </section>
 
