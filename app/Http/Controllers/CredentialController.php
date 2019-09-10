@@ -44,7 +44,7 @@ class CredentialController extends Controller
     //Gets resume header page
     public function header() {
         $credential = Auth::user()->credential;
-        $experienceCount = Experience::countExperience();
+        $experienceCount = auth()->user()->experiences->count();
         return view('credentials.header', compact('credential', 'experienceCount'));
     }
 
