@@ -52,4 +52,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Experience');
     }
+
+    /**
+     * Get the education for the user.
+     */
+    public function education()
+    {
+        return $this->hasMany('App\Models\Education');
+    }
 }

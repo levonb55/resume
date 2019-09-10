@@ -58,16 +58,6 @@ class CredentialController extends Controller
         return redirect()->route('experience.create');
     }
 
-    //Gets education page
-    public function education() {
-        return view('credentials.education');
-    }
-
-    //Gets review education page
-    public function reviewEducation() {
-        return view('credentials.review-education');
-    }
-
     //Gets skills page
     public function skills() {
         return view('credentials.skills');

@@ -11,8 +11,7 @@
 @section('content')
     <main>
         <section class="dashboard_content">
-            <form action="{{ route('experience.store') }}" method="POST" id="experience-form">
-                @csrf
+            <form id="experience-form">
                 <div class="check">
                     <div class="step-container">
 

@@ -32,8 +32,7 @@ class ExperienceController extends Controller
      */
     public function store(Request $request)
     {
-        $collection = collect($request->all());
-        $experiences = $collection->slice(1)->all();
+        $experiences = $request->all();
         $errors = [];
 
         foreach ($experiences as $key => $experience) {

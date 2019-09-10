@@ -243,9 +243,9 @@ $("#clone_aparat3").on("click",function () {
     $('.clon_here').append(cl3());
 })
 
-$("#add_desc").on("click",function () {
-    $("#add_textarea").toggleClass("hidden");
-})
+// $("#add_desc").on("click",function () {
+//     $("#add_textarea").toggleClass("hidden");
+// })
 // CKEDITOR.replace('textarea1', editor_config );
 
 $(document).on("click", ".text_button button", function (e) {

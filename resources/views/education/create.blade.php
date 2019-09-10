@@ -9,8 +9,9 @@
 @endsection
 
 @section('content')
-    <main>
-        <section class="dashboard_content">
+<main>
+    <section class="dashboard_content">
+        <form id="education-form">
             <div class="check">
 
                 <div class="step-container">
@@ -63,59 +64,59 @@
                     <div class="next-step"></div>
                 </div>
             </div>
+
+            <h4 class="containera ml-2">
+                <a href="{{ route('education.index') }}">I Don't Have Formal Education</a>
+            </h4>
+
             <div class="clon">
                 <div class="start_header">
                     <div class="header_inputs">
                         <h2>Tell us about your education</h2>
-                        <p>Tell us about any colleges, vocational programs, or training courses you took. Even if you didn’t finish, it’s important to list them.</p>
+                        <p>Tell us about any colleges, vocational programs, or training courses you took. Even if you
+                            didn’t finish, it’s important to list them.</p>
 
-                        <div class="job_area">
-                            <form class="form_header">
+                        <div class="experience_area">
+                            <div class="form_header">
                                 <div class="name">
                                     <div class="first_name">
                                         <label>School Name</label>
-                                        <input type="text" placeholder="N 80 school">
+                                        <input type="text" name="education1[school]">
+                                        <span class="text-danger mb-2 error" id="education1_school"></span>
                                     </div>
                                     <div class="first_name">
                                         <label>School Location</label>
-                                        <input type="text" placeholder="New York">
+                                        <input type="text" name="education1[location]">
+                                        <span class="text-danger mb-2 error" id="education1_location"></span>
                                     </div>
                                 </div>
 
                                 <div class="address_input">
                                     <label>Degree</label>
-                                    <select>
-                                        <option value="">Select</option>
-                                        <option value="">...</option>
-                                        <option value="">.....</option>
-                                        <option value="">......</option>
-                                    </select>
+                                    <input type="text" name="education1[degree]">
+                                    <span class="text-danger mb-2 error" id="education1_degree"></span>
                                 </div>
                                 <div class="graduation">
                                     <div class="study">
                                         <label>Field Of Study</label>
-                                        <input type="text" placeholder="">
+                                        <input type="text" name="education1[study]">
+                                        <span class="text-danger mb-2 error" id="education1_study"></span>
                                     </div>
-                                    <div class="graduation_year">
+                                    <div class="graduation_year mt-4">
                                         <label>Graduation Year</label>
-                                        <select>
-                                            <option value="">1970</option>
-                                            <option value="">1971</option>
-                                            <option value="">1972</option>
-                                            <option value="">1973</option>
-                                            <option value="">1974</option>
-                                            <option value="">1975</option>
-                                        </select>
+                                        <input type="text" name="education1[graduation_year]">
+                                        <span class="text-danger mb-2 error" id="education1_graduation_year"></span>
                                     </div>
                                 </div>
-                            </form>
-                            <div class="add_description" id="add_desc">
+                            </div>
+                            <div class="add_description add_desc">
                                 <p>
                                     <span id="plus">+</span>
                                     Add a description</p>
                             </div>
-                            <div class="textarea_desc hidden" id="add_textarea">
-                                <textarea name="" id="" cols="30" rows="10"></textarea>
+                            <div class="textarea_desc hidden">
+                                <textarea name="education1[description]" id="textarea-1" cols="30" rows="10"></textarea>
+                                <span class="text-danger mb-2 error" id="education1_description"></span>
                             </div>
                         </div>
                     </div>
@@ -148,17 +149,10 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="preview-wrapper">
-                    @include('partials._preview-resume')
+                    @include('partials._resume-modal')
                 </div>
-{{--                <div class="preview" >--}}
-{{--                    <p data-toggle="modal" data-target="#exampleModalCenter">--}}
-{{--                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">--}}
-{{--                            <defs><style>.a{fill:#18358a;}</style></defs><g transform="translate(10.554 9.374)">--}}
-{{--                                <path class="a" d="M278.4,247.557a3.532,3.532,0,0,0-.376-4.549,3.641,3.641,0,0,0-5.009,0,3.536,3.536,0,0,0,4.549,5.384l3.024,2.953.835-.835Z" transform="translate(-271.979 -242.01)"/>--}}
-{{--                            </g><g transform="translate(10.603 0.346)"><path class="a" d="M272,8.789v4.416h4.377Z" transform="translate(-272 -8.789)"/>--}}
-{{--                            </g><path class="a" d="M14.108,17.618A4.637,4.637,0,0,1,10.8,16.243a4.649,4.649,0,0,1,4.476-7.8V5.9H9.431V0H0V20H15.277V17.452A4.661,4.661,0,0,1,14.108,17.618ZM2.338,7.07H10.6V8.242H2.338Zm5.924,8.2H2.338V14.1H8.262Zm0-2.344H2.338V11.758H8.262Zm0-2.344H2.338V9.414H8.262Z"/></svg>Preview Resume</p>--}}
-{{--                </div>--}}
             </div>
             <div class="clon_here"></div>
 
@@ -172,14 +166,18 @@
                 <a href="{{ route('experience.index') }}" class="back_left">
                     <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
                 </a>
-                <a href="{{ route('review-education') }}" class="continue_right">
-                    <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>
-                </a>
+                <button type="submit" value="Continue" class="continue_right">
+                    Continue<span class="fas fa-long-arrow-alt-right"></span>
+                </button>
             </div>
-        </section>
-    </main>
+        </form>
+    </section>
+</main>
 @endsection
 
 @section('extra-scripts')
+    <script src="{{ asset('assets/libs/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{asset('js/editor-config.js')}}"></script>
     <script src="{{asset('js/education.js')}}"></script>
 @endsection

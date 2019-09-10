@@ -45,8 +45,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::delete('experience/{experience}', 'ExperienceController@destroy')->name('experience.destroy');
     });
     Route::post('experience/reorder', 'ExperienceController@reorderExperience')->name('experience.reorder');
-    Route::get('education', 'CredentialController@education')->name('education');
-    Route::get('review-education', 'CredentialController@reviewEducation')->name('review-education');
+    Route::get('education/create', 'EducationController@create')->name('education.create');
+    Route::get('education', 'EducationController@index')->name('education.index');
+    Route::post('education', 'EducationController@store')->name('education.store');
     Route::get('skills', 'CredentialController@skills')->name('skills');
     Route::get('summary', 'CredentialController@summary')->name('summary');
     Route::get('finalize', 'CredentialController@finalize')->name('finalize');

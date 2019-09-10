@@ -60,7 +60,7 @@ function addExperience(index) {
                              <div class="data_input">
                                 <label>End Date</label>
                                 <input type="date"  name="experience1[end_date]" class="exp-end-date">
-                                <span class="text-danger mb-2 error" id="experience1_end_date"></span>
+                                <span class="text-danger mb-2 error" id="experience${counter}_end_date"></span>
                             </div>
                         </div>
                     </div>

@@ -96,8 +96,17 @@
                             <h5>Web Projects</h5>
                         </div>
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias beatae blanditiis cumque debitis deserunt dolore doloremque ducimus eaque eos ex expedita facere, nam natus neque omnis quis quo tenetur voluptatibus!</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias beatae blanditiis cumque
+                            debitis deserunt dolore doloremque ducimus eaque eos ex expedita facere, nam natus neque
+                            omnis quis quo tenetur voluptatibus!</p>
+                    </div>
 
+                    <div class="rew_sort_li_3">
+                        <div class="rew_position">
+                            <h5>New York</h5>
+                            <h5>USA</h5>
+                            <h5>2019</h5>
+                        </div>
                     </div>
 
                     <div class="rew_sort_li_4">
@@ -118,7 +127,7 @@
 
             </ul>
             <div class="back_continue experience_page">
-                <a href="{{ route('education') }}" class="back_left">
+                <a href="{{ route('education.create') }}" class="back_left">
                     <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
                 </a>
                 <a href="{{ route('skills') }}" class="continue_right">

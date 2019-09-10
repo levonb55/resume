@@ -141,7 +141,7 @@
                 <a href="{{ route('experience.create') }}" class="continue_right">
                     <p><span class="fas fa-plus"> Add Experience </p>
                 </a>
-                <a href="{{ route('education') }}" class="continue_right">
+                <a href="{{ route('education.create') }}" class="continue_right">
                     <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>
                 </a>
             </div>
