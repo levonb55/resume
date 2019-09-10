@@ -75,7 +75,7 @@ function addExperience(index) {
             <div class="tips">
                 <div class="dropdown show">
                     <div class="customer btn dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                        <img src="assets/images/customer-service.png">
+                        <img src="/assets/images/customer-service.png">
                     </div>
                     <div class="dropdown-menu dropdown-menu-right show">
                         <h4>TIPS</h4>
