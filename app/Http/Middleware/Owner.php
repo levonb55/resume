@@ -15,9 +15,13 @@ class Owner
      */
     public function handle($request, Closure $next)
     {
-        if($request->route('experience')->user_id !== auth()->id() ) {
+        $parameters = request()->route()->parameters();
+        $parameter = reset($parameters);
+
+        if($parameter->user_id !== auth()->id() ) {
             return back();
         }
+
         return $next($request);
     }
 }

@@ -14,7 +14,8 @@ class ExperienceController extends Controller
      */
     public function index() {
         $experiences = auth()->user()->experiences()->orderBy('order')->get();
-        return view('experiences.index', compact('experiences'));
+        $educationCount = auth()->user()->education->count();
+        return view('experiences.index', compact('experiences', 'educationCount'));
     }
 
     /**
