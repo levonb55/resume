@@ -71,12 +71,15 @@
                 <div class="preview-wrapper">
                     @include('partials._resume-modal')
                 </div>
-
             </div>
+
             @if($experiences->count() >= 1)
                 <ul id="sortable">
                     @foreach($experiences as $experience)
-                        <li class="red_item rev_red_item ui-state-default" data-id="{{ $experience->id }}" data-order="{{ $experience->order }}">
+                        <li class="red_item rev_red_item ui-state-default"
+                            data-id="{{ $experience->id }}"
+                            data-order="{{ $experience->order }}"
+                        >
 
                         <div class="rew_sort_li_1">
                             <div class="rew_sort_num">
@@ -107,14 +110,11 @@
                                     </a>
                                 </div>
                                 <div class="reorder-experience" title="Move">
-                                    <img src="{{ asset('assets/images/move-option.png') }}" alt="">
+                                    <img src="{{ asset('assets/images/move-option.png') }}" alt="Move">
                                 </div>
                                 <form action="{{ route('experience.destroy', $experience->id) }}" method="POST" title="Remove">
                                     @csrf
                                     @method('DELETE')
-{{--                                    <div class="tool3" title="Delete">--}}
-{{--                                        <img src="{{ asset('assets/images/rubbish-bin-delete-button.png') }}" alt="">--}}
-{{--                                    </div>--}}
                                     <button type="submit">
                                         <img src="{{ asset('assets/images/rubbish-bin-delete-button.png') }}" alt="Trash">
                                     </button>
@@ -128,6 +128,7 @@
             @else
                 <h5 class="mt-4 text-center">No experience provided.</h5>
             @endif
+
             <div class="back_continue experience_page">
                 @if($experiences->count() >= 1)
                     <a href="{{ route('header') }}" class="back_left">

@@ -68,67 +68,81 @@
                 <div class="your_experience">
                     <h2>Education Summary</h2>
                 </div>
-                @include('partials._preview-resume')
-{{--                <div class="preview preview_skills">--}}
-{{--                    <p data-toggle="modal" data-target="#exampleModalCenter">--}}
-{{--                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">--}}
-{{--                            <defs><style>.a{fill:#18358a;}</style></defs><g transform="translate(10.554 9.374)">--}}
-{{--                                <path class="a" d="M278.4,247.557a3.532,3.532,0,0,0-.376-4.549,3.641,3.641,0,0,0-5.009,0,3.536,3.536,0,0,0,4.549,5.384l3.024,2.953.835-.835Z" transform="translate(-271.979 -242.01)"></path>--}}
-{{--                            </g><g transform="translate(10.603 0.346)"><path class="a" d="M272,8.789v4.416h4.377Z" transform="translate(-272 -8.789)"></path>--}}
-{{--                            </g><path class="a" d="M14.108,17.618A4.637,4.637,0,0,1,10.8,16.243a4.649,4.649,0,0,1,4.476-7.8V5.9H9.431V0H0V20H15.277V17.452A4.661,4.661,0,0,1,14.108,17.618ZM2.338,7.07H10.6V8.242H2.338Zm5.924,8.2H2.338V14.1H8.262Zm0-2.344H2.338V11.758H8.262Zm0-2.344H2.338V9.414H8.262Z"></path></svg>Preview Resume</p>--}}
-{{--                </div>--}}
 
+                <div class="preview-wrapper">
+                    @include('partials._resume-modal')
+                </div>
             </div>
-            <ul id="sortable">
 
-
-                <li class="red_item rev_red_item ui-state-default">
+            @if($education->count() >= 1)
+                <ul id="sortable">
+                    @foreach($education as $educationItem)
+                        <li class="red_item rev_red_item ui-state-default"
+                        data-id="{{ $educationItem->id }}"
+                        data-order="{{ $educationItem->order }}"
+                    >
 
                     <div class="rew_sort_li_1">
-                        <div class="rew_sort_num">
-                            1
-                        </div>
-
+                        <div class="rew_sort_num">{{ $loop->iteration }}</div>
                     </div>
+
                     <div class="rew_sort_li_2">
                         <div class="rew_position">
-                            <h5>Web Desgin</h5>
-                            <h5>Web Projects</h5>
+                            <h5>{{ $educationItem->school }}</h5>
+                            <h5>{{ $educationItem->study }}</h5>
                         </div>
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias beatae blanditiis cumque
-                            debitis deserunt dolore doloremque ducimus eaque eos ex expedita facere, nam natus neque
-                            omnis quis quo tenetur voluptatibus!</p>
+                        <p>{!! $educationItem->description !!}</p>
                     </div>
 
                     <div class="rew_sort_li_3">
                         <div class="rew_position">
-                            <h5>New York</h5>
-                            <h5>USA</h5>
-                            <h5>2019</h5>
+                            <h5>{{ $educationItem->degree }}</h5>
+                            <h5>{{ $educationItem->location }}</h5>
+                            <h5>{{ $educationItem->graduation_year ?? 'Present'}}</h5>
                         </div>
                     </div>
 
                     <div class="rew_sort_li_4">
                         <div class="red_tools ">
                             <div class="tool1">
-                                <img src="{{ asset('assets/images/pencil-edit-button.png') }}" alt="">
+                                <a href="{{ route('education.edit', $educationItem->id) }}">
+                                    <img src="{{ asset('assets/images/pencil-edit-button.png') }}" alt="Pen">
+                                </a>
                             </div>
-                            <div class="tool2">
-                                <img src="{{ asset('assets/images/move-option.png') }}" alt="">
+                            <div class="reorder-education" title="Move">
+                                <img src="{{ asset('assets/images/move-option.png') }}" alt="Move">
                             </div>
-                            <div class="tool3">
-                                <img src="{{ asset('assets/images/rubbish-bin-delete-button.png') }}" alt="">
-                            </div>
+                            <form action="{{ route('education.destroy', $educationItem->id) }}" method="POST" title="Remove">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">
+                                    <img src="{{ asset('assets/images/rubbish-bin-delete-button.png') }}" alt="Trash">
+                                </button>
+                            </form>
                         </div>
                     </div>
 
                 </li>
+                    @endforeach
+                </ul>
+            @else
+                <h5 class="mt-4 text-center">No education provided.</h5>
+            @endif
 
-            </ul>
             <div class="back_continue experience_page">
-                <a href="{{ route('education.create') }}" class="back_left">
-                    <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
+                @if($education->count() >= 1)
+                    <a href="{{ route('experience.index') }}" class="back_left">
+                        <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
+                    </a>
+                @else
+                    <a href="{{ route('education.create') }}" class="back_left">
+                        <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
+                    </a>
+                @endif
+
+                <a href="{{ route('education.create') }}" class="continue_right">
+                    <p><span class="fas fa-plus"> Add Education </p>
                 </a>
                 <a href="{{ route('skills') }}" class="continue_right">
                     <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>
@@ -136,4 +150,9 @@
             </div>
         </section>
     </main>
+@endsection
+
+@section('extra-scripts')
+    <script src="{{ asset('assets/libs/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/education.js') }}"></script>
 @endsection

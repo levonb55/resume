@@ -113,6 +113,12 @@ function addEducation(index) {
 
 $('#education-form').on('submit', function (e) {
     e.preventDefault();
+
+    //Updates ckeditors' content
+    for ( instance in CKEDITOR.instances ) {
+        CKEDITOR.instances[instance].updateElement();
+    }
+
     let data = $(this).serialize();
     $(this).find(':submit').attr('disabled', true).addClass('disabled');
 
@@ -142,4 +148,32 @@ $('#education-form').on('submit', function (e) {
         $(this).find(':submit').attr('disabled', false).removeClass('disabled');
     });
 
+});
+
+//Reorders education
+$(".reorder-education").on("mousedown",function () {
+    $("#sortable").sortable({
+        update: function () {
+            let sortableItems = $('.ui-sortable-handle');
+            let order = {};
+            for(let i = 0; i < sortableItems.length; i++) {
+                let sort = sortableItems.eq(i);
+                order[i] = {
+                    'order':i+1,
+                    'id':sort.data("id")
+                }
+            }
+
+            $.ajax({
+                method: 'POST',
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                url: appUrl + 'education/reorder',
+                data: {order}
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        }
+    });
+    $("#sortable").disableSelection();
 });

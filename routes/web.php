@@ -48,6 +48,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('education/create', 'EducationController@create')->name('education.create');
     Route::get('education', 'EducationController@index')->name('education.index');
     Route::post('education', 'EducationController@store')->name('education.store');
+    Route::get('education/{education}', 'EducationController@edit')->name('education.edit');
+    Route::put('education/{education}', 'EducationController@update')->name('education.update');
+    Route::delete('education/{education}', 'EducationController@destroy')->name('education.destroy');
+    Route::post('education/reorder', 'EducationController@reorderEducation')->name('education.reorder');
     Route::get('skills', 'CredentialController@skills')->name('skills');
     Route::get('summary', 'CredentialController@summary')->name('summary');
     Route::get('finalize', 'CredentialController@finalize')->name('finalize');

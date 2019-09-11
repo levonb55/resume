@@ -65,9 +65,11 @@
                 </div>
             </div>
 
-            <h4 class="containera ml-2">
-                <a href="{{ route('education.index') }}">I Don't Have Formal Education</a>
-            </h4>
+            @if($educationCount <= 0)
+                <h4 class="containera ml-2">
+                    <a href="{{ route('education.index') }}">I Don't Have Formal Education</a>
+                </h4>
+            @endif
 
             <div class="clon">
                 <div class="start_header">
@@ -163,9 +165,17 @@
                         </defs><path class="a" d="M16,7.619H8.381V0H7.619V7.619H0v.762H7.619V16h.762V8.381H16Z"/></svg>Add more education</p>
             </div>
             <div class="back_continue experience_page">
-                <a href="{{ route('experience.index') }}" class="back_left">
-                    <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
-                </a>
+
+                @if($educationCount <= 0)
+                    <a href="{{ route('experience.index') }}" class="back_left">
+                        <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
+                    </a>
+                @else
+                    <a href="{{ route('education.index') }}" class="back_left">
+                        <p>Cancel</p>
+                    </a>
+                @endif
+
                 <button type="submit" value="Continue" class="continue_right">
                     Continue<span class="fas fa-long-arrow-alt-right"></span>
                 </button>
