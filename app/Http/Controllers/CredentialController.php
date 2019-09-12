@@ -59,8 +59,21 @@ class CredentialController extends Controller
     }
 
     //Gets skills page
-    public function skills() {
-        return view('credentials.skills');
+    public function getSkills()
+    {
+        $skills = auth()->user()->credential;
+        return view('credentials.skills', compact('skills'));
+    }
+
+    public function storeSkills(Request $request)
+    {
+        $request->validate([
+            'skills' => 'nullable|min:5|max:3000',
+        ]);
+
+        auth()->user()->credential()->update(request(['skills']));
+
+        return redirect()->route('summary');
     }
 
     //Gets summary page

@@ -55,7 +55,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('education', 'EducationController@store')->name('education.store');
     Route::get('education/create', 'EducationController@create')->name('education.create');
     Route::post('education/reorder', 'EducationController@reorderEducation')->name('education.reorder');
-    Route::get('skills', 'CredentialController@skills')->name('skills');
+    Route::get('skills', 'CredentialController@getSkills')->name('skills');
+    Route::post('skills', 'CredentialController@storeSkills')->name('skills.store');
     Route::get('summary', 'CredentialController@summary')->name('summary');
     Route::get('finalize', 'CredentialController@finalize')->name('finalize');
 });

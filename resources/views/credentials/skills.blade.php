@@ -5,6 +5,7 @@
 @section('extra-styles')
     <link rel="stylesheet" href="{{ asset('css/Lcss.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/libs/css/jquery-ui.min.css') }}">
 @endsection
 
 @section('content')
@@ -69,17 +70,11 @@
                         <h3>Search recommended skills by job title, industry, or keyword</h3>
                     </div>
                     <div class="tips_box">
+
                         <div class="preview-wrapper">
-                            @include('partials._preview-resume')
+                            @include('partials._resume-modal')
                         </div>
-{{--                        <div class="preview preview_skills">--}}
-{{--                            <p data-toggle="modal" data-target="#exampleModalCenter">--}}
-{{--                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">--}}
-{{--                                    <defs><style>.a{fill:#18358a;}</style></defs><g transform="translate(10.554 9.374)">--}}
-{{--                                        <path class="a" d="M278.4,247.557a3.532,3.532,0,0,0-.376-4.549,3.641,3.641,0,0,0-5.009,0,3.536,3.536,0,0,0,4.549,5.384l3.024,2.953.835-.835Z" transform="translate(-271.979 -242.01)"></path>--}}
-{{--                                    </g><g transform="translate(10.603 0.346)"><path class="a" d="M272,8.789v4.416h4.377Z" transform="translate(-272 -8.789)"></path>--}}
-{{--                                    </g><path class="a" d="M14.108,17.618A4.637,4.637,0,0,1,10.8,16.243a4.649,4.649,0,0,1,4.476-7.8V5.9H9.431V0H0V20H15.277V17.452A4.661,4.661,0,0,1,14.108,17.618ZM2.338,7.07H10.6V8.242H2.338Zm5.924,8.2H2.338V14.1H8.262Zm0-2.344H2.338V11.758H8.262Zm0-2.344H2.338V9.414H8.262Z"></path></svg>Preview Resume</p>--}}
-{{--                        </div>--}}
+
                         <div class="tips tips_content">
 
                             <div class="dropdown">
@@ -110,58 +105,75 @@
                         </div>
                     </div>
                 </div>
-                <div class="search_job">
-                    <div class="box1">
-                        <form class="job">
-                            <input type="search" placeholder="">
-                            <span class="fas fa-search"></span>
-                        </form>
-                        <div class="add_text">
-                            <div class="text_button">
-                                <p>Graphic design</p>
-                                <button>Add</button>
+                <form action="{{ route('skills.store') }}" method="POST">
+                    @csrf
+                    <div class="search_job">
+                        <div class="box1">
+                            <div class="job">
+                                <div class="dropdown">
+                                    <input type="search" class="job-search">
+                                    <span class="fas fa-search"></span>
+                                </div>
                             </div>
-                            <div class="text_button">
-                                <p>Mobile & Web design</p>
-                                <button>Add</button>
+                            <div class="add_text skills">
+                                <div class="text_button">
+                                    <p>Graphic design</p>
+                                    <button>Add</button>
+                                </div>
+                                <div class="text_button">
+                                    <p>Mobile & Web design</p>
+                                    <button>Add</button>
+                                </div>
+                                <div class="text_button">
+                                    <p>E-commerce design</p>
+                                    <button>Add</button>
+                                </div>
+                                <div class="text_button">
+                                    <p>Interactive prototypes</p>
+                                    <button>Add</button>
+                                </div>
+
                             </div>
-                            <div class="text_button">
-                                <p>E-commerce design</p>
-                                <button>Add</button>
-                            </div>
-                            <div class="text_button">
-                                <p>Interactive prototypes</p>
-                                <button>Add</button>
-                            </div>
+
 
                         </div>
-
-
-                    </div>
-                    <div class="box2">
-                        <div id="editor-container">
-                        <textarea cols="80" rows="100" id="textarea-1">
-                            Type in your responsibilities, achievements and job details. Need help? Use the pre-written
-                            examples by clicking the Add button on the left side.
-                        </textarea>
-
+                        <div class="box2">
+                            <div id="editor-container">
+                                <textarea cols="80" rows="100" id="textarea-1" name="skills">
+                                    @if($skills->skills)
+                                        {!! $skills->skills !!}
+                                    @else
+                                        Type in your responsibilities, achievements and job details. Need help? Use the pre-written
+                                        examples by clicking the Add button on the left side.
+                                    @endif
+                                </textarea>
+                                @error('skills')
+                                    <span class="text-danger mb-2"> {{ $message }} </span>
+                                @enderror
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="back_continue experience_page">
-                    <a href="{{ route('review-education') }}" class="back_left">
+                    <div class="back_continue experience_page">
+                    <a href="{{ route('education.index') }}" class="back_left">
                         <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
                     </a>
-                    <a href="{{ route('summary') }}" class="continue_right">
-                        <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>
-                    </a>
+                    <button type="submit" class="continue_right">
+                        Continue <span class="fas fa-long-arrow-alt-right"></span>
+                    </button>
+
+{{--                    <a href="{{ route('summary') }}" class="continue_right">--}}
+{{--                        <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>--}}
+{{--                    </a>--}}
                 </div>
+                </form>
             </div>
         </section>
     </main>
 @endsection
 
 @section('extra-scripts')
-    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+    <script src="{{ asset('assets/libs/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('js/editor-config.js') }}"></script>
+    <script src="{{ asset('js/skills.js') }}"></script>
 @endsection
