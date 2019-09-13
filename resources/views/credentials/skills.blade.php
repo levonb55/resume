@@ -140,8 +140,8 @@
                         <div class="box2">
                             <div id="editor-container">
                                 <textarea cols="80" rows="100" id="textarea-1" name="skills">
-                                    @if($skills->skills)
-                                        {!! $skills->skills !!}
+                                    @if($skills)
+                                        {!! $skills !!}
                                     @else
                                         Type in your responsibilities, achievements and job details. Need help? Use the pre-written
                                         examples by clicking the Add button on the left side.

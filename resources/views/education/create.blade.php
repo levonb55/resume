@@ -104,7 +104,7 @@
                                         <input type="text" name="education1[study]">
                                         <span class="text-danger mb-2 error" id="education1_study"></span>
                                     </div>
-                                    <div class="graduation_year mt-4">
+                                    <div class="graduation_year">
                                         <label>Graduation Year</label>
                                         <input type="text" name="education1[graduation_year]">
                                         <span class="text-danger mb-2 error" id="education1_graduation_year"></span>

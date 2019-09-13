@@ -26,6 +26,7 @@ class CreateCredentialsTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('phone')->nullable();
             $table->text('skills')->nullable();
+            $table->text('summary')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

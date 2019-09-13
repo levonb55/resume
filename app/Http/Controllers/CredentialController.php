@@ -44,8 +44,7 @@ class CredentialController extends Controller
     //Gets resume header page
     public function header() {
         $credential = Auth::user()->credential;
-        $experienceCount = auth()->user()->experiences->count();
-        return view('credentials.header', compact('credential', 'experienceCount'));
+        return view('credentials.header', compact('credential'));
     }
 
     //Stores header
@@ -55,13 +54,20 @@ class CredentialController extends Controller
            'first_name', 'last_name', 'address', 'city', 'state', 'zip', 'email', 'phone'
         ]));
 
-        return redirect()->route('experience.create');
+        $experienceCount = auth()->user()->experiences->count();
+
+        if ($experienceCount <= 0) {
+            return redirect()->route('experience.create');
+        } else {
+            return redirect()->route('experience.index');
+        }
+
     }
 
     //Gets skills page
     public function getSkills()
     {
-        $skills = auth()->user()->credential;
+        $skills = auth()->user()->credential->skills;
         return view('credentials.skills', compact('skills'));
     }
 
@@ -77,8 +83,20 @@ class CredentialController extends Controller
     }
 
     //Gets summary page
-    public function summary() {
-        return view('credentials.summary');
+    public function getSummary() {
+        $summary = auth()->user()->credential->summary;
+        return view('credentials.summary', compact('summary'));
+    }
+
+    public function storeSummary(Request $request)
+    {
+        $request->validate([
+            'summary' => 'nullable|min:5|max:3000',
+        ]);
+
+        auth()->user()->credential()->update(request(['summary']));
+
+        return redirect()->route('finalize');
     }
 
     //Gets finalize page

@@ -134,18 +134,19 @@
                         <a href="{{ route('create-resume') }}" class="back_left">
                             <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
                         </a>
-{{--                        <a href="{{ route('experience') }}" class="continue_right">--}}
-{{--                            <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>--}}
-{{--                        </a>--}}
-                        @if($experienceCount < 1)
-                            <button type="submit" class="btn continue_right text-white">
-                                Continue <span class="fas fa-long-arrow-alt-right"></span>
-                            </button>
-                        @else
-                            <a href="{{ route('experience.index') }}" class="continue_right">
-                                <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>
-                            </a>
-                        @endif
+{{--                        @if($experienceCount < 1)--}}
+{{--                            <button type="submit" class="btn continue_right text-white">--}}
+{{--                                Continue <span class="fas fa-long-arrow-alt-right"></span>--}}
+{{--                            </button>--}}
+{{--                        @else--}}
+{{--                            <a href="{{ route('experience.index') }}" class="continue_right">--}}
+{{--                                <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>--}}
+{{--                            </a>--}}
+{{--                        @endif--}}
+
+                        <button type="submit" class="btn continue_right text-white">
+                            Continue <span class="fas fa-long-arrow-alt-right"></span>
+                        </button>
                     </div>
 
                 </form>

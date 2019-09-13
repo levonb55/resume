@@ -694,7 +694,7 @@ input[type="date"], focus {
     width: 95%;
     margin: 0 auto;
     border-bottom: 1px solid #C9C9C9;
-    height: 74px;
+    /*height: 74px;*/
     align-items: center;
     padding: 10px;
 }
