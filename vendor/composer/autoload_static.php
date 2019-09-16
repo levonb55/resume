@@ -407,6 +407,7 @@ class ComposerStaticInit0b7728406d069b41eff85aaad1b02a1d
     );
 
     public static $classMap = array (
+        'App\\AdditionalCredential' => __DIR__ . '/../..' . '/app/AdditionalCredential.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -416,6 +417,7 @@ class ComposerStaticInit0b7728406d069b41eff85aaad1b02a1d
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CredentialController' => __DIR__ . '/../..' . '/app/Http/Controllers/CredentialController.php',
+        'App\\Http\\Controllers\\EducationController' => __DIR__ . '/../..' . '/app/Http/Controllers/EducationController.php',
         'App\\Http\\Controllers\\ExperienceController' => __DIR__ . '/../..' . '/app/Http/Controllers/ExperienceController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\PageController' => __DIR__ . '/../..' . '/app/Http/Controllers/PageController.php',

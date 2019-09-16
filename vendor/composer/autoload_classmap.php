@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\AdditionalCredential' => $baseDir . '/app/AdditionalCredential.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -15,6 +16,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\CredentialController' => $baseDir . '/app/Http/Controllers/CredentialController.php',
+    'App\\Http\\Controllers\\EducationController' => $baseDir . '/app/Http/Controllers/EducationController.php',
     'App\\Http\\Controllers\\ExperienceController' => $baseDir . '/app/Http/Controllers/ExperienceController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\PageController' => $baseDir . '/app/Http/Controllers/PageController.php',

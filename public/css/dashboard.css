@@ -346,7 +346,7 @@
 
 .header_inputs {
     margin-right: 10px;
-    width: 50%;
+    /*width: 50%;*/
     display: flex;
     flex-direction: column;
     justify-content: space-between;

@@ -59,7 +59,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('skills', 'CredentialController@storeSkills')->name('skills.store');
     Route::get('summary', 'CredentialController@getSummary')->name('summary');
     Route::post('summary', 'CredentialController@storeSummary')->name('summary.store');
-    Route::get('finalize', 'CredentialController@finalize')->name('finalize');
+    Route::get('add-section', 'CredentialController@getAddSection')->name('add-section');
+    Route::post('add-section', 'CredentialController@postAddSection')->name('add-section.post');
+    Route::get('certifications', 'CredentialController@getCertifications')->name('certifications');
+    Route::post('certifications', 'CredentialController@storeCertifications')->name('certifications');
+    Route::get('accomplishments', 'CredentialController@getAccomplishments')->name('accomplishments');
+    Route::post('accomplishments', 'CredentialController@storeAccomplishments')->name('accomplishments');
+    Route::get('additional-information', 'CredentialController@getAdditionalInfo')->name('additional-info');
+    Route::post('additional-information', 'CredentialController@storeAdditionalInfo')->name('additional-info');
+    Route::get('profiles', 'CredentialController@getProfiles')->name('profiles');
+    Route::post('profiles', 'CredentialController@storeProfiles')->name('profiles');
 });
 
 

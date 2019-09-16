@@ -9,6 +9,8 @@ use App\Models\Template;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
+use Session;
+use Route;
 
 class CredentialController extends Controller
 {
@@ -96,11 +98,74 @@ class CredentialController extends Controller
 
         auth()->user()->credential()->update(request(['summary']));
 
-        return redirect()->route('finalize');
+        return redirect()->route('add-section');
     }
 
-    //Gets finalize page
-    public function finalize() {
-        return view('credentials.finalize');
+    //Gets add section page
+    public function getAddSection() {
+        return view('credentials.add-section');
     }
+
+    public function postAddSection(Request $request)
+    {
+        Session::put('add-sections', $request->all());
+        return redirect()->route(Session::get('add-sections')['section'][0]);
+    }
+
+    public function getCertifications()
+    {
+        return view('credentials.certifications');
+    }
+
+    public function storeCertifications(Request $request)
+    {
+        return $this->getRoute();
+    }
+
+    public function getAccomplishments()
+    {
+        return view('credentials.accomplishments');
+    }
+
+    public function storeAccomplishments(Request $request)
+    {
+        return $this->getRoute();
+    }
+
+    public function getAdditionalInfo()
+    {
+        return view('credentials.additional-info');
+    }
+
+    public function storeAdditionalInfo(Request $request)
+    {
+        return $this->getRoute();
+    }
+
+    public function getProfiles()
+    {
+        return view('credentials.profiles');
+    }
+
+    public function storeProfiles(Request $request)
+    {
+        return $this->getRoute();
+    }
+
+    //Gets route name to redirect to after storing a section
+    public function getRoute()
+    {
+        $currentRoute = Route::currentRouteName();
+        $section = Session::get('add-sections')['section'];
+
+        if(array_search($currentRoute, $section) + 1 == count($section)) {
+            $route = 'add-section';
+        } else {
+            $route = $section[array_search($currentRoute, $section) + 1];
+        }
+
+        return redirect()->route($route);
+    }
+
+
 }
