@@ -69,8 +69,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('additional-information', 'CredentialController@storeAdditionalInfo')->name('additional-info');
     Route::get('profiles', 'CredentialController@getProfiles')->name('profiles');
     Route::post('profiles', 'CredentialController@storeProfiles')->name('profiles');
+    Route::get('resume/review', 'CredentialController@getResumeReview')->name('resume-review');
 });
 
+Route::get('/test', function() {
+   return \Session::all();
+});
 
 
 //Route::get('/home', 'HomeController@index')->name('home');

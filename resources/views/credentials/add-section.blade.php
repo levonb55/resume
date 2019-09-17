@@ -78,28 +78,28 @@
 
                         <div class="check">
                             <label for="accomplishments" class="containera">Accomplishments
-                                <input type="checkbox" id="accomplishments" value="accomplishments" name="section[]">
+                                <input type="checkbox" id="accomplishments" value="accomplishments" name="sections[]">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
 
                         <div class="check">
                             <label for="profiles" class="containera">Websites, portfolios, profiles
-                                <input type="checkbox" id="profiles" value="profiles" name="section[]">
+                                <input type="checkbox" id="profiles" value="profiles" name="sections[]">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
 
                         <div class="check">
                             <label for="additional-info" class="containera">Additional Information
-                                <input type="checkbox" id="additional-info" value="additional-info" name="section[]">
+                                <input type="checkbox" id="additional-info" value="additional-info" name="sections[]">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
 
                         <div class="check">
                             <label for="certifications" class="containera">Certifications
-                                <input type="checkbox" id="certifications" value="certifications" name="section[]">
+                                <input type="checkbox" id="certifications" value="certifications" name="sections[]">
                                 <span class="checkmark"></span>
                             </label>
                         </div>

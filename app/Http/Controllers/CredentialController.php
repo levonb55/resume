@@ -16,6 +16,7 @@ class CredentialController extends Controller
 {
 
     const TEMPLATE = 1;
+    const RESUME_REVIEW = 'resume-review';
 
     //Gets templates page
     public function getTemplates() {
@@ -108,58 +109,69 @@ class CredentialController extends Controller
 
     public function postAddSection(Request $request)
     {
-        Session::put('add-sections', $request->all());
-        return redirect()->route(Session::get('add-sections')['section'][0]);
-    }
+        if ($request->has('sections')) {
+            $section = $request->input('sections');
+            array_unshift($section, 'add-section');
+            Session::put('add-sections', $section);
 
-    public function getCertifications()
-    {
-        return view('credentials.certifications');
-    }
+            return redirect()->route(Session::get('add-sections')[1]);
+        }
 
-    public function storeCertifications(Request $request)
-    {
-        return $this->getRoute();
+        return redirect()->route(self::RESUME_REVIEW);
     }
 
     public function getAccomplishments()
     {
-        return view('credentials.accomplishments');
+        $previousSection = $this->getPreviousSection();
+        return view('credentials.accomplishments', compact('previousSection'));
     }
 
     public function storeAccomplishments(Request $request)
     {
-        return $this->getRoute();
-    }
-
-    public function getAdditionalInfo()
-    {
-        return view('credentials.additional-info');
-    }
-
-    public function storeAdditionalInfo(Request $request)
-    {
-        return $this->getRoute();
+        return $this->redirectForward();
     }
 
     public function getProfiles()
     {
-        return view('credentials.profiles');
+        $previousSection = $this->getPreviousSection();
+        return view('credentials.profiles', compact('previousSection'));
     }
 
     public function storeProfiles(Request $request)
     {
-        return $this->getRoute();
+        return $this->redirectForward();
     }
 
-    //Gets route name to redirect to after storing a section
-    public function getRoute()
+    public function getAdditionalInfo()
+    {
+        $previousSection = $this->getPreviousSection();
+        return view('credentials.additional-info', compact('previousSection'));
+    }
+
+    public function storeAdditionalInfo(Request $request)
+    {
+        return $this->redirectForward();
+    }
+
+    public function getCertifications()
+    {
+        $previousSection = $this->getPreviousSection();
+        return view('credentials.certifications', compact('previousSection'));
+    }
+
+    public function storeCertifications(Request $request)
+    {
+        return $this->redirectForward();
+    }
+
+    //Redirects after storing a section
+    public function redirectForward()
     {
         $currentRoute = Route::currentRouteName();
-        $section = Session::get('add-sections')['section'];
+        $section = Session::get('add-sections');
 
         if(array_search($currentRoute, $section) + 1 == count($section)) {
-            $route = 'add-section';
+            $route = self::RESUME_REVIEW;
         } else {
             $route = $section[array_search($currentRoute, $section) + 1];
         }
@@ -167,5 +179,17 @@ class CredentialController extends Controller
         return redirect()->route($route);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getResumeReview()
+    {
+        return view('credentials.resume-review');
+    }
+
+    public function getPreviousSection()
+    {
+        return \Session::get('add-sections')[array_search(Route::currentRouteName(), \Session::get('add-sections')) - 1];
+    }
 
 }

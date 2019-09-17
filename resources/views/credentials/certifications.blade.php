@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="back_continue experience_page">
-                    <a href="{{ route('add-section') }}" class="back_left">
+                    <a href="{{ route($previousSection) }}" class="back_left">
                         <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
                     </a>
                     <button type="submit" class="btn continue_right text-white">
