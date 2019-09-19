@@ -12,6 +12,6 @@ class ExtraCredential extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'title', 'content', 'extra'
+        'user_id', 'title', 'slug', 'content', 'extra'
     ];
 }

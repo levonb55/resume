@@ -3,19 +3,19 @@
 @section('title', 'Additional Information')
 
 @section('extra-styles')
-    <link rel="stylesheet" href="css/Lcss.css">
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="{{ asset('css/Lcss.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 @endsection
 
 @section('content')
     <main>
         <section class="dashboard_content">
-            <form action="{{ route('additional-info') }}" method="POST">
+            <form action="{{ route('custom-section.add') }}" method="POST">
                 @csrf
                 <div>
                     <div class="the_company websites">
                         <div class="second_block">
-                            <h2>Additional Information</h2>
+                            <h2>{{ $custom->title }}</h2>
                         </div>
 
                         <div id="editor-container">
@@ -40,5 +40,5 @@
 
 @section('extra-scripts')
     <script src="{{ asset('assets/libs/ckeditor/ckeditor.js') }}"></script>
-    <script src="{{asset('js/editor-config.js')}}"></script>
+    <script src="{{ asset('js/editor-config.js') }}"></script>
 @endsection

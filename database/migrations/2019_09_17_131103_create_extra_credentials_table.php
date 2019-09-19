@@ -17,6 +17,7 @@ class CreateExtraCredentialsTable extends Migration
             $table->increments('id');
             $table->unsignedBigInteger('user_id');
             $table->string('title');
+            $table->string('slug');
             $table->text('content')->nullable();
             $table->boolean('extra');
             $table->timestamps();

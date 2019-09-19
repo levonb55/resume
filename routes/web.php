@@ -11,13 +11,6 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-//Route::get('/', function () {
-//    return view('pages.index');
-//});
-
 //Public routes
 Route::get('/', 'PageController@home')->name('home');
 Route::get('cover-letter', 'PageController@coverLetter')->name('cover-letter');
@@ -59,20 +52,22 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('skills', 'CredentialController@storeSkills')->name('skills.store');
     Route::get('summary', 'CredentialController@getSummary')->name('summary');
     Route::post('summary', 'CredentialController@storeSummary')->name('summary.store');
-    Route::get('add-section', 'CredentialController@getAddSection')->name('add-section');
-    Route::post('add-section', 'CredentialController@postAddSection')->name('add-section.post');
-    Route::get('certifications', 'CredentialController@getCertifications')->name('certifications');
-    Route::post('certifications', 'CredentialController@storeCertifications')->name('certifications');
-    Route::get('accomplishments', 'CredentialController@getAccomplishments')->name('accomplishments');
-    Route::post('accomplishments', 'CredentialController@storeAccomplishments')->name('accomplishments');
-    Route::get('additional-information', 'CredentialController@getAdditionalInfo')->name('additional-info');
-    Route::post('additional-information', 'CredentialController@storeAdditionalInfo')->name('additional-info');
-    Route::get('profiles', 'CredentialController@getProfiles')->name('profiles');
-    Route::post('profiles', 'CredentialController@storeProfiles')->name('profiles');
+    Route::get('add-section', 'ExtraCredentialController@getAddSection')->name('add-section');
+    Route::post('add-section', 'ExtraCredentialController@postAddSection')->name('add-section.post');
+    Route::get('certifications', 'ExtraCredentialController@getCertifications')->name('certifications');
+    Route::post('certifications', 'ExtraCredentialController@storeCertifications')->name('certifications');
+    Route::get('accomplishments', 'ExtraCredentialController@getAccomplishments')->name('accomplishments');
+    Route::post('accomplishments', 'ExtraCredentialController@storeAccomplishments')->name('accomplishments');
+    Route::get('additional-information', 'ExtraCredentialController@getAdditionalInfo')->name('additional-information');
+    Route::post('additional-information', 'ExtraCredentialController@storeAdditionalInfo')->name('additional-information');
+    Route::get('profiles', 'ExtraCredentialController@getProfiles')->name('profiles');
+    Route::post('profiles', 'ExtraCredentialController@storeProfiles')->name('profiles');
     Route::get('resume/review', 'CredentialController@getResumeReview')->name('resume-review');
+    Route::get('custom-section/{custom}', 'ExtraCredentialController@showCustomSection')->name('custom-section.show');
     Route::post('custom-section', 'ExtraCredentialController@addCustomSection')->name('custom-section.add');
-    Route::delete('custom-section/{custom}', 'ExtraCredentialController@destroy')->name('custom-section.destroy');
+    Route::delete('custom-section/{custom}', 'ExtraCredentialController@destroyCustomSection')->name('custom-section.destroy');
 });
+
 
 Route::get('/test', function() {
    return \Session::all();

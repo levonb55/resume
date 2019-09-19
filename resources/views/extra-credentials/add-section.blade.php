@@ -91,8 +91,8 @@
                             </div>
 
                             <div class="check">
-                                <label for="additional-info" class="containera">Additional Information
-                                    <input type="checkbox" id="additional-info" value="additional-info" name="sections[]">
+                                <label for="additional-information" class="containera">Additional Information
+                                    <input type="checkbox" id="additional-information" value="additional-information" name="sections[]">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
@@ -107,7 +107,7 @@
                             @foreach($extraCredentials as $credential)
                                 <div class="check">
                                     <label for="{{ $credential->title }}" class="containera">{{ $credential->title }}
-                                        <input type="checkbox" id="{{ $credential->title }}" value="{{ $credential->title }}" name="sections[]">
+                                        <input type="checkbox" id="{{ $credential->title }}" value="custom-section/{{ Str::slug($credential->title) }}" name="sections[]">
                                         <span class="checkmark"></span>
                                     </label>
                                     <span class="remove-section" data-section="{{ $credential->id }}"><i class="fas fa-times"></i></span>
