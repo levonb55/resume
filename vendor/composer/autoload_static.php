@@ -436,6 +436,7 @@ class ComposerStaticInit0b7728406d069b41eff85aaad1b02a1d
         'App\\Models\\Credential' => __DIR__ . '/../..' . '/app/Models/Credential.php',
         'App\\Models\\Education' => __DIR__ . '/../..' . '/app/Models/Education.php',
         'App\\Models\\Experience' => __DIR__ . '/../..' . '/app/Models/Experience.php',
+        'App\\Models\\ExtraCredential' => __DIR__ . '/../..' . '/app/Models/ExtraCredential.php',
         'App\\Models\\Template' => __DIR__ . '/../..' . '/app/Models/Template.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

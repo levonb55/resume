@@ -60,4 +60,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Education');
     }
+
+    /**
+     * Get the extra credentials for the user.
+     */
+    public function extraCredentials()
+    {
+        return $this->hasMany('App\Models\ExtraCredential');
+    }
 }

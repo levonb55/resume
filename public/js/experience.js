@@ -180,8 +180,8 @@ $(document).on('keyup', '.prof-search', function() {
 
                 sessionStorage.setItem('job-' + inputVal, JSON.stringify(response));
             })
-            .catch(error => {
-                console.log(error);
+            .catch(() => {
+                console.log('An error happened!');
             });
     }
 
@@ -273,8 +273,8 @@ $(".reorder-experience").on("mousedown",function () {
                 url: appUrl + 'experience/reorder',
                 data: {order}
             })
-            .catch((error) => {
-                console.log(error);
+            .catch(() => {
+                console.log('An error happened!');
             });
         }
     });

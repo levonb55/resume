@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreResumeHeader;
 use App\Models\Credential;
 use App\Models\Experience;
+use App\Models\ExtraCredential;
 use App\Models\Template;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -103,8 +104,10 @@ class CredentialController extends Controller
     }
 
     //Gets add section page
-    public function getAddSection() {
-        return view('credentials.add-section');
+    public function getAddSection()
+    {
+        $extraCredentials = ExtraCredential::where('user_id', auth()->id())->get();
+        return view('credentials.add-section', compact('extraCredentials'));
     }
 
     public function postAddSection(Request $request)

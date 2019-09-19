@@ -24,8 +24,8 @@ $('.job-search').on('keyup', function () {
 
                 sessionStorage.setItem('job-' + inputVal, JSON.stringify(jobList));
             })
-            .catch(error => {
-                console.log(error);
+            .catch(() => {
+                console.log('An error happened!');
             });
     }
 });

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdditionalCredentialsTable extends Migration
+class CreateExtraCredentialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateAdditionalCredentialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('additional_credentials', function (Blueprint $table) {
+        Schema::create('extra_credentials', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('user_id');
             $table->string('title');
-            $table->text('content');
+            $table->text('content')->nullable();
+            $table->boolean('extra');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
@@ -31,6 +32,6 @@ class CreateAdditionalCredentialsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('additional_credentials');
+        Schema::dropIfExists('extra_credentials');
     }
 }

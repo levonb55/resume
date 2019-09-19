@@ -70,6 +70,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('profiles', 'CredentialController@getProfiles')->name('profiles');
     Route::post('profiles', 'CredentialController@storeProfiles')->name('profiles');
     Route::get('resume/review', 'CredentialController@getResumeReview')->name('resume-review');
+    Route::post('custom-section', 'ExtraCredentialController@addCustomSection')->name('custom-section.add');
+    Route::delete('custom-section/{custom}', 'ExtraCredentialController@destroy')->name('custom-section.destroy');
 });
 
 Route::get('/test', function() {

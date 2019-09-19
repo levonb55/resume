@@ -35,6 +35,7 @@ return array(
     'App\\Models\\Credential' => $baseDir . '/app/Models/Credential.php',
     'App\\Models\\Education' => $baseDir . '/app/Models/Education.php',
     'App\\Models\\Experience' => $baseDir . '/app/Models/Experience.php',
+    'App\\Models\\ExtraCredential' => $baseDir . '/app/Models/ExtraCredential.php',
     'App\\Models\\Template' => $baseDir . '/app/Models/Template.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

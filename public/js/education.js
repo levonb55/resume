@@ -170,8 +170,8 @@ $(".reorder-education").on("mousedown",function () {
                 url: appUrl + 'education/reorder',
                 data: {order}
             })
-            .catch((error) => {
-                console.log(error);
+            .catch(() => {
+                console.log('An error happened!');
             });
         }
     });
