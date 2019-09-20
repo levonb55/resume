@@ -3,8 +3,8 @@
 @section('title', 'Review Resume')
 
 @section('extra-styles')
-    <link rel="stylesheet" href="css/Lcss.css">
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="{{ asset('css/Lcss.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
             <div class="row red_row">
                 <div class="col-sm-12 col-lg-9 red_left_side">
                     <div class="red_red">
-                        <a href="#"><p>Resume name:<span> Resume 8</span></p><img src="img/pencil-edit-button.png" alt=""></a>
+                        <a href="#"><p>Resume name:<span> Resume 8</span></p><img src="{{ asset('assets/images/pencil-edit-button.png') }}" alt="Pencil"></a>
                     </div>
                     <div class="red_head">
                         <h2>Heading</h2>
@@ -27,13 +27,13 @@
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
                             <div class="red_tools ">
                                 <div class="tool1">
-                                    <img src="img/pencil-edit-button.png" alt="">
+                                    <img src="{{ asset('assets/images/pencil-edit-button.png') }}" alt="">
                                 </div>
                                 <div class="tool2">
-                                    <img src="img/move-option.png" alt="">
+                                    <img src="{{ asset('assets/images/move-option.png') }}" alt="">
                                 </div>
                                 <div class="tool3">
-                                    <img src="img/rubbish-bin-delete-button.png" alt="">
+                                    <img src="{{ asset('assets/images/rubbish-bin-delete-button.png') }}" alt="">
                                 </div>
                             </div>
                             <hr>
@@ -57,13 +57,13 @@
                             </div>
                             <div class="red_tools">
                                 <div class="tool1">
-                                    <img src="img/pencil-edit-button.png" alt="">
+                                    <img src="{{ asset('assets/images/pencil-edit-button.png') }}" alt="">
                                 </div>
                                 <div class="tool2">
-                                    <img src="img/move-option.png" alt="">
+                                    <img src="{{ asset('assets/images/move-option.png') }}" alt="">
                                 </div>
                                 <div class="tool3">
-                                    <img src="img/rubbish-bin-delete-button.png" alt="">
+                                    <img src="{{ asset('assets/images/rubbish-bin-delete-button.png') }}" alt="">
                                 </div>
                             </div>
                             <hr>
@@ -78,13 +78,13 @@
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
                             <div class="red_tools">
                                 <div class="tool1">
-                                    <img src="img/pencil-edit-button.png" alt="">
+                                    <img src="{{ asset('assets/images/pencil-edit-button.png') }}" alt="">
                                 </div>
                                 <div class="tool2">
-                                    <img src="img/move-option.png" alt="">
+                                    <img src="{{ asset('assets/images/move-option.png') }}" alt="">
                                 </div>
                                 <div class="tool3">
-                                    <img src="img/rubbish-bin-delete-button.png" alt="">
+                                    <img src="{{ asset('assets/images/rubbish-bin-delete-button.png') }}" alt="">
                                 </div>
                             </div>
                             <hr>
@@ -98,13 +98,13 @@
                             <p>N 80 School / New York</p>
                             <div class="red_tools">
                                 <div class="tool1">
-                                    <img src="img/pencil-edit-button.png" alt="">
+                                    <img src="{{ asset('assets/images/pencil-edit-button.png') }}" alt="">
                                 </div>
                                 <div class="tool2">
-                                    <img src="img/move-option.png" alt="">
+                                    <img src="{{ asset('assets/images/move-option.png') }}" alt="">
                                 </div>
                                 <div class="tool3">
-                                    <img src="img/rubbish-bin-delete-button.png" alt="">
+                                    <img src="{{ asset('assets/images/rubbish-bin-delete-button.png') }}" alt="">
                                 </div>
                             </div>
                             <hr>
@@ -124,13 +124,13 @@
                             </div>
                             <div class="red_tools">
                                 <div class="tool1">
-                                    <img src="img/pencil-edit-button.png" alt="">
+                                    <img src="{{ asset('assets/images/pencil-edit-button.png') }}" alt="">
                                 </div>
                                 <div class="tool2">
-                                    <img src="img/move-option.png" alt="">
+                                    <img src="{{ asset('assets/images/move-option.png') }}" alt="">
                                 </div>
                                 <div class="tool3">
-                                    <img src="img/rubbish-bin-delete-button.png" alt="">
+                                    <img src="{{ asset('assets/images/rubbish-bin-delete-button.png') }}" alt="">
                                 </div>
                             </div>
                         </li>
@@ -154,16 +154,16 @@
                             </div>
                             <ul class="submenu">
                                 <li>
-                                    <img src="img/small_02.jpg" alt="">
+                                    <img src="{{ asset('assets/images/small_02.jpg') }}" alt="">
                                 </li>
                                 <li>
-                                    <img src="img/small_03.jpg" alt="">
+                                    <img src="{{ asset('assets/images/small_03.jpg') }}" alt="">
                                 </li>
                                 <li>
-                                    <img src="img/small_6.jpg" alt="">
+                                    <img src="{{ asset('assets/images/small_6.jpg') }}" alt="">
                                 </li>
                                 <li>
-                                    <img src="img/small_02.jpg" alt="">
+                                    <img src="{{ asset('assets/images/small_02.jpg') }}" alt="">
                                 </li>
 
                             </ul>

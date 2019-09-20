@@ -19,7 +19,7 @@
                         </div>
 
                         <div id="editor-container">
-                          <textarea cols="80" rows="100" id="textarea-1"></textarea>
+                          <textarea cols="80" rows="100" id="textarea-1" name="additional-info">{{ $additionalInfo->content ?? '' }}</textarea>
                         </div>
                     </div>
                 </div>

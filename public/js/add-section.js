@@ -5,7 +5,7 @@ $('.add-custom-section').on('click', function (e) {
     $.ajax({
         method: 'POST',
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-        url: appUrl + '/custom-section',
+        url: appUrl + '/custom-section/add',
         data: {'section': data.val()}
     })
     .then(customSection => {

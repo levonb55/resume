@@ -3,8 +3,8 @@
 @section('title', 'Websites, portfolios, profiles')
 
 @section('extra-styles')
-    <link rel="stylesheet" href="css/Lcss.css">
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="{{ asset('css/Lcss.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 @endsection
 
 @section('content')

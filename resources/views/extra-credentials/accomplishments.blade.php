@@ -3,8 +3,8 @@
 @section('title', 'Accomplishments')
 
 @section('extra-styles')
-    <link rel="stylesheet" href="css/Lcss.css">
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="{{ asset('css/Lcss.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 @endsection
 
 @section('content')
@@ -52,7 +52,7 @@
                             </div>
                             <div class="box2">
                                 <div id="editor-container">
-                                    <textarea cols="80" rows="100" id="textarea-1"></textarea>
+                                    <textarea cols="80" rows="100" id="textarea-1" name="accomplishments">{{ $accomplishments->content ?? '' }}</textarea>
                                 </div>
                             </div>
                         </div>

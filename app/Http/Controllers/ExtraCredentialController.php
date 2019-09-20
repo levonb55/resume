@@ -13,13 +13,17 @@ class ExtraCredentialController extends Controller
 
     const EXTRA = 1;
     const NON_EXTRA = 0;
-    const RESUME_REVIEW = 'resume-review';
+    const RESUME_REVIEW = 'resume/review';
 
 
     //Gets add section page
     public function getAddSection()
     {
-        $extraCredentials = ExtraCredential::where('user_id', auth()->id())->get();
+        $extraCredentials = ExtraCredential::where([
+            ['user_id', auth()->id()],
+            ['extra', self::EXTRA]
+        ])->get();
+
         return view('extra-credentials.add-section', compact('extraCredentials'));
     }
 
@@ -36,14 +40,25 @@ class ExtraCredentialController extends Controller
         return redirect()->route(self::RESUME_REVIEW);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getAccomplishments()
     {
+        $accomplishments = $this->fetchSectionData('accomplishments');
         $previousSection = $this->getPreviousSection();
-        return view('extra-credentials.accomplishments', compact('previousSection'));
+
+        return view('extra-credentials.accomplishments', compact('previousSection', 'accomplishments'));
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function storeAccomplishments(Request $request)
     {
+        $this->storeSectionData($request->input('accomplishments'), 'accomplishments');
+
         return $this->redirectForward();
     }
 
@@ -60,23 +75,31 @@ class ExtraCredentialController extends Controller
 
     public function getAdditionalInfo()
     {
+        $additionalInfo = $this->fetchSectionData('additional-info');
         $previousSection = $this->getPreviousSection();
-        return view('extra-credentials.additional-info', compact('previousSection'));
+
+        return view('extra-credentials.additional-info', compact('previousSection', 'additionalInfo'));
     }
 
     public function storeAdditionalInfo(Request $request)
     {
+        $this->storeSectionData($request->input('additional-info'), 'additional-info');
+
         return $this->redirectForward();
     }
 
     public function getCertifications()
     {
+        $certifications = $this->fetchSectionData('certifications');
         $previousSection = $this->getPreviousSection();
-        return view('extra-credentials.certifications', compact('previousSection'));
+
+        return view('extra-credentials.certifications', compact('previousSection', 'certifications'));
     }
 
     public function storeCertifications(Request $request)
     {
+        $this->storeSectionData($request->input('certifications'), 'certifications');
+
         return $this->redirectForward();
     }
 
@@ -105,7 +128,7 @@ class ExtraCredentialController extends Controller
         $previousSection = Session::get('add-sections')[array_search('custom-section/'.$custom, Session::get('add-sections')) - 1];
         $custom = ExtraCredential::where([
             ['user_id', auth()->id()],
-            ['slug', $custom],
+            ['slug', $custom]
         ])->first();
 
         return view('extra-credentials.custom-section', compact('custom', 'previousSection'));
@@ -116,7 +139,7 @@ class ExtraCredentialController extends Controller
         $section = auth()->user()->extraCredentials()->create([
             'title' => $request->section,
             'slug' => \Str::slug($request->section),
-            'extra' => self::NON_EXTRA
+            'extra' => self::EXTRA
         ]);
 
         return response()->json(['id' => $section->id, 'title' =>  $section->title]);
@@ -126,6 +149,23 @@ class ExtraCredentialController extends Controller
     {
         $custom->delete();
         return response()->json('Success');
+    }
+
+    public function fetchSectionData($section)
+    {
+        return ExtraCredential::where([
+            ['user_id', auth()->id()],
+            ['slug', $section]
+        ])->first();
+    }
+
+    public function storeSectionData($request, $section)
+    {
+        auth()->user()->extraCredentials()->updateOrCreate(['slug' => $section],[
+            'title' => $section,
+            'slug' => $section,
+            'content' => $request
+        ]);
     }
 
 }
