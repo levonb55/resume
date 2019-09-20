@@ -103,26 +103,6 @@ class ExtraCredentialController extends Controller
         return $this->redirectForward();
     }
 
-    //Redirects after storing a section
-    public function redirectForward()
-    {
-        $currentRoute = \Route::getFacadeRoot()->current()->uri();
-        $section = Session::get('add-sections');
-
-        if(array_search($currentRoute, $section) + 1 == count($section)) {
-            $route = self::RESUME_REVIEW;
-        } else {
-            $route = $section[array_search($currentRoute, $section) + 1];
-        }
-
-        return redirect($route);
-    }
-
-    public function getPreviousSection()
-    {
-        return Session::get('add-sections')[array_search(Route::getFacadeRoot()->current()->uri(), Session::get('add-sections')) - 1];
-    }
-
     public function showCustomSection($custom)
     {
         $previousSection = Session::get('add-sections')[array_search('custom-section/'.$custom, Session::get('add-sections')) - 1];
@@ -132,6 +112,13 @@ class ExtraCredentialController extends Controller
         ])->first();
 
         return view('extra-credentials.custom-section', compact('custom', 'previousSection'));
+    }
+
+    public function storeCustomSection(Request $request)
+    {
+        $this->storeSectionData($request->input('custom-section'), $request->input('slug'), $request->input('title'));
+
+        return $this->redirectForward($request->input('slug'));
     }
 
     public function addCustomSection(Request $request)
@@ -159,13 +146,39 @@ class ExtraCredentialController extends Controller
         ])->first();
     }
 
-    public function storeSectionData($request, $section)
+    public function storeSectionData($request, $slug, $title = null)
     {
-        auth()->user()->extraCredentials()->updateOrCreate(['slug' => $section],[
-            'title' => $section,
-            'slug' => $section,
+        auth()->user()->extraCredentials()->updateOrCreate(['slug' => $slug],[
+            'title' => $title,
+            'slug' => $slug,
             'content' => $request
         ]);
+    }
+
+    //Redirects forward after storing a section
+    public function redirectForward($slug = null)
+    {
+        if($slug) {
+            $currentRoute = \Route::getFacadeRoot()->current()->uri().'/'.$slug;
+        } else {
+            $currentRoute = \Route::getFacadeRoot()->current()->uri();
+        }
+
+        $section = Session::get('add-sections');
+
+        if(array_search($currentRoute, $section) + 1 == count($section)) {
+            $route = self::RESUME_REVIEW;
+        } else {
+            $route = $section[array_search($currentRoute, $section) + 1];
+        }
+
+        return redirect($route);
+    }
+
+    //Redirects back by the sections
+    public function getPreviousSection()
+    {
+        return Session::get('add-sections')[array_search(Route::getFacadeRoot()->current()->uri(), Session::get('add-sections')) - 1];
     }
 
 }

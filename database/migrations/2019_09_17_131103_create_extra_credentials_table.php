@@ -16,8 +16,8 @@ class CreateExtraCredentialsTable extends Migration
         Schema::create('extra_credentials', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('user_id');
-            $table->string('title');
-            $table->string('slug')->index();
+            $table->string('title')->nullable();
+            $table->string('slug');
             $table->text('content')->nullable();
             $table->boolean('extra')->default(0);
             $table->timestamps();
