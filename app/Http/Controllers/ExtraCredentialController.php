@@ -64,12 +64,16 @@ class ExtraCredentialController extends Controller
 
     public function getProfiles()
     {
+        $profiles = unserialize($this->fetchSectionData('profiles')->content);
         $previousSection = $this->getPreviousSection();
-        return view('extra-credentials.profiles', compact('previousSection'));
+
+        return view('extra-credentials.profiles', compact('previousSection', 'profiles'));
     }
 
     public function storeProfiles(Request $request)
     {
+        $this->storeSectionData(serialize($request->input('profiles')), 'profiles');
+
         return $this->redirectForward();
     }
 
