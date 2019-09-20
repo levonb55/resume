@@ -37,7 +37,7 @@ class ExtraCredentialController extends Controller
             return redirect(Session::get('add-sections')[1]);
         }
 
-        return redirect()->route(self::RESUME_REVIEW);
+        return redirect(self::RESUME_REVIEW);
     }
 
     /**

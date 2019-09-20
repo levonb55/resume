@@ -5,6 +5,7 @@
 @section('extra-styles')
     <link rel="stylesheet" href="{{ asset('css/Lcss.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/libs/css/jquery-ui.min.css') }}">
 @endsection
 
 @section('content')
@@ -21,7 +22,7 @@
                         <div class="search_job">
                             <div class="box1">
                                 <div class="job">
-                                    <input type="search" placeholder="Search by job title, industry or kayword">
+                                    <input type="search" placeholder="Search by job title, industry or keyword" class="job-search">
                                     <span class="fas fa-search"></span>
                                 </div>
                                 <div class="add_text">
@@ -75,6 +76,8 @@
 @endsection
 
 @section('extra-scripts')
+    <script src="{{ asset('assets/libs/js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('assets/libs/ckeditor/ckeditor.js') }}"></script>
     <script src="{{asset('js/editor-config.js')}}"></script>
+    <script src="{{asset('js/certifications.js')}}"></script>
 @endsection
