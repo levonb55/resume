@@ -66,7 +66,7 @@
             </div>
 
             @if($educationCount <= 0)
-                <h4 class="containera ml-2">
+                <h4 class="">
                     <a href="{{ route('education.index') }}">I Don't Have Formal Education</a>
                 </h4>
             @endif

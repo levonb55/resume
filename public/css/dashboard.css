@@ -135,11 +135,16 @@
 }
 
 .back_continue a {
-    width: 186px;
+    max-width: 186px;
     height: 38px;
     padding-top: 6px;
     text-align: center;
     text-decoration: none;
+    width: 40%;
+}
+.back_continue button{
+    max-width: 186px;
+    width: 40%;
 }
 
 .back_left {
@@ -435,7 +440,7 @@
     height: auto;
     max-height: 600px;
     max-width: unset;
-    width: 50%;
+    width: 40%;
 }
 .cv-scroll{
     max-height: 500px;
@@ -521,13 +526,15 @@ input[type="date"], focus {
 .data_input {
     width: 46%;
 }
+.cke_chrome{
+    border: 0 !important;
+}
 /* The container */
 .container {
     display: block;
     position: relative;
     padding-left: 25px;
     margin: 0;
-    cursor: pointer;
     font-size: 12px;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -603,7 +610,7 @@ input[type="date"], focus {
 .the_company {
     width: 90%;
     margin: 90px auto;
-
+    justify-content: space-between;
 }
 .flex{
     display: flex;
@@ -713,7 +720,7 @@ input[type="date"], focus {
 }
 .add_text {
     max-height: 294px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 .hidden{
     display: none;
@@ -1264,6 +1271,9 @@ button.btn.btn_tool {
 
 
 /*range*/
+.range-slider{
+    width: 100%;
+}
 .range-slider .input-range {
     -webkit-appearance: none;
     width: 100%;
@@ -1314,7 +1324,7 @@ button.btn.btn_tool {
 .range-slider label{
     text-align: center;
     display: flex;
-    animation: c;
+    align-items: center;
     justify-content: center;
 }
 
@@ -1372,6 +1382,16 @@ button.btn.btn_tool {
     width: 90%;
     margin: 0 auto;
 
+}
+.das_check .check{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 45px;
+}
+.das_check .remove-section{
+    margin-left: 30px;
+    cursor: pointer;
 }
 .check {
     margin-bottom: 45px;
@@ -1628,4 +1648,13 @@ button.btn.btn_tool {
 
 .text_button button{
     cursor: pointer;
+}
+
+#education-form > h4{
+    width: 90%;
+    margin:20px  auto;
+}
+#experience-form > h4{
+    width: 90%;
+    margin:20px  auto;
 }

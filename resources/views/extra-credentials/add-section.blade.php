@@ -62,7 +62,8 @@
                 </div>
             </div>
             <div class="the_company flex">
-                <form action="{{ route('add-section.post') }}" method="POST">
+                <div class="w-50">
+                    <form action="{{ route('add-section.post') }}" method="POST">
                     @csrf
                     <div class="header_inputs jstfy">
                         <div>
@@ -110,7 +111,7 @@
                                         <input type="checkbox" id="{{ $credential->title }}" value="custom-section/{{ Str::slug($credential->title) }}" name="sections[]">
                                         <span class="checkmark"></span>
                                     </label>
-                                    <span class="remove-section" data-section="{{ $credential->id }}"><i class="fas fa-times"></i></span>
+                                    <span class="remove-section" data-section="{{ $credential->id }}"><i class="fas fa-times" title="Remove"></i></span>
                                 </div>
                             @endforeach
 
@@ -129,6 +130,7 @@
 
                     </div>
                 </form>
+                </div>
                 <div class="cv_template example1">
 
                     @includeIf('components.resumes.template' . auth()->user()->credential->template_id)

@@ -761,7 +761,6 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 0 auto;
 }
 .example1 hr {
     border-top: dotted 2px #000000 !important;

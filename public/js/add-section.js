@@ -15,7 +15,7 @@ $('.add-custom-section').on('click', function (e) {
                     <input type="checkbox" id="${customSection.title}" value="custom-section/${slugify(customSection.title)}" name="sections[]">
                     <span class="checkmark"></span>
                 </label>
-                <span class="remove-section" data-section="${customSection.id}"><i class="fas fa-times"></i></span>
+                <span class="remove-section" data-section="${customSection.id}"><i class="fas fa-times" title="Remove"></i></span>
             </div>
         `;
 

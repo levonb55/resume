@@ -164,10 +164,8 @@
 }
 #accordion li{
     list-style: none;
-    display: flex;
     flex-direction: row;
     align-items: center;
-    width: 70%;
 }
 #accordion a{
     display: flex;
@@ -415,6 +413,7 @@ footer .container{
     align-items: center;
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
 }
 .footer_main{
     margin-bottom: 30px;
@@ -467,6 +466,11 @@ footer .container{
     min-height: 100px;
     color: #fff;
 }
+
+.resume_bg .nav_container {
+    margin: 0 auto;
+}
+
 .Resume_section1 button{
     background: #18358a;
     color: #fff;
