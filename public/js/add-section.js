@@ -1,14 +1,9 @@
-//Adds custom section
+//Adds custom section on add-section page
 $('.add-custom-section').on('click', function (e) {
     e.preventDefault();
     let data = $(this).siblings('input');
-    $.ajax({
-        method: 'POST',
-        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-        url: appUrl + '/custom-section/add',
-        data: {'section': data.val()}
-    })
-    .then(customSection => {
+
+    let customSectionComponent = (customSection) => {
         let section = `
             <div class="check">
                 <label for="${customSection.title}" class="containera">${customSection.title}
@@ -21,27 +16,78 @@ $('.add-custom-section').on('click', function (e) {
 
         $('.das_check').append(section);
         data.val('');
+    };
+
+    addCustomSection(data.val(), customSectionComponent);
+});
+
+//Adds custom section on resume review page
+$('.resume-review-section').on('click', function (e) {
+    e.preventDefault();
+    let data = $(this).siblings('input');
+
+    let customSectionComponent = (customSection) => {
+        let section = `
+            <li>
+                <a href="${appUrl}/custom-section/${slugify(customSection.title)}">${customSection.title}</a>
+                <span class="resume-review-section-remove" data-section="${customSection.id}"><i class="fas fa-times" title="Remove"></i></span>            
+            </li>
+        `;
+
+        $('.credentials-list').append(section);
+        data.val('');
+    };
+
+    addCustomSection(data.val(), customSectionComponent);
+});
+
+
+//Removes custom section on add-section page
+$(document).on('click', '.remove-section', function () {
+    let self = $(this);
+    removeCustomSection($(this).data('section'), function () {
+        self.parents('.check').remove();
+    });
+});
+
+//Removes custom section on add-section page
+$(document).on('click', '.resume-review-section-remove', function () {
+    let self = $(this);
+    removeCustomSection($(this).data('section'), function () {
+        self.parents('li').remove();
+    });
+});
+
+function addCustomSection(val, component) {
+    if(!val) {return;}
+
+    $.ajax({
+        method: 'POST',
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        url: appUrl + '/custom-section/add',
+        data: {'section': val}
+    })
+    .then(customSection => {
+        component(customSection);
     })
     .catch(() => {
         console.log('An error happened!');
     });
-});
+}
 
-//Removes custom section
-$(document).on('click', '.remove-section', function () {
+function removeCustomSection(sectionId, section) {
     $.ajax({
         method: 'DELETE',
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-        url: appUrl + '/custom-section/' + $(this).data('section')
+        url: appUrl + '/custom-section/' + sectionId
     })
     .then(() => {
-        $(this).parents('.check').remove();
+        section();
     })
     .catch(() => {
         console.log('An error happened!');
     });
-});
-
+}
 
 function slugify(string) {
     const a = 'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;'

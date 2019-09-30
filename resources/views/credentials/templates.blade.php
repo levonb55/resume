@@ -21,7 +21,7 @@
 									@else
 										class="imgClickHandle"
 									@endif
-									src="{{asset('assets/images/resume.jpg')}}"
+									src="{{asset('assets/images/templates/template-' . $template->id . '.png')}}" alt="Resume"
 								>
 								<input type="radio" name="template" class="d-none" value="{{ $template->id }}">
 							</label>

@@ -156,18 +156,23 @@
                                 </div>
                             </div>
                             <ul class="submenu">
-                                <li>
-                                    <img src="{{ asset('assets/images/small_02.jpg') }}" alt="">
-                                </li>
-                                <li>
-                                    <img src="{{ asset('assets/images/small_03.jpg') }}" alt="">
-                                </li>
-                                <li>
-                                    <img src="{{ asset('assets/images/small_6.jpg') }}" alt="">
-                                </li>
-                                <li>
-                                    <img src="{{ asset('assets/images/small_02.jpg') }}" alt="">
-                                </li>
+                                @foreach($templates as $template)
+                                    <li>
+                                        <img src="{{ asset('assets/images/templates/template-' . $template->id . '.png') }}" alt="Resume">
+                                    </li>
+                                @endforeach
+{{--                                <li>--}}
+{{--                                    <img src="{{ asset('assets/images/small_02.jpg') }}" alt="">--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <img src="{{ asset('assets/images/small_03.jpg') }}" alt="">--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <img src="{{ asset('assets/images/small_6.jpg') }}" alt="">--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <img src="{{ asset('assets/images/small_02.jpg') }}" alt="">--}}
+{{--                                </li>--}}
 
                             </ul>
                         </li>
@@ -272,7 +277,7 @@
                         <div class="red_tools2_tool">
                             <h5>Resume Sections</h5>
 
-                            <ul>
+                            <ul class="credentials-list">
                                 <li>
                                     <a href="{{ route('header') }}">Header</a>
                                 </li>
@@ -304,15 +309,17 @@
                                 @foreach($extraCredentials as $credential)
                                     <li>
                                         <a href="{{ route('custom-section.show', $credential->slug) }}">{{ $credential->title }}</a>
-                                        <span class="remove-section"><i class="fas fa-times" title="Remove"></i></span>
+                                        <span class="resume-review-section-remove" data-section="{{ $credential->id }}"><i class="fas fa-times" title="Remove"></i></span>
                                     </li>
                                 @endforeach
 
                             </ul>
                             <button class="btn btn_tool" id="add_sec"><i class="fas fa-plus"></i>Add a section</button>
                             <div class="das_inp d-none">
-                                <input type="text" placeholder="Add a Custom section">
-                                <button class="btn btn-blue add-custom-section">Add</button>
+                                <form>
+                                    <input type="text" placeholder="Add a Custom section">
+                                    <button class="btn btn-blue resume-review-section">Add</button>
+                                </form>
                             </div>
 
                         </div>
@@ -325,4 +332,8 @@
         </section>
 
     </main>
+@endsection
+
+@section('extra-scripts')
+    <script src="{{asset('js/add-section.js')}}"></script>
 @endsection

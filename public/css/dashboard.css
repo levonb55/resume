@@ -1413,10 +1413,12 @@ button.btn.btn_tool {
     align-items: center;
     margin-bottom: 45px;
 }
-.remove-section{
+.remove-section,
+.resume-review-section-remove {
     margin-left: 30px;
     cursor: pointer;
 }
+
 .check {
     margin-bottom: 45px;
 }
