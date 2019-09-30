@@ -131,9 +131,15 @@
                         </div>
                     </div>
                     <div class="back_continue back_continue1">
-                        <a href="{{ route('create-resume') }}" class="back_left">
-                            <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
-                        </a>
+                        @if(auth()->user()->credential->resume_complete)
+                            <a href="{{ route('resume-review') }}" class="back_left">
+                                <p> Cancel</p>
+                            </a>
+                        @else
+                            <a href="{{ route('create-resume') }}" class="back_left">
+                                <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
+                            </a>
+                        @endif
 {{--                        @if($experienceCount < 1)--}}
 {{--                            <button type="submit" class="btn continue_right text-white">--}}
 {{--                                Continue <span class="fas fa-long-arrow-alt-right"></span>--}}
@@ -151,7 +157,7 @@
 
                 </form>
             </div>
-            <div class=" cv_template example1">
+            <div class="example_parent">
 
                 @if($credential)
 

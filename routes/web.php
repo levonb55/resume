@@ -24,11 +24,11 @@ Route::get('logout', 'Auth\LoginController@logout');
 
 //Private routes
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('choose-template', 'CredentialController@getTemplates')->name('templates');
+    Route::get('choose-template', 'CredentialController@getTemplates')->name('templates')->middleware('resume-review');
     Route::post('choose-template', 'CredentialController@chooseTemplate')->name('choose-template');
     Route::get('create-resume', 'CredentialController@createResume')->name('create-resume');
     Route::get('header', 'CredentialController@header')->name('header');
-    Route::post('header', 'CredentialController@storeHeader')->name('header.store');
+    Route::post('header', 'CredentialController@storeHeader')->name('header.store')->middleware('resume-review');
 
     //Owner routes
     Route::group(['middleware' => ['owner']], function () {
@@ -49,24 +49,24 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('education/create', 'EducationController@create')->name('education.create');
     Route::post('education/reorder', 'EducationController@reorderEducation')->name('education.reorder');
     Route::get('skills', 'CredentialController@getSkills')->name('skills');
-    Route::post('skills', 'CredentialController@storeSkills')->name('skills.store');
+    Route::post('skills', 'CredentialController@storeSkills')->name('skills.store')->middleware('resume-review');
     Route::get('summary', 'CredentialController@getSummary')->name('summary');
-    Route::post('summary', 'CredentialController@storeSummary')->name('summary.store');
-    Route::get('add-section', 'ExtraCredentialController@getAddSection')->name('add-section');
+    Route::post('summary', 'CredentialController@storeSummary')->name('summary.store')->middleware('resume-review');
+    Route::get('add-section', 'ExtraCredentialController@getAddSection')->name('add-section')->middleware('resume-review');
     Route::post('add-section', 'ExtraCredentialController@postAddSection')->name('add-section.post');
-    Route::get('certifications', 'ExtraCredentialController@getCertifications')->name('certifications');
-    Route::post('certifications', 'ExtraCredentialController@storeCertifications')->name('certifications');
     Route::get('accomplishments', 'ExtraCredentialController@getAccomplishments')->name('accomplishments');
-    Route::post('accomplishments', 'ExtraCredentialController@storeAccomplishments')->name('accomplishments');
-    Route::get('additional-information', 'ExtraCredentialController@getAdditionalInfo')->name('additional-information');
-    Route::post('additional-information', 'ExtraCredentialController@storeAdditionalInfo')->name('additional-information');
+    Route::post('accomplishments', 'ExtraCredentialController@storeAccomplishments')->name('accomplishments')->middleware('resume-review');
     Route::get('profiles', 'ExtraCredentialController@getProfiles')->name('profiles');
-    Route::post('profiles', 'ExtraCredentialController@storeProfiles')->name('profiles');
-    Route::get('resume/review', 'CredentialController@getResumeReview')->name('resume-review');
+    Route::post('profiles', 'ExtraCredentialController@storeProfiles')->name('profiles')->middleware('resume-review');
+    Route::get('additional-information', 'ExtraCredentialController@getAdditionalInfo')->name('additional-information');
+    Route::post('additional-information', 'ExtraCredentialController@storeAdditionalInfo')->name('additional-information')->middleware('resume-review');
+    Route::get('certifications', 'ExtraCredentialController@getCertifications')->name('certifications');
+    Route::post('certifications', 'ExtraCredentialController@storeCertifications')->name('certifications')->middleware('resume-review');
     Route::get('custom-section/{custom}', 'ExtraCredentialController@showCustomSection')->name('custom-section.show');
-    Route::post('custom-section', 'ExtraCredentialController@storeCustomSection')->name('custom-section.store');
+    Route::post('custom-section', 'ExtraCredentialController@storeCustomSection')->name('custom-section.store')->middleware('resume-review');
     Route::post('custom-section/add', 'ExtraCredentialController@addCustomSection')->name('custom-section.add');
     Route::delete('custom-section/{custom}', 'ExtraCredentialController@destroyCustomSection')->name('custom-section.destroy');
+    Route::get('resume/review', 'CredentialController@getResumeReview')->name('resume-review');
 });
 
 

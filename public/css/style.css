@@ -457,7 +457,22 @@ footer .container{
         position: absolute;
     }
 }
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 850px !important;
+    }
+}
 /*Resume css*/
+#sortable{
+    padding: 0 !important;
+}
+
+.experience-list,
+.education-list {
+    width: 90%;
+    margin: 0 auto;
+}
+
 .resume_bg{
     background-image: url(../assets/images/Resume_header.png);
     background-size: cover;

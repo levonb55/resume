@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="{{ asset('css/Lcss.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/libs/css/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/templates.css') }}">
+
 @endsection
 
 @section('content')
@@ -74,7 +76,7 @@
             </div>
 
             @if($experiences->count() >= 1)
-                <ul id="sortable">
+                <ul id="sortable" class="experience-list">
                     @foreach($experiences as $experience)
                         <li class="red_item rev_red_item ui-state-default"
                             data-id="{{ $experience->id }}"
@@ -130,27 +132,39 @@
             @endif
 
             <div class="back_continue experience_page">
-                @if($experiences->count() >= 1)
-                    <a href="{{ route('header') }}" class="back_left">
-                        <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
-                    </a>
-                @else
-                    <a href="{{ route('experience.create') }}" class="back_left">
-                        <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
-                    </a>
+
+                @if(!auth()->user()->credential->resume_complete)
+                    @if($experiences->count() >= 1)
+                        <a href="{{ route('header') }}" class="back_left">
+                            <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
+                        </a>
+                    @else
+                        <a href="{{ route('experience.create') }}" class="back_left">
+                            <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
+                        </a>
+                    @endif
                 @endif
+
                 <a href="{{ route('experience.create') }}" class="continue_right">
                     <p><span class="fas fa-plus"> Add Experience </p>
                 </a>
-                @if($educationCount >= 1)
-                    <a href="{{ route('education.index') }}" class="continue_right">
+
+                @if(auth()->user()->credential->resume_complete)
+                    <a href="{{ route('resume-review') }}" class="continue_right">
                         <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>
                     </a>
                 @else
-                    <a href="{{ route('education.create') }}" class="continue_right">
-                        <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>
-                    </a>
+                    @if($educationCount >= 1)
+                        <a href="{{ route('education.index') }}" class="continue_right">
+                            <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>
+                        </a>
+                    @else
+                        <a href="{{ route('education.create') }}" class="continue_right">
+                            <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>
+                        </a>
+                    @endif
                 @endif
+
             </div>
         </section>
     </main>

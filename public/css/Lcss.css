@@ -754,44 +754,7 @@ main{
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
-/*example1*/
-.example1 {
-    width: 100%;
-    max-width: 550px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.example1 hr {
-    border-top: dotted 2px #000000 !important;
-    width: 100%;
-    background: unset !important;
-    /*text-decoration: underline;*/
-}
-.resum_main{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-.resum_main span{
-    color: #005cbf;
-    font-weight: 500;
 
-}
-.example1 h2 {
-    margin-right: 5px;
-    color: #005cbf;
-
-}
-.sec_resum {
-    min-height: 170px;
-}
-.name_res {
-    display: flex;
-}
-
-
-/*example1 end*/
 
 
 

@@ -13,6 +13,6 @@ class Credential extends Model
      */
     protected $fillable = [
         'user_id', 'template_id', 'first_name', 'last_name', 'address', 'city', 'state', 'zip', 'email', 'phone',
-        'skills', 'summary'
+        'skills', 'summary', 'resume_complete'
     ];
 }

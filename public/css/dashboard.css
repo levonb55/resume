@@ -526,9 +526,7 @@ input[type="date"], focus {
 .data_input {
     width: 46%;
 }
-.cke_chrome{
-    border: 0 !important;
-}
+
 /* The container */
 .container {
     display: block;
@@ -964,6 +962,8 @@ input[type="date"], focus {
 .red_row{
     margin: 10px 0;
     justify-content: space-between;
+    display: flex;
+    align-items: flex-start;
 }
 .red_left_side{
     padding: 0;
@@ -981,16 +981,18 @@ input[type="date"], focus {
     flex-direction: column;
 }
 .red_item {
-    padding: 10px 15px;
+    padding: 10px 0;
     margin: 15px 0;
 }
 .card_li li {
-    list-style: disc;
-    color: #2D64AC;
-}
-.card_li li p {
-    color: #000;
+    color: #000000;
     max-width: 100px;
+    margin: 10px;
+}
+.card_li li:before{
+    content: '•';
+    margin-right: 5px;
+    color: #2D64AC;
 }
 .card_li ul{
     display: flex;
@@ -1209,6 +1211,28 @@ draggable-item.ui-sortable-placeholder {
     background-color: #ffffff;
     box-shadow: 0 2px 21px 0 rgba(4, 4, 4, 0.25);
 }
+.red_tools2 .das_inp{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.red_tools2 .das_inp input[type="text"] {
+    width: 100%;
+    padding: 10px 5px;
+    border: 1px solid gainsboro;
+    border-radius: 0;
+}
+.red_tools2 .das_inp button{
+    margin: 5px 0;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+}
 .red_tools2_tool{
     margin: 20px 0;
 }
@@ -1389,7 +1413,7 @@ button.btn.btn_tool {
     align-items: center;
     margin-bottom: 45px;
 }
-.das_check .remove-section{
+.remove-section{
     margin-left: 30px;
     cursor: pointer;
 }

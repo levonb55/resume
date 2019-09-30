@@ -75,7 +75,7 @@
             </div>
 
             @if($education->count() >= 1)
-                <ul id="sortable">
+                <ul id="sortable" class="education-list">
                     @foreach($education as $educationItem)
                         <li class="red_item rev_red_item ui-state-default"
                         data-id="{{ $educationItem->id }}"
@@ -131,22 +131,33 @@
             @endif
 
             <div class="back_continue experience_page">
-                @if($education->count() >= 1)
-                    <a href="{{ route('experience.index') }}" class="back_left">
-                        <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
-                    </a>
-                @else
-                    <a href="{{ route('education.create') }}" class="back_left">
-                        <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
-                    </a>
+
+                @if(!auth()->user()->credential->resume_complete)
+                    @if($education->count() >= 1)
+                        <a href="{{ route('experience.index') }}" class="back_left">
+                            <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
+                        </a>
+                    @else
+                        <a href="{{ route('education.create') }}" class="back_left">
+                            <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
+                        </a>
+                    @endif
                 @endif
 
                 <a href="{{ route('education.create') }}" class="continue_right">
                     <p><span class="fas fa-plus"> Add Education </p>
                 </a>
-                <a href="{{ route('skills') }}" class="continue_right">
-                    <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>
-                </a>
+
+                @if(auth()->user()->credential->resume_complete)
+                    <a href="{{ route('resume-review') }}" class="continue_right">
+                        <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>
+                    </a>
+                @else
+                    <a href="{{ route('skills') }}" class="continue_right">
+                        <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>
+                    </a>
+                @endif
+
             </div>
         </section>
     </main>

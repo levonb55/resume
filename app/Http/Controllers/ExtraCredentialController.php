@@ -19,10 +19,7 @@ class ExtraCredentialController extends Controller
     //Gets add section page
     public function getAddSection()
     {
-        $extraCredentials = ExtraCredential::where([
-            ['user_id', auth()->id()],
-            ['extra', self::EXTRA]
-        ])->get();
+        $extraCredentials = ExtraCredential::getExtraCredentials();
 
         return view('extra-credentials.add-section', compact('extraCredentials'));
     }
@@ -109,7 +106,7 @@ class ExtraCredentialController extends Controller
 
     public function showCustomSection($custom)
     {
-        $previousSection = Session::get('add-sections')[array_search('custom-section/'.$custom, Session::get('add-sections')) - 1];
+        $previousSection = Session::get('add-sections')[array_search('custom-section/'.$custom, Session::get('add-sections') ?? []) - 1];
         $custom = ExtraCredential::where([
             ['user_id', auth()->id()],
             ['slug', $custom]
@@ -182,7 +179,7 @@ class ExtraCredentialController extends Controller
     //Redirects back by the sections
     public function getPreviousSection()
     {
-        return Session::get('add-sections')[array_search(Route::getFacadeRoot()->current()->uri(), Session::get('add-sections')) - 1];
+        return Session::get('add-sections')[array_search(Route::getFacadeRoot()->current()->uri(), Session::get('add-sections') ?? []) - 1];
     }
 
 }

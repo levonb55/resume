@@ -131,11 +131,14 @@
                     </div>
                 </form>
                 </div>
-                <div class="cv_template example1">
+                <div class="example_parent"
+                    <div class="example">
 
-                    @includeIf('components.resumes.template' . auth()->user()->credential->template_id)
+                        @includeIf('components.resumes.template' . auth()->user()->credential->template_id)
 
+                    </div>
                 </div>
+
 
             </div>
             </div>

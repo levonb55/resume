@@ -63,6 +63,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'owner' => \App\Http\Middleware\Owner::class,
+        'resume-review' => \App\Http\Middleware\RedirectToResumeReview::class,
     ];
 
     /**

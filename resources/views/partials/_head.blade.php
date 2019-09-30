@@ -10,3 +10,5 @@
 <link rel="stylesheet" href="{{asset('assets/libs/css/bootstrap.min.css')}}">
 @yield('extra-styles')
 <link rel="stylesheet" href="{{asset('css/style.css')}}">
+<link rel="stylesheet" href="{{ asset('css/templates.css') }}">
+

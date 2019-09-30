@@ -17,6 +17,7 @@ class CredentialController extends Controller
 {
 
     const TEMPLATE = 1;
+    const RESUME_COMPLETE = 1;
 
     //Gets templates page
     public function getTemplates() {
@@ -108,7 +109,12 @@ class CredentialController extends Controller
      */
     public function getResumeReview()
     {
-        return view('credentials.resume-review');
+        $templates = Template::all();
+        $extraCredentials = ExtraCredential::getExtraCredentials();
+        auth()->user()->credential()->update(['resume_complete' => self::RESUME_COMPLETE]);
+        Session::forget('add-sections');
+
+        return view('credentials.resume-review', compact('extraCredentials', 'templates'));
     }
 
 }

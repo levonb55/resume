@@ -154,9 +154,17 @@
                         </div>
                     </div>
                     <div class="back_continue experience_page">
-                    <a href="{{ route('education.index') }}" class="back_left">
-                        <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
-                    </a>
+
+                    @if(auth()->user()->credential->resume_complete)
+                        <a href="{{ route('resume-review') }}" class="back_left">
+                            <p> Cancel</p>
+                        </a>
+                    @else
+                        <a href="{{ route('education.index') }}" class="back_left">
+                            <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
+                        </a>
+                    @endif
+
                     <button type="submit" class="continue_right">
                         Continue <span class="fas fa-long-arrow-alt-right"></span>
                     </button>
