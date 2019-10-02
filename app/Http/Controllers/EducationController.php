@@ -46,7 +46,8 @@ class EducationController extends Controller
                     'location' => $education['location'],
                     'degree' => $education['degree'],
                     'study' => $education['study'],
-                    'graduation_year' => $education['graduation_year'],
+                    'start_date' => $education['start_date'],
+                    'end_date' => $education['end_date'] ?? null,
                     'description' => $education['description'],
                     'order' => ++$educationCount
                 ]);
@@ -65,7 +66,7 @@ class EducationController extends Controller
     {
         $this->makeValidation($request->all())->validate();
 
-        $education->update(request(['school', 'location', 'degree', 'study', 'graduation_year', 'description']));
+        $education->update(request(['school', 'location', 'degree', 'study', 'start_date', 'end_date', 'description']));
 
         return redirect()->route('education.index');
     }
@@ -83,7 +84,8 @@ class EducationController extends Controller
             'location' => 'required|string|min:2|max:255',
             'degree' => 'required|string|min:2|max:255',
             'study' => 'required|string|min:2|max:255',
-            'graduation_year' => 'nullable|integer',
+            'start_date' => 'required|date',
+            'end_date' => 'sometimes|nullable|date|after:start_date',
             'description' => 'nullable|string|min:10|max:1000'
         ]);
     }

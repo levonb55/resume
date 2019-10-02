@@ -26,7 +26,7 @@ function addEducation(index) {
                     <p>Tell us about any colleges, vocational programs, or training courses you took. Even if you didn’t
                      finish, it’s important to list them.</p>
 
-                    <div class="experience_area">
+                    <div class="experience_area education_area">
                         <div class="form_header">
                             <div class="name">
                                 <div class="first_name">
@@ -51,14 +51,27 @@ function addEducation(index) {
                                     <label>Field Of Study</label>
                                     <input type="text" name="education${index}[study]">
                                     <span class="text-danger mb-2 error" id="education${index}_study"></span>
-                                </div>
-                                <div class="graduation_year mt-4">
-                                    <label>Graduation Year</label>
-                                    <input type="text" name="education${index}[graduation_year]">
-                                    <span class="text-danger mb-2 error" id="education${index}_graduation_year"></span>
+                                </div>                                
+                                <div class="time_input">
+                                    <div class="data_input">
+                                        <label>Start Date</label>
+                                        <input type="date" name="education${index}[start_date]">
+                                        <span class="text-danger mb-2 error" id="education${index}_start_date"></span>
+                                    </div>
+                                    <div class="data_input">
+                                        <label>End Date</label>
+                                        <input type="date"  name="education${index}[end_date]" class="edu-end-date">
+                                        <span class="text-danger mb-2 error" id="education${index}_end_date"></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        
+                        <label  for="present-${index}" class="containera Work_here">I currently study here
+                            <input type="checkbox" class="edu-check" id="present-${index}">
+                            <span class="checkmark"></span>
+                        </label>
+                                
                         <div class="add_description add_desc">
                             <p>
                                 <span id="plus">+</span>
@@ -176,4 +189,9 @@ $(".reorder-education").on("mousedown",function () {
         }
     });
     $("#sortable").disableSelection();
+});
+
+//Disables education end date
+$(document).on('click', '.edu-check', function () {
+    $(this).parents('.education_area').find('.edu-end-date').attr('disabled', function(_, attr){ return !attr});
 });

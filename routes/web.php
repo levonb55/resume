@@ -65,7 +65,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('custom-section/{custom}', 'ExtraCredentialController@showCustomSection')->name('custom-section.show');
     Route::post('custom-section', 'ExtraCredentialController@storeCustomSection')->name('custom-section.store')->middleware('resume-review');
     Route::post('custom-section/add', 'ExtraCredentialController@addCustomSection')->name('custom-section.add');
-    Route::delete('custom-section/{custom}', 'ExtraCredentialController@destroyCustomSection')->name('custom-section.destroy');
+    Route::delete('custom-section/{custom}', 'ExtraCredentialController@destroyCustomSection')->name('custom-section.destroy')->middleware('owner');
     Route::get('resume/review', 'CredentialController@getResumeReview')->name('resume-review');
 });
 

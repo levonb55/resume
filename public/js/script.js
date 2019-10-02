@@ -518,5 +518,9 @@ $(".str_button").on("click",function () {
 //
 //     });
 
-
-
+//Adds commas to template 1 location part
+$('.example1 .comma').each(function(){
+    if($(this).text().length > 2) {
+        $(this).append(',');
+    }
+});

@@ -14,7 +14,7 @@
             <div class="row red_row">
                 <div class="col-sm-12 col-lg-9 red_left_side">
 
-                    @includeIf('components.resumes.template' . auth()->user()->credential->template_id)
+                    @includeIf('resumes.template-' . auth()->user()->credential->template_id)
 
                     {{--                    <div class="red_red">--}}
 {{--                        <a href="#"><p>Resume name:<span> Resume 8</span></p><img src="{{ asset('assets/images/pencil-edit-button.png') }}" alt="Pencil"></a>--}}

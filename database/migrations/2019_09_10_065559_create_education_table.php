@@ -20,7 +20,8 @@ class CreateEducationTable extends Migration
             $table->string('location');
             $table->string('degree');
             $table->string('study');
-            $table->integer('graduation_year')->nullable();
+            $table->date('start_date');
+            $table->date('end_date')->nullable();
             $table->text('description')->nullable();
             $table->integer('order');
 

@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\FormatDate;
 use Illuminate\Database\Eloquent\Model;
 
 class Experience extends Model
 {
+    use FormatDate;
 
     public $timestamps = false;
 

@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\FormatDate;
 use Illuminate\Database\Eloquent\Model;
 
 class Education extends Model
 {
+    use FormatDate;
 
     public $timestamps = false;
 
@@ -15,7 +17,7 @@ class Education extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'school', 'location', 'degree', 'study', 'graduation_year', 'description', 'order'
+        'user_id', 'school', 'location', 'degree', 'study', 'start_date', 'end_date', 'description', 'order'
     ];
 
 }

@@ -74,7 +74,7 @@
                             <p>Tell us about any colleges, vocational programs, or training courses you took. Even if you
                                 didn’t finish, it’s important to list them.</p>
 
-                            <div class="experience_area">
+                            <div class="experience_area education_area">
                                 <div class="form_header">
                                     <div class="name">
                                         <div class="first_name">
@@ -109,14 +109,26 @@
                                             @enderror
                                         </div>
                                         <div class="graduation_year mt-4">
-                                            <label>Graduation Year</label>
-                                            <input type="text" name="graduation_year" value="{{ $education->graduation_year }}">
-                                            @error('graduation_year')
+                                            <label>Start Date</label>
+                                            <input type="date" name="start_date" value="{{ $education->start_date }}">
+                                            @error('start_date')
+                                                <span class="text-danger mb-2"> {{ $message }} </span>
+                                            @enderror
+
+                                            <label>End Date</label>
+                                            <input type="date" name="end_date" value="{{ $education->end_date }}" class="edu-end-date">
+                                            @error('end_date')
                                                 <span class="text-danger mb-2"> {{ $message }} </span>
                                             @enderror
                                         </div>
                                     </div>
                                 </div>
+
+                                <label  for="present-1" class="containera Work_here">I currently study here
+                                    <input type="checkbox" class="edu-check" id="present-1">
+                                    <span class="checkmark"></span>
+                                </label>
+
                                 <div class="add_description add_desc">
                                     <p>
                                         <span id="plus">+</span>

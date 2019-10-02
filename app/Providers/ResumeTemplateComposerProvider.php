@@ -31,5 +31,9 @@ class ResumeTemplateComposerProvider extends ServiceProvider
             'components.resumes.*',
             'App\Http\ViewComposers\ResumeTemplateComposer'
         );
+        view()->composer(
+            'resumes.*',
+            'App\Http\ViewComposers\ResumeTemplateComposer'
+        );
     }
 }

@@ -54,14 +54,14 @@ class ExtraCredentialController extends Controller
      */
     public function storeAccomplishments(Request $request)
     {
-        $this->storeSectionData($request->input('accomplishments'), 'accomplishments');
+        $this->storeSectionData($request->input('accomplishments'), 'accomplishments', 'Accomplishments');
 
         return $this->redirectForward();
     }
 
     public function getProfiles()
     {
-        $profiles = $this->fetchSectionData('profiles') ? unserialize($this->fetchSectionData('profiles')->content) : null;
+        $profiles = $this->fetchSectionData('profiles') ? explode(",", $this->fetchSectionData('profiles')->content) : null;
         $previousSection = $this->getPreviousSection();
 
         return view('extra-credentials.profiles', compact('previousSection', 'profiles'));
@@ -69,7 +69,7 @@ class ExtraCredentialController extends Controller
 
     public function storeProfiles(Request $request)
     {
-        $this->storeSectionData(serialize($request->input('profiles')), 'profiles');
+        $this->storeSectionData(implode(', ', array_filter($request->input('profiles'))), 'profiles', 'Profiles');
 
         return $this->redirectForward();
     }
@@ -84,7 +84,7 @@ class ExtraCredentialController extends Controller
 
     public function storeAdditionalInfo(Request $request)
     {
-        $this->storeSectionData($request->input('additional-info'), 'additional-info');
+        $this->storeSectionData($request->input('additional-info'), 'additional-info','Additional Information');
 
         return $this->redirectForward();
     }
@@ -99,7 +99,7 @@ class ExtraCredentialController extends Controller
 
     public function storeCertifications(Request $request)
     {
-        $this->storeSectionData($request->input('certifications'), 'certifications');
+        $this->storeSectionData($request->input('certifications'), 'certifications', 'Certifications');
 
         return $this->redirectForward();
     }
