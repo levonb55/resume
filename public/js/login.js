@@ -13,14 +13,14 @@ $('#register').on('submit', function (e) {
     e.preventDefault();
     let form = $(this);
     $.ajax({
-        url: "/register",
+        url: `${appUrl}/register`,
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         method: "POST",
         data: form.serializeArray(),
         success: function() {
-            window.location.href = '/';
+            window.location.href = `${appUrl}/`;
         },
         error: function(error) {
             $('.error').empty();
