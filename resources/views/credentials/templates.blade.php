@@ -52,7 +52,7 @@
 			margin: 10,
 			dots: false,
 			center: true,
-			startPosition: {{ auth()->user()->credential ? auth()->user()->credential->template_id - 1 : 1 }},
+			startPosition: {{ auth()->user()->credential ? auth()->user()->credential->template_id - 1 : 3 }},
 			nav: true,
 			navText: [
 				'<img src="./assets/images/left-arrow.png">',
