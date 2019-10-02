@@ -98,8 +98,8 @@
                                     <input type="text" name="education1[degree]">
                                     <span class="text-danger mb-2 error" id="education1_degree"></span>
                                 </div>
-                                <div class="graduation">
-                                    <div class="study">
+                                <div class="graduation graduationFlex">
+                                    <div class="study studyWidth">
                                         <label>Field Of Study</label>
                                         <input type="text" name="education1[study]">
                                         <span class="text-danger mb-2 error" id="education1_study"></span>

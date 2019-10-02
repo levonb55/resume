@@ -1418,6 +1418,27 @@ button.btn.btn_tool {
     margin-left: 30px;
     cursor: pointer;
 }
+.Work_here {
+    display: inline;
+}
+.graduationFlex{
+    flex-direction: column;
+}
+.studyWidth{
+    width: 100%;
+}
+.time_input{
+    margin-top: 25px;
+}.time_input input{
+     padding-left: 10px;
+     height: 44px;
+     border: 1px solid #C9C9C9;
+     color: rgba(33, 37, 41, 0.5098039215686274);
+     width: 100%;
+     /* margin-bottom: 29px; */
+     font-size: 14px;
+     border-radius: 4px
+}
 
 .check {
     margin-bottom: 45px;
