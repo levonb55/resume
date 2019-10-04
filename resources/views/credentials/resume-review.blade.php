@@ -9,145 +9,25 @@
 @endsection
 
 @section('content')
+    @php
+        $selectedTemplate = auth()->user()->credential->template_id;
+    @endphp
     <main>
         <section class=" redaktor_section">
             <div class="row red_row">
-                <div class="col-sm-12 col-lg-9 red_left_side">
+                <form action="{{ route('resume-review.update', $selectedTemplate) }}" method="POST" class="d-inline-flex">
+                    @csrf
+                    @method('PUT')
 
-                    @includeIf('resumes.template-' . auth()->user()->credential->template_id)
+                    <div class="col-sm-12 col-lg-9 red_left_side">
+                        @includeIf('resumes.template-' . $selectedTemplate)
+                    </div>
 
-                    {{--                    <div class="red_red">--}}
-{{--                        <a href="#"><p>Resume name:<span> Resume 8</span></p><img src="{{ asset('assets/images/pencil-edit-button.png') }}" alt="Pencil"></a>--}}
-{{--                    </div>--}}
-{{--                    <div class="red_head">--}}
-{{--                        <h2>Heading</h2>--}}
-{{--                    </div>--}}
-{{--                    <ul id="sortable">--}}
-
-
-{{--                        <li class="red_item ui-state-default">--}}
-
-{{--                            <h5>Additional Information</h5>--}}
-{{--                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>--}}
-{{--                            <div class="red_tools ">--}}
-{{--                                <div class="tool1">--}}
-{{--                                    <img src="{{ asset('assets/images/pencil-edit-button.png') }}" alt="">--}}
-{{--                                </div>--}}
-{{--                                <div class="tool2">--}}
-{{--                                    <img src="{{ asset('assets/images/move-option.png') }}" alt="">--}}
-{{--                                </div>--}}
-{{--                                <div class="tool3">--}}
-{{--                                    <img src="{{ asset('assets/images/rubbish-bin-delete-button.png') }}" alt="">--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <hr>--}}
-
-{{--                        </li>--}}
-{{--                        <li class="red_item ui-state-default">--}}
-
-{{--                            <h5>Skils</h5>--}}
-{{--                            <div class="card-body card_li">--}}
-{{--                                <ul>--}}
-{{--                                    <li><p>Skill 1</p></li>--}}
-{{--                                    <li><p>Skill 2</p></li>--}}
-{{--                                    <li><p>Skill 3</p></li>--}}
-{{--                                    <li><p>Skill 4</p></li>--}}
-{{--                                    <li><p>Skill 5</p></li>--}}
-{{--                                    <li><p>Skill 6</p></li>--}}
-{{--                                    <li><p>Skill 7</p></li>--}}
-{{--                                    <li><p>Skill 8</p></li>--}}
-{{--                                </ul>--}}
-
-{{--                            </div>--}}
-{{--                            <div class="red_tools">--}}
-{{--                                <div class="tool1">--}}
-{{--                                    <img src="{{ asset('assets/images/pencil-edit-button.png') }}" alt="">--}}
-{{--                                </div>--}}
-{{--                                <div class="tool2">--}}
-{{--                                    <img src="{{ asset('assets/images/move-option.png') }}" alt="">--}}
-{{--                                </div>--}}
-{{--                                <div class="tool3">--}}
-{{--                                    <img src="{{ asset('assets/images/rubbish-bin-delete-button.png') }}" alt="">--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <hr>--}}
-{{--                        </li>--}}
-{{--                        <li class="red_item ui-state-default">--}}
-{{--                            <h5>Experience</h5>--}}
-{{--                            <div class="exp_group">--}}
-{{--                                <span>UI/UX design</span>--}}
-{{--                                <span>Web projects</span>--}}
-{{--                                <span>2019 - Current</span>--}}
-{{--                            </div>--}}
-{{--                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>--}}
-{{--                            <div class="red_tools">--}}
-{{--                                <div class="tool1">--}}
-{{--                                    <img src="{{ asset('assets/images/pencil-edit-button.png') }}" alt="">--}}
-{{--                                </div>--}}
-{{--                                <div class="tool2">--}}
-{{--                                    <img src="{{ asset('assets/images/move-option.png') }}" alt="">--}}
-{{--                                </div>--}}
-{{--                                <div class="tool3">--}}
-{{--                                    <img src="{{ asset('assets/images/rubbish-bin-delete-button.png') }}" alt="">--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <hr>--}}
-{{--                        </li>--}}
-{{--                        <li class="red_item  ui-state-default">--}}
-{{--                            <h5>Education and Training</h5>--}}
-{{--                            <div class="exp_group">--}}
-{{--                                <span>High School Diploma</span>--}}
-{{--                                <span>2008</span>--}}
-{{--                            </div>--}}
-{{--                            <p>N 80 School / New York</p>--}}
-{{--                            <div class="red_tools">--}}
-{{--                                <div class="tool1">--}}
-{{--                                    <img src="{{ asset('assets/images/pencil-edit-button.png') }}" alt="">--}}
-{{--                                </div>--}}
-{{--                                <div class="tool2">--}}
-{{--                                    <img src="{{ asset('assets/images/move-option.png') }}" alt="">--}}
-{{--                                </div>--}}
-{{--                                <div class="tool3">--}}
-{{--                                    <img src="{{ asset('assets/images/rubbish-bin-delete-button.png') }}" alt="">--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <hr>--}}
-{{--                        </li>--}}
-{{--                        <li class="red_item  ui-state-default" >--}}
-
-{{--                            <h5>Websites, Portfolios, Profiles</h5>--}}
-{{--                            <div class="card-body card_li">--}}
-{{--                                <ul>--}}
-{{--                                    <li><p>link 1</p></li>--}}
-{{--                                    <li><p>link 2</p></li>--}}
-{{--                                    <li><p>link 3</p></li>--}}
-{{--                                    <li><p>link 4</p></li>--}}
-
-{{--                                </ul>--}}
-
-{{--                            </div>--}}
-{{--                            <div class="red_tools">--}}
-{{--                                <div class="tool1">--}}
-{{--                                    <img src="{{ asset('assets/images/pencil-edit-button.png') }}" alt="">--}}
-{{--                                </div>--}}
-{{--                                <div class="tool2">--}}
-{{--                                    <img src="{{ asset('assets/images/move-option.png') }}" alt="">--}}
-{{--                                </div>--}}
-{{--                                <div class="tool3">--}}
-{{--                                    <img src="{{ asset('assets/images/rubbish-bin-delete-button.png') }}" alt="">--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
-
-
-
-
-                </div>
-                <div class="col-sm-12 col-lg-2 red_right_side">
-                    <div class="red_save"> <a href="#"><button class="btn ">Save & Continue</button></a></div>
+                    <div class="col-sm-12 col-lg-2 red_right_side">
+                    <div class="red_save">
+                        <button type="submit" class="btn">Save</button>
+                    </div>
                     <ul id="accordion" class="accordion">
-
                         <li>
                             <div class="link">
                                 <div class="red_red">
@@ -158,22 +38,16 @@
                             <ul class="submenu">
                                 @foreach($templates as $template)
                                     <li>
-                                        <img src="{{ asset('assets/images/templates/template-' . $template->id . '.png') }}" alt="Resume">
+                                        <label>
+                                            <img
+                                                src="{{ asset('assets/images/templates/template-' . $template->id . '.png') }}"
+                                                alt="Resume"
+                                                class="imgClickHandle {{ $selectedTemplate === $template->id ? 'active-template' : null }}"
+                                            >
+                                            <input type="radio" class="d-none" name="template" value="{{ $template->id }}" {{ $selectedTemplate == $template->id ? 'checked' : '' }}>
+                                        </label>
                                     </li>
                                 @endforeach
-{{--                                <li>--}}
-{{--                                    <img src="{{ asset('assets/images/small_02.jpg') }}" alt="">--}}
-{{--                                </li>--}}
-{{--                                <li>--}}
-{{--                                    <img src="{{ asset('assets/images/small_03.jpg') }}" alt="">--}}
-{{--                                </li>--}}
-{{--                                <li>--}}
-{{--                                    <img src="{{ asset('assets/images/small_6.jpg') }}" alt="">--}}
-{{--                                </li>--}}
-{{--                                <li>--}}
-{{--                                    <img src="{{ asset('assets/images/small_02.jpg') }}" alt="">--}}
-{{--                                </li>--}}
-
                             </ul>
                         </li>
                         <li>
@@ -181,7 +55,6 @@
                                 <div class="red_red">
                                     <div><p>Formatting</p></div>
                                     <div class="img"><i class="fas fa-chevron-down"></i></div>
-
                                 </div>
                             </div>
                             <ul class="submenu submenu2">
@@ -326,7 +199,7 @@
 
                     </div>
                 </div>
-
+                </form>
             </div>
 
         </section>

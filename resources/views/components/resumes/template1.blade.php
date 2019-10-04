@@ -12,7 +12,7 @@
                 <span id="state">{{ $credential->state ?? 'State' }}</span>
                 <span class="mail_zip" id="zip_zip">{{ $credential->zip ?? 'Zip Code' }},</span>
                 <span class="telephone" id="phone_phone">{{ $credential->phone ?? '+123456789' }},</span>
-                <span class="mail" id="email_email">{{ $credential->email ?? 'jack@example.com' }}</span>
+                <span class="mail" id="email_email">{{ $credential->email ?? 'name@example.com' }}</span>
             </p>
 
         </div>
@@ -53,7 +53,7 @@
                             <p>Facilitiang system utilization</p>
                         </div>
                         <div class="right_resum">
-                            <p>Birmingham</p>
+                            <p>Birmingham, UK</p>
                         </div>
                     </div>
                 @endif
@@ -70,15 +70,13 @@
                         <div class="resum_main">
                             <div class="left_resum">
                                 <p class="font-weight-bold">
-                                    {{ $educationItem->school ??  'Bournville School Secondary School' }},
-                                    {{ $educationItem->study ?? 'Computer Science' }},
-                                    {{ $educationItem->degree ?? 'Master Degree' }}
+                                    {{ $educationItem->school . ', ' . $educationItem->study . ', ' . $educationItem->degree}}
                                 </p>
                                 <span>{{ $educationItem->startDate() . ' - ' . $educationItem->endDate()}}</span>
                                 {!! $educationItem->description !!}
                             </div>
                             <div class="right_resum">
-                                <p>{{ $educationItem->location ?? 'London, UK' }}</p>
+                                <p>{{ $educationItem->location }}</p>
                             </div>
                         </div>
                     @endforeach
@@ -90,7 +88,7 @@
                             <p>Business Studies(B), ICT(C)</p>
                         </div>
                         <div class="right_resum">
-                            <p>Bournville</p>
+                            <p>London, UK</p>
                         </div>
                     </div>
                 @endif

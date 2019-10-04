@@ -69,7 +69,7 @@
     width: 50%;
     color: #89aeca;
 }
-.example2 .left_head .head h1 span{
+.example2 .left_head .head h1 span:nth-child(2) {
     color: black;
 }
 .example2 .left_head .info{

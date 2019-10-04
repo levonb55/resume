@@ -524,3 +524,9 @@ $('.example1 .comma').each(function(){
         $(this).append(',');
     }
 });
+
+//Highlights template
+$('.imgClickHandle').on('click',function () {
+    $('.imgClickHandle').removeClass('active-template');
+    $(this).addClass('active-template');
+});

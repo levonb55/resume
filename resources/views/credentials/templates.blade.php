@@ -73,11 +73,5 @@
 				}
 			}
 		});
-
-		//Highlights template
-		$('.imgClickHandle').on('click',function () {
-			$('.imgClickHandle').removeClass('active-template');
-			$(this).addClass('active-template');
-		});
 	</script>
 @endsection

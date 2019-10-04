@@ -1189,6 +1189,11 @@ draggable-item.ui-sortable-placeholder {
     /*background: #b63b4d;*/
     /*color: #FFF;*/
 }
+
+.red_right_side img {
+    cursor: pointer;
+}
+
 .red_save button{
     width: 100%;
     color: #fff;

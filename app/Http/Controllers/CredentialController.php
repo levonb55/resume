@@ -117,4 +117,13 @@ class CredentialController extends Controller
         return view('credentials.resume-review', compact('extraCredentials', 'templates'));
     }
 
+    public function updateResumeReview(Request $request)
+    {
+        auth()->user()->credential()->update(
+            ['template_id' => $request->template]
+        );
+
+        return back();
+    }
+
 }

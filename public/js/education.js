@@ -46,8 +46,8 @@ function addEducation(index) {
                                 <input type="text" name="education${index}[degree]">
                                 <span class="text-danger mb-2 error" id="education${index}_degree"></span>
                             </div>
-                            <div class="graduation">
-                                <div class="study">
+                            <div class="graduation graduationFlex">
+                                <div class="study studyWidth">
                                     <label>Field Of Study</label>
                                     <input type="text" name="education${index}[study]">
                                     <span class="text-danger mb-2 error" id="education${index}_study"></span>
