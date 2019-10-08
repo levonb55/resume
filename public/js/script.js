@@ -530,3 +530,8 @@ $('.imgClickHandle').on('click',function () {
     $('.imgClickHandle').removeClass('active-template');
     $(this).addClass('active-template');
 });
+
+
+$('.resume-format').on('change', function () {
+    $('.resume-download-btn').attr('href', appUrl + '/' + $(this).val());
+});

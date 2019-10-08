@@ -133,19 +133,21 @@
 
                             <ul>
                                 <li>
-                                    <input type="radio" id="a1" name="a">
+                                    <input type="radio" id="a1" name="a" value='download-resume-pdf' class="resume-format">
                                     <label for="a1">PDF</label>
                                 </li>
                                 <li>
-                                    <input type="radio" id="a2" name="a">
+                                    <input type="radio" id="a2" name="a" value='download-resume-word' class="resume-format">
                                     <label for="a2">Word</label>
                                 </li>
-                                <li>
-                                    <input type="radio" id="a3" name="a">
-                                    <label for="a3">ASCII</label>
-                                </li>
+{{--                                <li>--}}
+{{--                                    <input type="radio" id="a3" name="a">--}}
+{{--                                    <label for="a3">ASCII</label>--}}
+{{--                                </li>--}}
                             </ul>
-                            <button class="btn btn_tool"><a href="download.html"><i class="fas fa-download"></i>Download</a></button>
+                            <button class="btn btn_tool">
+                                <a href="#" class="resume-download-btn"><i class="fas fa-download"></i>Download</a>
+                            </button>
                         </div>
                         <div class="red_tools2_tool">
                             <h5>Resume Sections</h5>
