@@ -133,7 +133,7 @@
 
                             <ul>
                                 <li>
-                                    <input type="radio" id="a1" name="a" value='download-resume-pdf' class="resume-format">
+                                    <input type="radio" id="a1" name="a" value='download-resume-pdf' class="resume-format" checked>
                                     <label for="a1">PDF</label>
                                 </li>
                                 <li>
@@ -146,7 +146,7 @@
 {{--                                </li>--}}
                             </ul>
                             <button class="btn btn_tool">
-                                <a href="#" class="resume-download-btn"><i class="fas fa-download"></i>Download</a>
+                                <a href="{{ route('download-resume-pdf') }}" class="resume-download-btn"><i class="fas fa-download"></i>Download</a>
                             </button>
                         </div>
                         <div class="red_tools2_tool">

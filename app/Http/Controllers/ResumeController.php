@@ -18,4 +18,18 @@ class ResumeController extends Controller
 
         return $pdf->download('resume.pdf');
     }
+
+    public function downloadResumeWord()
+    {
+        $phpWord = new \PhpOffice\PhpWord\PhpWord();
+        $section = $phpWord->addSection();
+
+        $html = "<h4>Resume</h4>";
+        \PhpOffice\PhpWord\Shared\Html::addHtml($section, $html, false, false);
+        $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+        $objectWriter->save(public_path('assets/downloads/resume' . auth()->id() . '.docx'));
+
+        return response()->download(public_path('assets/downloads/resume' . auth()->id() . '.docx'), 'resume.docx')
+            ->deleteFileAfterSend();
+    }
 }

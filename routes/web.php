@@ -69,6 +69,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('resume/review', 'CredentialController@getResumeReview')->name('resume-review');
     Route::put('resume/{resume}/review', 'CredentialController@updateResumeReview')->name('resume-review.update');
     Route::get('download-resume-pdf', 'ResumeController@downloadResumePdf')->name('download-resume-pdf');
+    Route::get('download-resume-word', 'ResumeController@downloadResumeWord')->name('download-resume-word');
 });
 
 
