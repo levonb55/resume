@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="name_info">
-            <h1>{{ $credential->first_name . ' ' . $credential->last_name }}</h1>
+            <h1>{{ $credential->full_name }}</h1>
             <div>
                 <ul>
                     @if(strlen($credential->getLocation()) > 2)
@@ -51,7 +51,7 @@
                     <hr>
                     @foreach($education as $educationItem)
                         <h6>{{ $educationItem->school . ', ' . $educationItem->study . ', ' . $educationItem->degree }}</h6>
-                        <p>{{ $educationItem->startDate() . ' - ' . $educationItem->endDate() . ' ' . $educationItem->title}}</p>
+                        <p>{{ $educationItem->startDate() . ' - ' . $educationItem->endDate() }}</p>
                         <p>{!! $educationItem->description !!}</p>
                     @endforeach
                 </li>
