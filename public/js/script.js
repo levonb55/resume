@@ -376,7 +376,9 @@ $(document).ready(function () {
 
 
 //    prewiew
-$("#add_sec").click(function () {
+$("#add_sec").click(function (e) {
+    e.preventDefault();
+    $(this).find('i').toggleClass('fa-plus').toggleClass('fa-minus');
     $(this).siblings(".das_inp").toggleClass("d-none");
 })
     // $(document).on("click", ".preview-resume", function () {

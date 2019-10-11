@@ -146,7 +146,9 @@
 {{--                                </li>--}}
                             </ul>
                             <button class="btn btn_tool">
-                                <a href="{{ route('download-resume-pdf') }}" class="resume-download-btn"><i class="fas fa-download"></i>Download</a>
+                                <a href="{{ route('download-resume-pdf') }}" class="resume-download-btn" target="_blank">
+                                    <i class="fas fa-download"></i>Download
+                                </a>
                             </button>
                         </div>
                         <div class="red_tools2_tool">

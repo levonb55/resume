@@ -16,7 +16,8 @@ class ResumeController extends Controller
         $data = [$templates, $extraCredentials];
         $pdf = PDF::loadView('downloads.resume', $data);
 
-        return $pdf->download('resume.pdf');
+//        return $pdf->download('resume.pdf');
+        return $pdf->stream('resume.pdf');
     }
 
     public function downloadResumeWord()
