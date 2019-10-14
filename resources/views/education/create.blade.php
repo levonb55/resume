@@ -189,14 +189,20 @@
             </div>
             <div class="back_continue experience_page">
 
-                @if($educationCount <= 0)
-                    <a href="{{ route('experience.index') }}" class="back_left">
-                        <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
-                    </a>
-                @else
+                @if(auth()->user()->credential->resume_complete)
                     <a href="{{ route('education.index') }}" class="back_left">
                         <p>Cancel</p>
                     </a>
+                @else
+                    @if($educationCount <= 0)
+                        <a href="{{ route('experience.index') }}" class="back_left">
+                            <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
+                        </a>
+                    @else
+                        <a href="{{ route('education.index') }}" class="back_left">
+                            <p>Cancel</p>
+                        </a>
+                    @endif
                 @endif
 
                 <button type="submit" value="Continue" class="continue_right">
