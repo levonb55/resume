@@ -20,7 +20,8 @@
                     @method('PUT')
 
                     <div class="col-sm-12 col-lg-9 red_left_side">
-                        @includeIf('resumes.template-' . $selectedTemplate)
+{{--                        @includeIf('resumes.template-' . $selectedTemplate)--}}
+                        @includeIf('components.resumes.template' . $selectedTemplate)
                     </div>
 
                     <div class="col-sm-12 col-lg-2 red_right_side">

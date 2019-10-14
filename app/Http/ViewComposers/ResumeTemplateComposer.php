@@ -15,7 +15,8 @@ class ResumeTemplateComposer
             'credential' => auth()->user()->credential,
             'experiences' => auth()->user()->experiences,
             'education' => auth()->user()->education,
-            'extraCredentials' => auth()->user()->extraCredentials
+            'extraCredentials' => auth()->user()->extraCredentials,
+            'showDefault' =>  \Route::currentRouteName() !== "resume-review" ? true : false
         ]);
 
     }

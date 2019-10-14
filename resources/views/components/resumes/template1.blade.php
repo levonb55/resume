@@ -7,109 +7,145 @@
             </div>
 
             <p>
-                <span class="address" id="address_person">{{ $credential->address ?? 'Street Address' }},</span>
-                <span id="sity_sity">{{ $credential->city ?? 'City' }}</span>
-                <span id="state">{{ $credential->state ?? 'State' }}</span>
-                <span class="mail_zip" id="zip_zip">{{ $credential->zip ?? 'Zip Code' }},</span>
-                <span class="telephone" id="phone_phone">{{ $credential->phone ?? '+123456789' }},</span>
+                @if($credential->address || $showDefault)
+                    <span class="address" id="address_person">{{ $credential->address ? $credential->address : 'Street Address' }},</span>
+                @endif
+
+                @if($credential->city || $showDefault)
+                    <span id="sity_sity">{{ $credential->city ? $credential->city : 'City' }}</span>
+                @endif
+
+                @if($credential->state || $showDefault)
+                    <span id="state">{{ $credential->state ? $credential->state : 'State' }}</span>
+                @endif
+
+                @if($credential->zip || $showDefault)
+                    <span class="mail_zip" id="zip_zip">{{ $credential->zip ? $credential->zip : 'Zip Code' }},</span>
+                @endif
+
+                @if($credential->phone || $showDefault)
+                    <span class="telephone" id="phone_phone">{{ $credential->phone ? $credential->phone : '+123456789' }},</span>
+                @endif
+
                 <span class="mail" id="email_email">{{ $credential->email ?? 'name@example.com' }}</span>
             </p>
 
         </div>
         <ul id="sortable" class="ui-sortable resum">
-            <li class="sec_resum red_item ui-state-default ui-sortable-handle">
-                <h5>Professional Summary</h5>
-                <hr>
-                @if($credential->summary)
-                    {!! $credential->summary !!}
-                @else
-                    <p>Experienced Project Manager with vast IT experience. Skills include computer networking, analytical
-                    thinking and creative problem solving</p>
-                @endif
-            </li>
-            <li class="sec_resum red_item ui-state-default ui-sortable-handle">
-                <h5>Employment history</h5>
-                <hr>
 
-                @if($experiences->count())
-                    @foreach($experiences as $experience)
+            @if($credential->summary || $showDefault)
+                <li class="sec_resum red_item ui-state-default ui-sortable-handle">
+                    <h5>Professional Summary</h5>
+                    <hr>
+                    @if($credential->summary)
+                        {!! $credential->summary !!}
+                    @else
+                        <p>Experienced Project Manager with vast IT experience. Skills include computer networking, analytical
+                        thinking and creative problem solving</p>
+                    @endif
+                </li>
+            @endif
+
+            @if($experiences->count() || $showDefault)
+                <li class="sec_resum red_item ui-state-default ui-sortable-handle">
+                    <h5>Employment history</h5>
+                    <hr>
+
+                    @if($experiences->count())
+                        @foreach($experiences as $experience)
+                            <div class="resum_main">
+                                <div class="left_resum">
+                                    <p class="font-weight-bold">{{ $experience->title }}</p>
+                                    <span>{{ $experience->startDate() . ' - ' . $experience->endDate()}}</span>
+                                    {!! $experience->description !!}
+                                </div>
+                                <div class="right_resum">
+                                    <p>{{ $experience->city . ', '  . $experience->state }}</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
                         <div class="resum_main">
-                            <div class="left_resum">
-                                <p class="font-weight-bold">{{ $experience->title }}</p>
-                                <span>{{ $experience->startDate() . ' - ' . $experience->endDate()}}</span>
-                                {!! $experience->description !!}
+                            <div class="left_resum  ">
+                                <p class="font-weight-bold">It Technician, International Mobilities</p>
+                                <span>Oct 2015-apr 2016</span>
+                                <p>Operate and maintain information systems</p>
+                                <p>Facilitiang system utilization</p>
                             </div>
                             <div class="right_resum">
-                                <p>{{ $experience->city . ', '  . $experience->state }}</p>
+                                <p>Birmingham, UK</p>
                             </div>
                         </div>
-                    @endforeach
-                @else
-                    <div class="resum_main">
-                        <div class="left_resum  ">
-                            <p class="font-weight-bold">It Technician, International Mobilities</p>
-                            <span>Oct 2015-apr 2016</span>
-                            <p>Operate and maintain information systems</p>
-                            <p>Facilitiang system utilization</p>
-                        </div>
-                        <div class="right_resum">
-                            <p>Birmingham, UK</p>
-                        </div>
-                    </div>
-                @endif
+                    @endif
 
-            </li>
+                </li>
+            @endif
 
+            @if($education->count() || $showDefault)
+                <li class="sec_resum red_item ui-state-default ui-sortable-handle">
+                    <h5>Education</h5>
+                    <hr>
 
-            <li class="sec_resum red_item ui-state-default ui-sortable-handle">
-                <h5>Education</h5>
-                <hr>
-
-                @if($education->count())
-                    @foreach($education as $educationItem)
+                    @if($education->count())
+                        @foreach($education as $educationItem)
+                            <div class="resum_main">
+                                <div class="left_resum">
+                                    <p class="font-weight-bold">
+                                        {{ $educationItem->school . ', ' . $educationItem->study . ', ' . $educationItem->degree}}
+                                    </p>
+                                    <span>{{ $educationItem->startDate() . ' - ' . $educationItem->endDate()}}</span>
+                                    {!! $educationItem->description !!}
+                                </div>
+                                <div class="right_resum">
+                                    <p>{{ $educationItem->location }}</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
                         <div class="resum_main">
                             <div class="left_resum">
-                                <p class="font-weight-bold">
-                                    {{ $educationItem->school . ', ' . $educationItem->study . ', ' . $educationItem->degree}}
-                                </p>
-                                <span>{{ $educationItem->startDate() . ' - ' . $educationItem->endDate()}}</span>
-                                {!! $educationItem->description !!}
+                                <p class="font-weight-bold">Bournville School Secondary School</p>
+                                <span>Oct 2015-apr 2016</span>
+                                <p>Business Studies(B), ICT(C)</p>
                             </div>
                             <div class="right_resum">
-                                <p>{{ $educationItem->location }}</p>
+                                <p>London, UK</p>
                             </div>
                         </div>
-                    @endforeach
-                @else
+                    @endif
+                </li>
+            @endif
+
+            @if($credential->skills || $showDefault)
+                <li class="sec_resum red_item ui-state-default ui-sortable-handle">
+                    <h5>Skills</h5>
+                    <hr>
                     <div class="resum_main">
                         <div class="left_resum">
-                            <p class="font-weight-bold">Bournville School Secondary School</p>
-                            <span>Oct 2015-apr 2016</span>
-                            <p>Business Studies(B), ICT(C)</p>
-                        </div>
-                        <div class="right_resum">
-                            <p>London, UK</p>
+                            @if($credential->skills)
+                                {!! $credential->skills !!}
+                            @else
+                                <p>GAAP principles expertise</p>
+                                <p>Sales and marketing</p>
+                            @endif
                         </div>
                     </div>
+                </li>
+            @endif
+
+            @foreach($extraCredentials as $extra)
+                @if($extra->content)
+                    <li class="sec_resum red_item ui-state-default ui-sortable-handle">
+                        <h5>{{ $extra->title }}</h5>
+                        <hr>
+                        <div class="resum_main">
+                            <div class="left_resum">
+                                {!! $extra->content !!}
+                            </div>
+                        </div>
+                    </li>
                 @endif
-
-            </li>
-
-            <li class="sec_resum red_item ui-state-default ui-sortable-handle">
-                <h5>Skills</h5>
-                <hr>
-                <div class="resum_main">
-                    <div class="left_resum">
-                        @if($credential->skills)
-                            {!! $credential->skills !!}
-                        @else
-                            <p>GAAP principles expertise</p>
-                            <p>Sales and marketing</p>
-                        @endif
-                    </div>
-                </div>
-            </li>
-
+            @endforeach
 
         </ul>
     </div>

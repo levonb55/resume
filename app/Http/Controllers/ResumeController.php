@@ -11,10 +11,11 @@ class ResumeController extends Controller
 {
     public function downloadResumePdf()
     {
-        $templates = Template::all();
-        $extraCredentials = ExtraCredential::getExtraCredentials();
-        $data = [$templates, $extraCredentials];
-        $pdf = PDF::loadView('downloads.resume', $data);
+//        $templates = Template::all();
+//        $extraCredentials = ExtraCredential::getExtraCredentials();
+//        $data = [$templates, $extraCredentials];
+//        $pdf = PDF::loadView('downloads.resume', $data);
+        $pdf = PDF::loadView('components.resumes.template' . auth()->user()->credential->template_id);
 
 //        return $pdf->download('resume.pdf');
         return $pdf->stream('resume.pdf');
