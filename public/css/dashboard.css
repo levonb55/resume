@@ -1403,7 +1403,6 @@ button.btn.btn_tool {
     margin-right: 20px;
 }
 .dow_left_ul li{
-    border-bottom: 1px solid gainsboro;
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -1411,6 +1410,9 @@ button.btn.btn_tool {
     width: 90%;
     margin: 0 auto;
 
+}
+.dow_left_ul li:not(:last-child) {
+    border-bottom: 1px solid gainsboro;
 }
 .das_check .check{
     display: flex;
