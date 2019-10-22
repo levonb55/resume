@@ -11,4 +11,4 @@
 @yield('extra-styles')
 <link rel="stylesheet" href="{{asset('css/style.css')}}">
 <link rel="stylesheet" href="{{ asset('css/templates.css') }}">
-
+<script src="https://js.stripe.com/v3/"></script>

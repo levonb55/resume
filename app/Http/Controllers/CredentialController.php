@@ -110,11 +110,12 @@ class CredentialController extends Controller
     public function getResumeReview()
     {
         $templates = Template::all();
+        $credential = auth()->user()->credential;
         $extraCredentials = ExtraCredential::getExtraCredentials();
         auth()->user()->credential()->update(['resume_complete' => self::RESUME_COMPLETE]);
         Session::forget('add-sections');
 
-        return view('credentials.resume-review', compact('extraCredentials', 'templates'));
+        return view('credentials.resume-review', compact('credential','extraCredentials', 'templates'));
     }
 
     public function updateResumeReview(Request $request)

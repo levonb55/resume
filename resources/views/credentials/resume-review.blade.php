@@ -9,19 +9,25 @@
 @endsection
 
 @section('content')
-    @php
-        $selectedTemplate = auth()->user()->credential->template_id;
-    @endphp
+{{--    @php--}}
+{{--        $selectedTemplate = auth()->user()->credential->template_id;--}}
+{{--    @endphp--}}
     <main>
-        <section class=" redaktor_section">
+        <section class="redaktor_section">
             <div class="row red_row">
-                <form action="{{ route('resume-review.update', $selectedTemplate) }}" method="POST" class="d-inline-flex">
+                <form action="{{ route('resume-review.update', $credential->template_id) }}" method="POST" class="d-inline-flex">
                     @csrf
                     @method('PUT')
 
                     <div class="col-sm-12 col-lg-9 red_left_side">
+                        @if(session()->has('payment-success'))
+                            <div class="alert alert-success">
+                                {{ session()->get('payment-success') }}
+                            </div>
+                        @endif
+
 {{--                        @includeIf('resumes.template-' . $selectedTemplate)--}}
-                        @includeIf('components.resumes.template' . $selectedTemplate)
+                        @includeIf('components.resumes.template' . $credential->template_id)
                     </div>
 
                     <div class="col-sm-12 col-lg-2 red_right_side">
@@ -43,9 +49,9 @@
                                             <img
                                                 src="{{ asset('assets/images/templates/template-' . $template->id . '.png') }}"
                                                 alt="Resume"
-                                                class="imgClickHandle {{ $selectedTemplate === $template->id ? 'active-template' : null }}"
+                                                class="imgClickHandle {{ $credential->template_id === $template->id ? 'active-template' : null }}"
                                             >
-                                            <input type="radio" class="d-none" name="template" value="{{ $template->id }}" {{ $selectedTemplate == $template->id ? 'checked' : '' }}>
+                                            <input type="radio" class="d-none" name="template" value="{{ $template->id }}" {{ $credential->template_id == $template->id ? 'checked' : '' }}>
                                         </label>
                                     </li>
                                 @endforeach
@@ -135,11 +141,11 @@
                             <ul>
                                 <li>
                                     <input type="radio" id="a1" name="a" value='download-resume-pdf' class="resume-format" checked>
-                                    <label for="a1">PDF</label>
+                                    <label for="a1">PDF</label><span class="badge badge-secondary" title="Maximum permitted downloads">{{ $credential->pdf }}</span>
                                 </li>
                                 <li>
                                     <input type="radio" id="a2" name="a" value='download-resume-word' class="resume-format">
-                                    <label for="a2">Word</label>
+                                    <label for="a2">Word</label><span class="badge badge-secondary" title="Maximum permitted downloads">{{ $credential->word }}</span>
                                 </li>
 {{--                                <li>--}}
 {{--                                    <input type="radio" id="a3" name="a">--}}
@@ -147,7 +153,7 @@
 {{--                                </li>--}}
                             </ul>
                             <button class="btn btn_tool">
-                                <a href="{{ route('download-resume-pdf') }}" class="resume-download-btn" target="_blank">
+                                <a href="{{ route('download-resume-pdf') }}" class="resume-download-btn">
                                     <i class="fas fa-download"></i>Download
                                 </a>
                             </button>
@@ -184,10 +190,10 @@
                                     <a href="{{ route('certifications') }}">Certifications</a>
                                 </li>
 
-                                @foreach($extraCredentials as $credential)
+                                @foreach($extraCredentials as $extra)
                                     <li>
-                                        <a href="{{ route('custom-section.show', $credential->slug) }}">{{ $credential->title }}</a>
-                                        <span class="resume-review-section-remove" data-section="{{ $credential->id }}"><i class="fas fa-times" title="Remove"></i></span>
+                                        <a href="{{ route('custom-section.show', $extra->slug) }}">{{ $extra->title }}</a>
+                                        <span class="resume-review-section-remove" data-section="{{ $extra->id }}"><i class="fas fa-times" title="Remove"></i></span>
                                     </li>
                                 @endforeach
 

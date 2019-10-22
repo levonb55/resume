@@ -5,11 +5,25 @@
 @section('extra-styles')
     <link rel="stylesheet" href="{{ asset('css/Lcss.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/checkout.css') }}">
 @endsection
 
 @section('content')
     <main>
         <section class="dashboard_content">
+
+            @if(session()->has('payment-warning'))
+                <div class="alert alert-primary">
+                    You need to pay to be able to download!
+                </div>
+            @endif
+
+            @if(session()->has('payment-error'))
+                <div class="alert alert-danger">
+                    {{ session()->get('payment-error') }}
+                </div>
+            @endif
+
             <div class="clon">
                 <div class="the_company websites">
                     <div class="second_block">
@@ -81,20 +95,69 @@
             </div>
 
             <h2 class="text-center">Checkout</h2>
-            <form action="{{ route('checkout') }}" method="POST">
+            <form action="{{ route('checkout') }}" method="POST" id="payment-form">
                 @csrf
                 <div class="col-md-4 offset-md-4">
                     <div class="form-group">
-                        <label for="full_name">Full name:</label>
-                        <input type="text" class="form-control" id="full_name" name="full_name" value="{{ old('full_name') }}">
+                        <label for="name_on_card">Cardholder name:</label>
+                        <input type="text" class="form-control" name="name" id="name_on_card" value="{{ old('name_on_card') }}">
+                        @error('name')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                        @enderror
                     </div>
+
                     <div class="form-group">
-                        <label for="email">Email address:</label>
-                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
+                        <label for="address">Address:</label>
+                        <input type="text" class="form-control" name="address" id="address" value="{{ old('address') }}">
+                        @error('address')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                        @enderror
                     </div>
+
                     <div class="form-group">
-                        <label for="mobile">Mobile phone:</label>
-                        <input type="text" class="form-control" id="mobile" name="mobile"  value="{{ old('mobile') }}">
+                        <label for="city">City:</label>
+                        <input type="text" class="form-control" name="city" id="city" value="{{ old('city') }}">
+                        @error('city')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="postalcode">Postal Code:</label>
+                        <input type="text" class="form-control" name="postalcode" id="postalcode" value="{{ old('postalcode') }}">
+                        @error('postalcode')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone:</label>
+                        <input type="text" class="form-control" name="phone" id="phone" value="{{ old('phone') }}">
+                        @error('phone')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="card-element">
+                            Credit or debit card
+                        </label>
+                        <div id="card-element">
+                            <!-- A Stripe Element will be inserted here. -->
+                        </div>
+
+                        <!-- Used to display form errors. -->
+                        <div id="card-errors" class="card-errors" role="alert"></div>
                     </div>
                 </div>
 
@@ -102,7 +165,7 @@
                     <a href="{{ route('resume-review') }}" class="back_left">
                         <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
                     </a>
-                    <button type="submit" class="continue_right">
+                    <button type="submit" class="continue_right" id="payment-button">
                         Checkout
                     </button>
                 </div>
@@ -110,4 +173,99 @@
 
         </section>
     </main>
+{{--    @dd(config('services.stripe.key'))--}}
+@endsection
+
+@section('extra-scripts')
+    <script>
+        (function () {
+            // Create a Stripe client.
+            var stripe = Stripe(@json(config('services.stripe.key')));
+
+            // Create an instance of Elements.
+            var elements = stripe.elements();
+
+            // Custom styling can be passed to options when creating an Element.
+            // (Note that this demo uses a wider set of styles than the guide below.)
+            var style = {
+                base: {
+                    color: '#32325d',
+                    fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                    fontSmoothing: 'antialiased',
+                    fontSize: '16px',
+                    '::placeholder': {
+                        color: '#aab7c4'
+                    }
+                },
+                invalid: {
+                    color: '#fa755a',
+                    iconColor: '#fa755a'
+                }
+            };
+
+            // Create an instance of the card Element.
+            var card = elements.create('card', {
+                style: style,
+                hidePostalCode: true
+            });
+
+            // Add an instance of the card Element into the `card-element` <div>.
+            card.mount('#card-element');
+
+            // Handle real-time validation errors from the card Element.
+            card.addEventListener('change', function(event) {
+                var displayError = document.getElementById('card-errors');
+                if (event.error) {
+                    displayError.textContent = event.error.message;
+                } else {
+                    displayError.textContent = '';
+                }
+            });
+
+            // Handle form submission.
+            var form = document.getElementById('payment-form');
+            var paymentBtn = document.getElementById('payment-button');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Disable the submit button to prevent repeated clicks
+                paymentBtn.disabled = true;
+
+                var options = {
+                    name: document.getElementById('name_on_card').value,
+                    address_line1: document.getElementById('address').value,
+                    address_city: document.getElementById('city').value,
+                    address_zip: document.getElementById('postalcode').value
+                };
+
+                stripe.createToken(card, options).then(function(result) {
+                    if (result.error) {
+                        // Inform the user if there was an error.
+                        var errorElement = document.getElementById('card-errors');
+                        errorElement.textContent = result.error.message;
+
+                        // Enable the submit button
+                        paymentBtn.disabled = false;
+                    } else {
+                        // Send the token to your server.
+                        stripeTokenHandler(result.token);
+                    }
+                });
+            });
+
+            // Submit the form with the token ID.
+            function stripeTokenHandler(token) {
+                // Insert the token ID into the form so it gets submitted to the server
+                var form = document.getElementById('payment-form');
+                var hiddenInput = document.createElement('input');
+                hiddenInput.setAttribute('type', 'hidden');
+                hiddenInput.setAttribute('name', 'stripeToken');
+                hiddenInput.setAttribute('value', token.id);
+                form.appendChild(hiddenInput);
+
+                // Submit the form
+                form.submit();
+            }
+        })();
+    </script>
 @endsection

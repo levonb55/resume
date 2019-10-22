@@ -16,22 +16,39 @@ class ResumeController extends Controller
 //        $data = [$templates, $extraCredentials];
 //        $pdf = PDF::loadView('downloads.resume', $data);
 //        $pdf = PDF::loadView('components.resumes.template' . auth()->user()->credential->template_id);
-        $pdf = PDF::loadView('downloads.resume');
-//        return $pdf->download('resume.pdf');
-        return $pdf->stream('resume.pdf');
+        $credential = auth()->user()->credential;
+
+        if($credential->pdf) {
+            $credential->update(['pdf' => --$credential->pdf]);
+            $pdf = PDF::loadView('downloads.resume');
+
+        return $pdf->download('resume.pdf');
+//            return $pdf->stream('resume.pdf');
+        }
+
+        return redirect()->route('checkout')->with('payment-warning', '');
     }
 
     public function downloadResumeWord()
     {
-        $phpWord = new \PhpOffice\PhpWord\PhpWord();
-        $section = $phpWord->addSection();
+        $credential = auth()->user()->credential;
 
-        $html = "<h4>Resume</h4>";
-        \PhpOffice\PhpWord\Shared\Html::addHtml($section, $html, false, false);
-        $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
-        $objectWriter->save(public_path('assets/downloads/resume' . auth()->id() . '.docx'));
+        if($credential->word) {
+            $credential->update(['word' => --$credential->word]);
+            $userId = auth()->id();
 
-        return response()->download(public_path('assets/downloads/resume' . auth()->id() . '.docx'), 'resume.docx')
-            ->deleteFileAfterSend();
+            $phpWord = new \PhpOffice\PhpWord\PhpWord();
+            $section = $phpWord->addSection();
+
+            $html = "<h4>Resume</h4>";
+            \PhpOffice\PhpWord\Shared\Html::addHtml($section, $html, false, false);
+            $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+            $objectWriter->save(public_path('assets/downloads/resume' . $userId . '.docx'));
+
+            return response()->download(public_path('assets/downloads/resume' . $userId . '.docx'), 'resume.docx')
+                ->deleteFileAfterSend();
+        }
+
+        return redirect()->route('checkout')->with('payment-warning', '');
     }
 }
