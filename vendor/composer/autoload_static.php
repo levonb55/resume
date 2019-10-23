@@ -464,7 +464,7 @@ class ComposerStaticInit0b7728406d069b41eff85aaad1b02a1d
     );
 
     public static $classMap = array (
-        'App\\AdditionalCredential' => __DIR__ . '/../..' . '/app/AdditionalCredential.php',
+        'App\\Billing\\StripeGateway' => __DIR__ . '/../..' . '/app/Billing/StripeGateway.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -483,6 +483,7 @@ class ComposerStaticInit0b7728406d069b41eff85aaad1b02a1d
         'App\\Http\\Controllers\\ResumeController' => __DIR__ . '/../..' . '/app/Http/Controllers/ResumeController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
+        'App\\Http\\Middleware\\CheckForChosenTemplate' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForChosenTemplate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
         'App\\Http\\Middleware\\DisablePreventBack' => __DIR__ . '/../..' . '/app/Http/Middleware/DisablePreventBack.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',

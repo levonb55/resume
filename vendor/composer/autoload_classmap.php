@@ -6,7 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'App\\AdditionalCredential' => $baseDir . '/app/AdditionalCredential.php',
+    'App\\Billing\\StripeGateway' => $baseDir . '/app/Billing/StripeGateway.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -25,6 +25,7 @@ return array(
     'App\\Http\\Controllers\\ResumeController' => $baseDir . '/app/Http/Controllers/ResumeController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
+    'App\\Http\\Middleware\\CheckForChosenTemplate' => $baseDir . '/app/Http/Middleware/CheckForChosenTemplate.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',
     'App\\Http\\Middleware\\DisablePreventBack' => $baseDir . '/app/Http/Middleware/DisablePreventBack.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
