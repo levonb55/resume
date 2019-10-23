@@ -19,7 +19,7 @@
             @endif
 
             @if(session()->has('payment-error'))
-                <div class="alert alert-danger">
+                <div class="alert alert-danger error">
                     {{ session()->get('payment-error') }}
                 </div>
             @endif
@@ -99,10 +99,10 @@
                 @csrf
                 <div class="col-md-4 offset-md-4">
                     <div class="form-group">
-                        <label for="name_on_card">Cardholder name:</label>
+                        <label for="name_on_card">Cardholder Name:</label>
                         <input type="text" class="form-control" name="name" id="name_on_card" value="{{ old('name_on_card') }}">
                         @error('name')
-                            <span class="text-danger">
+                            <span class="text-danger error">
                                 {{ $message }}
                             </span>
                         @enderror
@@ -112,7 +112,7 @@
                         <label for="address">Address:</label>
                         <input type="text" class="form-control" name="address" id="address" value="{{ old('address') }}">
                         @error('address')
-                            <span class="text-danger">
+                            <span class="text-danger error">
                                 {{ $message }}
                             </span>
                         @enderror
@@ -122,27 +122,32 @@
                         <label for="city">City:</label>
                         <input type="text" class="form-control" name="city" id="city" value="{{ old('city') }}">
                         @error('city')
-                            <span class="text-danger">
+                            <span class="text-danger error">
                                 {{ $message }}
                             </span>
                         @enderror
                     </div>
 
                     <div class="form-group">
-                        <label for="postalcode">Postal Code:</label>
-                        <input type="text" class="form-control" name="postalcode" id="postalcode" value="{{ old('postalcode') }}">
-                        @error('postalcode')
-                            <span class="text-danger">
+                        <label for="country">Select a Country:</label>
+                        <select class="form-control" id="country" name="country">
+                            <option></option>
+                            @foreach($countries as $country)
+                                <option value="{{ $country->iso_3166_2 }}">{{ $country->full_name }}</option>
+                            @endforeach
+                        </select>
+                        @error('country')
+                            <span class="text-danger error">
                                 {{ $message }}
                             </span>
                         @enderror
                     </div>
 
                     <div class="form-group">
-                        <label for="phone">Phone:</label>
-                        <input type="text" class="form-control" name="phone" id="phone" value="{{ old('phone') }}">
-                        @error('phone')
-                            <span class="text-danger">
+                        <label for="postal_code">Postal Code:</label>
+                        <input type="text" class="form-control" name="postal_code" id="postal_code" value="{{ old('postal_code') }}">
+                        @error('postal_code')
+                            <span class="text-danger error">
                                 {{ $message }}
                             </span>
                         @enderror
@@ -235,7 +240,8 @@
                     name: document.getElementById('name_on_card').value,
                     address_line1: document.getElementById('address').value,
                     address_city: document.getElementById('city').value,
-                    address_zip: document.getElementById('postalcode').value
+                    address_country: document.getElementById('country').value,
+                    address_zip: document.getElementById('postal_code').value
                 };
 
                 stripe.createToken(card, options).then(function(result) {
@@ -267,5 +273,10 @@
                 form.submit();
             }
         })();
+
+        //Scrolls into errors
+        if(errorElement = document.querySelector('.error')) {
+            errorElement.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+        }
     </script>
 @endsection

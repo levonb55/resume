@@ -7,12 +7,14 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Stripe\Stripe;
 use Stripe\Charge;
+use Webpatser\Countries\Countries;
 
 class CheckoutController extends Controller
 {
     public function getCheckout()
     {
-        return view('checkouts.checkout');
+        $countries = Countries::select('full_name', 'iso_3166_2')->get();
+        return view('checkouts.checkout', compact('countries'));
     }
 
     public function postCheckout(CheckoutRequest $request)
@@ -22,11 +24,11 @@ class CheckoutController extends Controller
             Stripe::setApiKey(config('services.stripe.secret'));
 
             $charge = Charge::create([
-                'amount' => 29.99 *100,
+                'amount' => 29.99 * 100,
                 'currency' => 'USD',
                 'source' => $request->input('stripeToken'),
                 'receipt_email' => $userEmail,
-                'description' => 'Charge for ' . $userEmail,
+                'description' => 'Charge for ' . $userEmail
             ]);
 
             $credential = auth()->user()->credential;

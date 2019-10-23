@@ -3,11 +3,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="{{asset('assets/libs/js/bootstrap.min.js')}}"></script>
 <script>
-    let appUrl = "";
-
-    if(window.location.hostname !== 'resume.loc') {
-        appUrl = 'http://greatexpertdev.site/laravel/resume-builder/public';
-    }
+    let appUrl = @json(config('app.url'));
 </script>
 @yield('extra-scripts')
 <script src="{{asset('js/script.js')}}"></script>
