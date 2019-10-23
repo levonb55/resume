@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Billing\StripeGateway;
 use App\Http\Requests\CheckoutRequest;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -17,21 +18,14 @@ class CheckoutController extends Controller
         return view('checkouts.checkout', compact('countries'));
     }
 
-    public function postCheckout(CheckoutRequest $request)
+    public function postCheckout(CheckoutRequest $request, StripeGateway $stripeGateway)
     {
-        $userEmail = auth()->user()->email;
+        $user = auth()->user();
+
         try {
-            Stripe::setApiKey(config('services.stripe.secret'));
+            $charge = $stripeGateway->charge($request, $user);
 
-            $charge = Charge::create([
-                'amount' => 29.99 * 100,
-                'currency' => 'USD',
-                'source' => $request->input('stripeToken'),
-                'receipt_email' => $userEmail,
-                'description' => 'Charge for ' . $userEmail
-            ]);
-
-            $credential = auth()->user()->credential;
+            $credential = $user->credential;
             $credential->update([
                 'pdf' => ++$credential->pdf,
                 'word' => ++$credential->word,
@@ -39,7 +33,7 @@ class CheckoutController extends Controller
             ]);
 
             Order::create([
-                'user_id' => auth()->id(),
+                'user_id' => $user->id,
                 'payment_id' => $charge->id
             ]);
 
