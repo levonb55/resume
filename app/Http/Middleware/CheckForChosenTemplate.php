@@ -16,7 +16,7 @@ class CheckForChosenTemplate
     public function handle($request, Closure $next)
     {
         if(!(auth()->user()->credential && auth()->user()->credential->template_id)) {
-            return redirect()->route('create-resume');
+            return redirect()->route('home');
         }
 
         return $next($request);

@@ -24,11 +24,11 @@ Route::get('logout', 'Auth\LoginController@logout');
 
 //Private routes
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('resume', 'CredentialController@createResume')->name('create-resume');
+    Route::get('choose-template', 'CredentialController@getTemplates')->name('templates')->middleware('resume-review');
+    Route::post('choose-template', 'CredentialController@chooseTemplate')->name('choose-template');
     
     Route::group(['middleware' => ['template.chosen']], function () {
-        Route::get('choose-template', 'CredentialController@getTemplates')->name('templates')->middleware('resume-review');
-        Route::post('choose-template', 'CredentialController@chooseTemplate')->name('choose-template');
+        Route::get('resume', 'CredentialController@createResume')->name('create-resume');
         Route::get('header', 'CredentialController@header')->name('header');
         Route::post('header', 'CredentialController@storeHeader')->name('header.store')->middleware('resume-review');
 

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('css/templates.css') }}">
     <style>
-        
+
     </style>
 @endsection
 
