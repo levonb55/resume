@@ -51,7 +51,7 @@
             @if($credential->summary || $showDefault)
                 <li class="red_item ui-state-default ui-sortable-handle">
                     <h5>SUMMARY</h5>
-                    <hr>
+                    <hr />
                     @if($credential->summary)
                         {!! $credential->summary !!}
                     @else
@@ -68,12 +68,12 @@
             @if($experiences->count() || $showDefault)
                 <li class="red_item ui-state-default ui-sortable-handle">
                     <h5>PROFESSIONAL EXPERIENCE</h5>
-                    <hr>
+                    <hr />
                     @if($experiences->count())
                         @foreach($experiences as $experience)
                             <h6>{{ $experience->title . ', ' . $experience->employer }}</h6>
                             <p>{{ $experience->startDate() . ' - ' . $experience->endDate() . ' ' . $experience->title}}</p>
-                            <p>{!! $experience->description !!}</p>
+                            {!! $experience->description !!}
                         @endforeach
                     @else
                         <h6>SENIOR DESIGNER</h6>
@@ -91,12 +91,12 @@
             @if($education->count() || $showDefault)
                 <li class="red_item ui-state-default ui-sortable-handle">
                     <h5>EDUCATION</h5>
-                    <hr>
+                    <hr />
                     @if($education->count())
                         @foreach($education as $educationItem)
                             <h6>{{ $educationItem->school . ', ' . $educationItem->study . ', ' . $educationItem->degree }}</h6>
                             <p>{{ $educationItem->startDate() . ' - ' . $educationItem->endDate() . ' ' . $educationItem->title}}</p>
-                            <p>{!! $educationItem->description !!}</p>
+                            {!! $educationItem->description !!}
                         @endforeach
                     @else
                         <h6>MIT, COMPUTER SCIENCE</h6>
@@ -110,11 +110,12 @@
             @if($credential->skills || $showDefault)
                 <li class="red_item ui-state-default ui-sortable-handle">
                     <h5>SKILLS</h5>
-                    <hr>
+                    <hr />
                     @if($credential->skills)
                         {!! $credential->skills !!}
                     @else
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis incidunt magnam omnis quia ratione. Consequatur facere necessitatibus nihil pariatur praesentium.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis incidunt magnam omnis quia
+                            ratione. Consequatur facere necessitatibus nihil pariatur praesentium.</p>
                     @endif
                 </li>
             @endif
@@ -123,9 +124,9 @@
                 @if($extra->content)
                     <li class="red_item ui-state-default ui-sortable-handle">
                         <h5>{{ strtoupper($extra->title) }}</h5>
-                        <hr>
+                        <hr />
                         {!! $extra->content !!}
-                    </LI>
+                    </li>
                 @endif
             @endforeach
 

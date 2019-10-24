@@ -46,7 +46,8 @@ class ResumeController extends Controller
             $phpWord = new \PhpOffice\PhpWord\PhpWord();
             $section = $phpWord->addSection();
 
-            $html = "<h4>Resume</h4>";
+//            $html = "<h4>Resume</h4>";
+            $html = view('components.resumes.template' . auth()->user()->credential->template_id)->render();
             \PhpOffice\PhpWord\Shared\Html::addHtml($section, $html, false, false);
             $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
             $objectWriter->save(public_path('assets/downloads/resume' . $userId . '.docx'));

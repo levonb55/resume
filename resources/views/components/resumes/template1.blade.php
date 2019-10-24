@@ -36,7 +36,7 @@
             @if($credential->summary || $showDefault)
                 <li class="sec_resum red_item ui-state-default ui-sortable-handle">
                     <h5>Professional Summary</h5>
-                    <hr>
+                    <hr />
                     @if($credential->summary)
                         {!! $credential->summary !!}
                     @else
@@ -49,20 +49,20 @@
             @if($experiences->count() || $showDefault)
                 <li class="sec_resum red_item ui-state-default ui-sortable-handle">
                     <h5>Employment history</h5>
-                    <hr>
+                    <hr />
 
                     @if($experiences->count())
                         @foreach($experiences as $experience)
-                            <div class="resum_main">
-                                <div class="left_resum">
+                            <ul class="resum_main">
+                                <li class="left_resum">
                                     <p class="font-weight-bold">{{ $experience->title . ', ' . $experience->employer }}</p>
                                     <span>{{ $experience->startDate() . ' - ' . $experience->endDate()}}</span>
                                     {!! $experience->description !!}
-                                </div>
-                                <div class="right_resum">
+                                </li>
+                                <li class="right_resum">
                                     <p>{{ $experience->city . ', '  . $experience->state }}</p>
-                                </div>
-                            </div>
+                                </li>
+                            </ul>
                         @endforeach
                     @else
                         <div class="resum_main">
@@ -84,7 +84,7 @@
             @if($education->count() || $showDefault)
                 <li class="sec_resum red_item ui-state-default ui-sortable-handle">
                     <h5>Education</h5>
-                    <hr>
+                    <hr />
 
                     @if($education->count())
                         @foreach($education as $educationItem)
@@ -119,17 +119,17 @@
             @if($credential->skills || $showDefault)
                 <li class="sec_resum red_item ui-state-default ui-sortable-handle">
                     <h5>Skills</h5>
-                    <hr>
-                    <div class="resum_main">
-                        <div class="left_resum">
+                    <hr />
+                    <ul class="resum_main">
+                        <li class="left_resum">
                             @if($credential->skills)
                                 {!! $credential->skills !!}
                             @else
                                 <p>GAAP principles expertise</p>
                                 <p>Sales and marketing</p>
                             @endif
-                        </div>
-                    </div>
+                        </li>
+                    </ul>
                 </li>
             @endif
 
@@ -137,12 +137,12 @@
                 @if($extra->content)
                     <li class="sec_resum red_item ui-state-default ui-sortable-handle">
                         <h5>{{ $extra->title }}</h5>
-                        <hr>
-                        <div class="resum_main">
-                            <div class="left_resum">
+                        <hr />
+                        <ul class="resum_main">
+                            <li class="left_resum">
                                 {!! $extra->content !!}
-                            </div>
-                        </div>
+                            </li>
+                        </ul>
                     </li>
                 @endif
             @endforeach

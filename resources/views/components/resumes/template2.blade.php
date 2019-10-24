@@ -39,9 +39,9 @@
                 @if($credential->summary || $showDefault)
                     <li class="summary red_item ui-state-default ui-sortable-handle">
                         <h5>SUMMARY</h5>
-                        <hr>
+                        <hr />
                         @if($credential->summary)
-                            <p>{!! $credential->summary !!}</p>
+                            {!! $credential->summary !!}
                         @else
                             <p>Experienced Project Manager with vast IT experience. Skills include computer networking, analytical
                                 thinking and creative problem solving</p>
@@ -52,18 +52,18 @@
                 @if($experiences->count() || $showDefault)
                     <li class="experience red_item ui-state-default ui-sortable-handle">
                         <h5>WORK EXPERIENCE</h5>
-                        <hr>
+                        <hr />
                         @if($experiences->count())
                             @foreach($experiences as $experience)
-                                <div class="experience_example">
-                                    <div class="exp_left">
+                                <ul class="experience_example">
+                                    <li class="exp_left">
                                         <p>{{ $experience->startDate() . ' - ' . $experience->endDate()}}</p>
-                                    </div>
-                                    <div class="exp_right">
+                                    </li>
+                                    <li class="exp_right">
                                         <h6>{{ $experience->title . ', ' . $experience->employer }}</h6>
                                         {!! $experience->description !!}
-                                    </div>
-                                </div>
+                                    </li>
+                                </ul>
                             @endforeach
                         @else
                             <div class="experience_example">
@@ -94,7 +94,7 @@
                 @if($education->count() || $showDefault)
                     <li class="education red_item ui-state-default ui-sortable-handle">
                         <h5>EDUCATION</h5>
-                        <hr>
+                        <hr />
                         @if($education->count())
                             @foreach($education as $educationItem)
                                 <div class="experience_example">
@@ -128,7 +128,7 @@
                 @if($credential->skills || $showDefault)
                     <div class="skills">
                         <h5>SKILLS</h5>
-                        <hr>
+                        <hr />
                         @if($credential->skills)
                             {!! $credential->skills !!}
                         @else
@@ -144,22 +144,22 @@
                             @if($extra->content)
                                 <div>
                                     <h5>{{ strtoupper($extra->title) }}</h5>
-                                    <hr>
-                                    <p>{!! $extra->content !!}</p>
+                                    <hr />
+                                    {!! $extra->content !!}
                                 </div>
                             @endif
                         @endforeach
                     @else
                         <div class="awards">
                             <h5>ACCOMPLISHMENTS</h5>
-                            <hr>
+                            <hr />
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A animi at eaque eligendi, iste laboriosam
                                 minima minus neque placeat repellendus tenetur, vel velit voluptas? Dolor, eaque harum incidunt nulla
                                 quia rem sed sint unde vitae?</p>
                         </div>
                         <div class="awards">
                             <h5>ADDITIONAL INFORMATION</h5>
-                            <hr>
+                            <hr />
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A animi at eaque eligendi, iste laboriosam
                                 minima minus neque placeat repellendus tenetur, vel velit voluptas? Dolor, eaque harum incidunt nulla
                                 quia rem sed sint unde vitae?</p>
