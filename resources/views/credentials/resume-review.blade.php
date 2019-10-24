@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="{{ asset('css/Lcss.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('css/templates.css') }}">
+    <style>
+        
+    </style>
 @endsection
 
 @section('content')
@@ -153,7 +156,7 @@
 {{--                                </li>--}}
                             </ul>
                             <button class="btn btn_tool">
-                                <a href="{{ route('download-resume-pdf') }}" class="resume-download-btn">
+                                <a href="{{ route('download-resume-pdf') }}" class="resume-download-btn" target="_blank">
                                     <i class="fas fa-download"></i>Download
                                 </a>
                             </button>

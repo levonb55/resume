@@ -55,7 +55,7 @@
                         @foreach($experiences as $experience)
                             <div class="resum_main">
                                 <div class="left_resum">
-                                    <p class="font-weight-bold">{{ $experience->title }}</p>
+                                    <p class="font-weight-bold">{{ $experience->title . ', ' . $experience->employer }}</p>
                                     <span>{{ $experience->startDate() . ' - ' . $experience->endDate()}}</span>
                                     {!! $experience->description !!}
                                 </div>

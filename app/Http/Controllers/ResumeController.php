@@ -16,6 +16,11 @@ class ResumeController extends Controller
 //        $data = [$templates, $extraCredentials];
 //        $pdf = PDF::loadView('downloads.resume', $data);
 //        $pdf = PDF::loadView('components.resumes.template' . auth()->user()->credential->template_id);
+
+        //Enabled for pdf testing
+        $pdf = PDF::loadView('downloads.resume');
+        return $pdf->stream('resume.pdf');
+
         $credential = auth()->user()->credential;
 
         if($credential->pdf) {

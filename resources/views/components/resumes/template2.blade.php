@@ -60,7 +60,7 @@
                                         <p>{{ $experience->startDate() . ' - ' . $experience->endDate()}}</p>
                                     </div>
                                     <div class="exp_right">
-                                        <h6>{{ $experience->title }}</h6>
+                                        <h6>{{ $experience->title . ', ' . $experience->employer }}</h6>
                                         {!! $experience->description !!}
                                     </div>
                                 </div>

@@ -71,7 +71,7 @@
                     <hr>
                     @if($experiences->count())
                         @foreach($experiences as $experience)
-                            <h6>{{ $experience->title }}</h6>
+                            <h6>{{ $experience->title . ', ' . $experience->employer }}</h6>
                             <p>{{ $experience->startDate() . ' - ' . $experience->endDate() . ' ' . $experience->title}}</p>
                             <p>{!! $experience->description !!}</p>
                         @endforeach
