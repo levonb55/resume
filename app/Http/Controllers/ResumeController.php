@@ -38,8 +38,9 @@ class ResumeController extends Controller
     {
         $credential = auth()->user()->credential;
 
-        if($credential->word) {
-            $credential->update(['word' => --$credential->word]);
+        //Enabled for word testing
+//        if($credential->word) {
+//            $credential->update(['word' => --$credential->word]);
             $userId = auth()->id();
 
             $phpWord = new \PhpOffice\PhpWord\PhpWord();
@@ -52,7 +53,7 @@ class ResumeController extends Controller
 
             return response()->download(public_path('assets/downloads/resume' . $userId . '.docx'), 'resume.docx')
                 ->deleteFileAfterSend();
-        }
+//        }
 
         return redirect()->route('checkout')->with('payment-warning', '');
     }
