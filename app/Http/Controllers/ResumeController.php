@@ -58,4 +58,26 @@ class ResumeController extends Controller
 
         return redirect()->route('checkout')->with('payment-warning', '');
     }
+
+    public function downloadResumeTxt()
+    {
+        $credential = auth()->user()->credential;
+
+        //Enabled for txt testing
+//        if($credential->txt) {
+//            $credential->update(['word' => --$credential->txt]);
+
+            $content = view('components.resumes.template' . $credential->template_id)->render();
+            $content = str_replace("\r\n",'', strip_tags($content));
+
+            $headers = [
+                'Content-type' => 'text/plain',
+                'Content-Disposition' => sprintf('attachment; filename="%s"', "resume.txt")
+            ];
+
+            return response()->make($content, 200, $headers);
+//       }
+
+        return redirect()->route('checkout')->with('payment-warning', '');
+    }
 }

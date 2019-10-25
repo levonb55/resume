@@ -150,10 +150,10 @@
                                     <input type="radio" id="a2" name="a" value='download-resume-word' class="resume-format">
                                     <label for="a2">Word</label><span class="badge badge-secondary" title="Maximum permitted downloads">{{ $credential->word }}</span>
                                 </li>
-{{--                                <li>--}}
-{{--                                    <input type="radio" id="a3" name="a">--}}
-{{--                                    <label for="a3">ASCII</label>--}}
-{{--                                </li>--}}
+                                <li>
+                                    <input type="radio" id="a3" name="a" value='download-resume-txt' class="resume-format">
+                                    <label for="a3">ASCII</label><span class="badge badge-secondary" title="Maximum permitted downloads">{{ $credential->txt }}</span>
+                                </li>
                             </ul>
                             <button class="btn btn_tool">
                                 <a href="{{ route('download-resume-pdf') }}" class="resume-download-btn" target="_blank">
