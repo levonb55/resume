@@ -88,18 +88,18 @@
 
                     @if($education->count())
                         @foreach($education as $educationItem)
-                            <div class="resum_main">
-                                <div class="left_resum">
+                            <ul class="resum_main">
+                                <li class="left_resum">
                                     <p class="font-weight-bold">
                                         {{ $educationItem->school . ', ' . $educationItem->study . ', ' . $educationItem->degree}}
                                     </p>
                                     <span>{{ $educationItem->startDate() . ' - ' . $educationItem->endDate()}}</span>
                                     {!! $educationItem->description !!}
-                                </div>
-                                <div class="right_resum">
+                                </li>
+                                <li class="right_resum">
                                     <p>{{ $educationItem->location }}</p>
-                                </div>
-                            </div>
+                                </li>
+                            </ul>
                         @endforeach
                     @else
                         <div class="resum_main">

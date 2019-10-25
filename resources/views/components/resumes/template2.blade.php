@@ -97,15 +97,15 @@
                         <hr />
                         @if($education->count())
                             @foreach($education as $educationItem)
-                                <div class="experience_example">
-                                    <div class="exp_left">
+                                <ul class="experience_example">
+                                    <li class="exp_left">
                                         <p>{{ $educationItem->startDate() . ' - ' . $educationItem->endDate()}}</p>
-                                    </div>
-                                    <div class="exp_right">
+                                    </li>
+                                    <li class="exp_right">
                                         <h6>{{ $educationItem->school . ', ' . $educationItem->study . ', ' . $educationItem->degree }}</h6>
                                         {!! $educationItem->description !!}
-                                    </div>
-                                </div>
+                                    </li>
+                                </ul>
                             @endforeach
                         @else
                             <div class="experience_example">
