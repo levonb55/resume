@@ -25,12 +25,10 @@
                                 <i class="fas fa-circle"></i>
                                 <p>Land the interview and get hired faster!</p>
                             </div>
-                            <a href="Cover_steps/step_one.html"><button class="btn btn-blue">Start Now</button></a>
-
-
+                            <a href="{{ route('cover-letter.choose-template') }}"><button class="btn btn-blue">Start Now</button></a>
                         </div>
-
                     </div>
+
                     <div class="col-sm-6">
                         <div class="sectionimg">
                             <img src="{{ asset('assets/images/resume2.png') }}">

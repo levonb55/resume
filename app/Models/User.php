@@ -68,4 +68,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\ExtraCredential');
     }
+
+    /**
+     * Get the cover letter record associated with the user.
+     */
+    public function coverLetter()
+    {
+        return $this->hasOne('App\Models\CoverLetter');
+    }
 }

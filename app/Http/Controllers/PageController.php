@@ -11,11 +11,6 @@ class PageController extends Controller
         return view('pages.index');
     }
 
-    //Gets cover letter page
-    public function coverLetter() {
-        return view('pages.cover-letter');
-    }
-
     //Gets jobs page
     public function jobs() {
         return view('pages.jobs');
