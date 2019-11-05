@@ -680,6 +680,7 @@ footer .container{
 
 .main-content {
     position: relative;
+    height: 570px!important;
 }
 .main-content .owl-theme .custom-nav {
     position: absolute;

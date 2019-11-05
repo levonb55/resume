@@ -4,6 +4,7 @@
 
 @section('extra-styles')
 	<link rel="stylesheet" href="{{asset('assets/libs/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 @endsection
 
 @section('content')
@@ -37,12 +38,14 @@
 
 			<div class="text-center my-4">Click on an image to choose a template.</div>
 {{--			<button class="btn btn-blue d-block mx-auto" type="submit" >Next</button>--}}
-            <a href="{{ route('cover-letter') }}" class="back_left">
-                <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
-            </a>
-            <button type="submit" class="continue_right">
-                Continue <span class="fas fa-long-arrow-alt-right"></span>
-            </button>
+            <div class="back_continue experience_page">
+                <a href="{{ route('cover-letter') }}" class="back_left">
+                    <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
+                </a>
+                <button type="submit" class="continue_right">
+                    Continue <span class="fas fa-long-arrow-alt-right"></span>
+                </button>
+            </div>
 		</form>
 	</main>
 @endsection

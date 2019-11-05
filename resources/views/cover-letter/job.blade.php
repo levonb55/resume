@@ -75,9 +75,9 @@
                                         <li>
                                             <p>Answer the following questions so that we can help you create a professional cover letter</p>
                                         </li>
-                                        <li>
-                                            <p>Rest assured we will find you a great job</p>
-                                        </li>
+{{--                                        <li>--}}
+{{--                                            <p>Rest assured we will find you a great job</p>--}}
+{{--                                        </li>--}}
                                     </ul>
                                 </div>
                             </div>
