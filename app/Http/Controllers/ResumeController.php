@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ExtraCredential;
 use App\Models\Template;
 use Illuminate\Http\Request;
+use Mpdf\Mpdf;
 use PDF;
 
 class ResumeController extends Controller
@@ -18,8 +19,26 @@ class ResumeController extends Controller
 //        $pdf = PDF::loadView('components.resumes.template' . auth()->user()->credential->template_id);
 
         //Enabled for pdf testing
-        $pdf = PDF::loadView('downloads.resume');
-        return $pdf->stream('resume.pdf');
+//        $pdf = PDF::loadView('downloads.resume');
+//        return $pdf->stream('resume.pdf');
+
+        $mpdf = new Mpdf();
+
+        // Buffer the following html with PHP so we can store it to a variable later
+        ob_start();
+
+        // This is where your script would normally output the HTML using echo or print
+        echo view('downloads.resume')->render();
+
+        // Now collect the output buffer into a variable
+        $html = ob_get_contents();
+        ob_end_clean();
+
+        // send the captured HTML from the output buffer to the mPDF class for processing
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();
+
+
 
         $credential = auth()->user()->credential;
 

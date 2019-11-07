@@ -47,7 +47,7 @@
     .container{
         max-width: 1250px;
     }
-}    
+}
 .bg{
     background-image: url(../assets/images/bg1.png);
     background-size: cover;
@@ -245,7 +245,7 @@ hr{
     background-image: linear-gradient(to right,#ffb26700,white);
     height: 1.2px;
     width: 20%;
-    margin: 16px 0px;
+    margin: 16px 0;
 }
 .bg2{
     width: 100%;
@@ -253,7 +253,7 @@ hr{
     background-size: cover;
     background-position: bottom;
     background-repeat: no-repeat;
-    color: #fff; 
+    color: #fff;
     text-align: center;
     padding: 25px 0px;
 }
@@ -358,7 +358,7 @@ button:focus{
 }
 .testi_div img:nth-child(2){
     max-width: 120px;
-}   
+}
 .owl-stage{
     display: flex;
     justify-content: center;
@@ -379,13 +379,20 @@ button:focus{
     background-repeat: no-repeat;
 }
 
+
+/* resume examples*/
+
+.example2 .right {
+    padding: 15px!important;
+}
+
 /*footer*/
 footer{
     background-image: url(../assets/images/footer_bg.png);
     background-size: cover;
     background-position: top;
     background-repeat: no-repeat;
-    color: #fff; 
+    color: #fff;
     min-height: 400px;
     padding: 50px 0px 0px 0px;
     display: flex;

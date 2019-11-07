@@ -14,6 +14,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
+        "mpdf/mpdf": "^8.0",
         "phpoffice/phpword": "^0.17.0",
         "stripe/stripe-php": "^7.5",
         "webpatser/laravel-countries": "dev-master"

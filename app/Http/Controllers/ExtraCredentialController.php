@@ -69,7 +69,12 @@ class ExtraCredentialController extends Controller
 
     public function storeProfiles(Request $request)
     {
-        $this->storeSectionData(implode(', ', array_filter($request->input('profiles'))), 'profiles', 'Profiles');
+        $profiles = array_map(function($arr) {
+            return strip_tags($arr);
+        }, $request->input('profiles'));
+        $profiles = array_filter($profiles);
+
+        $this->storeSectionData(implode(', ', $this->addHtmlClassToArrEls('profile', $profiles)), 'profiles', 'Profiles');
 
         return $this->redirectForward();
     }
@@ -182,4 +187,10 @@ class ExtraCredentialController extends Controller
         return Session::get('add-sections')[array_search(Route::getFacadeRoot()->current()->uri(), Session::get('add-sections') ?? []) - 1];
     }
 
+    public function addHtmlClassToArrEls($class, $arr)
+    {
+        return array_map(function($el) use ($class) {
+            return  "<a href='$el' class='$class'>$el</a>";
+        }, $arr);
+    }
 }
