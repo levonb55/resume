@@ -537,3 +537,13 @@ $('.imgClickHandle').on('click',function () {
 $('.resume-format').on('change', function () {
     $('.resume-download-btn').attr('href', appUrl + '/' + $(this).val());
 });
+
+$('.add-custom-strength').on('click', function (e) {
+    e.preventDefault();
+
+    let input = $(this).siblings('input');
+    if(!input.val()) { return false; }
+    $('.strength-options').append(`<input type="checkbox" name="strengths[]" value="${input.val()}"> ${input.val()}`);
+
+    input.val('');
+});

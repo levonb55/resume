@@ -40,37 +40,43 @@
                     </div>
                 </div>
             </div>
-            <div class="clon">
-                <div class="start_header">
-                    <div class="header_inputs">
-                        <h2>Select your top strengths</h2>
-                        <p>Showing how you’re unique helps you stand out from the competition. Choose 3 strengths!</p>
-                    </div>
 
+            <form action="{{ route('cover-letter.strengths') }}" method="POST">
+                @csrf
+                <div class="clon">
+                    <div class="start_header">
+                        <div class="header_inputs">
+                            <h2>Select your top strengths</h2>
+                            <p>Showing how you’re unique helps you stand out from the competition. Choose 3 strengths!</p>
+                        </div>
+
+                    </div>
+                    <div class="start_body strength-options">
+                        @foreach($strengths as $strength)
+                            <input type="checkbox" name="strengths[]" value="{{ $strength }}"
+                                    {{ in_array($strength, $pickedStrengths) ? 'checked' : ''  }}>{{ $strength }}
+                        @endforeach
+                    </div>
                 </div>
-                <div class="start_body">
-                    <button class="btn btn_tool str_button">Strengths 1 <span class="fas fa-check d-none"></span></button>
-                    <button class="btn btn_tool str_button">Strengths 1 <span class="fas fa-check d-none"></span></button>
-                    <button class="btn btn_tool str_button">Strengths 1 <span class="fas fa-check d-none"></span></button>
-                    <button class="btn btn_tool str_button">Strengths 1 <span class="fas fa-check d-none"></span></button>
-                    <button class="btn btn_tool str_button">Strengths 1 <span class="fas fa-check d-none"></span></button>
-                    <button class="btn btn_tool str_button">Strengths 1 <span class="fas fa-check d-none"></span></button>
-                    <button class="btn btn_tool str_button">Strengths 1 <span class="fas fa-check d-none"></span></button>
-                    <button class="btn btn_tool str_button">Strengths 1 <span class="fas fa-check d-none"></span></button>
-                    <button class="btn btn_tool str_button">Strengths 1 <span class="fas fa-check d-none"></span></button>
-                    <button class="btn btn_tool str_button">Strengths 1 <span class="fas fa-check d-none"></span></button>
-                    <button class="btn btn_tool str_button">Strengths 1 <span class="fas fa-check d-none"></span></button>
-                    <button class="btn btn_tool str_button">Strengths 1 <span class="fas fa-check d-none"></span></button>
+
+                @error('strengths')
+                    <strong><span class="text-danger header-error"> {{ $message }} </span></strong>
+                @enderror
+
+                <div class="das_inp">
+                    <input type="text" placeholder="Add a Strength">
+                    <button class="btn btn-blue add-custom-strength">Add</button>
                 </div>
-            </div>
-            <div class="back_continue experience_page">
-                <a href="{{ route('cover-letter.employer') }}" class="back_left">
-                    <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
-                </a>
-                <a href="step_four.html" class="continue_right">
-                    <p> Continue <span class="fas fa-long-arrow-alt-right"></span></p>
-                </a>
-            </div>
+
+                <div class="back_continue experience_page">
+                    <a href="{{ route('cover-letter.employer') }}" class="back_left">
+                        <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
+                    </a>
+                    <button type="submit" class="continue_right">
+                        Continue <span class="fas fa-long-arrow-alt-right"></span>
+                    </button>
+                </div>
+            </form>
         </section>
     </main>
 @endsection

@@ -19,6 +19,9 @@ class CreateCoverLettersTable extends Migration
             $table->unsignedTinyInteger('template_id')->default(1);
             $table->string('job')->nullable();
             $table->string('employer')->nullable();
+            $table->string('strengths')->nullable();
+            $table->tinyInteger('experience')->nullable();
+            $table->string('styles')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

@@ -77,7 +77,6 @@ Route::group(['middleware' => ['auth']], function () {
 
         //Cover Letter Routes
         Route::get('cover-letter', 'CoverLetterController@index')->name('cover-letter');
-//        Route::get('cover-letter/templates', 'CoverLetterController@getTemplates')->name('cover-letter.templates');
         Route::get('cover-letter/choose-template', 'CoverLetterController@getTemplates')->name('cover-letter.choose-template');
         Route::post('cover-letter/choose-template', 'CoverLetterController@chooseTemplate')->name('cover-letter.choose-template');
         Route::get('cover-letter/job', 'CoverLetterController@getJob')->name('cover-letter.job');
@@ -85,6 +84,11 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('cover-letter/employer', 'CoverLetterController@getEmployer')->name('cover-letter.employer');
         Route::post('cover-letter/employer', 'CoverLetterController@postEmployer')->name('cover-letter.employer');
         Route::get('cover-letter/strengths', 'CoverLetterController@getStrengths')->name('cover-letter.strengths');
+        Route::post('cover-letter/strengths', 'CoverLetterController@postStrengths')->name('cover-letter.strengths');
+        Route::get('cover-letter/experience', 'CoverLetterController@getExperience')->name('cover-letter.experience');
+        Route::post('cover-letter/experience', 'CoverLetterController@postExperience')->name('cover-letter.experience');
+        Route::get('cover-letter/working-style', 'CoverLetterController@getWorkingStyle')->name('cover-letter.style');
+        Route::post('cover-letter/working-style', 'CoverLetterController@postWorkingStyle')->name('cover-letter.style');
     });
 });
 
