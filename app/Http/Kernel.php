@@ -64,7 +64,9 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'owner' => \App\Http\Middleware\Owner::class,
         'resume-review' => \App\Http\Middleware\RedirectToResumeReview::class,
-        'template.chosen' => \App\Http\Middleware\CheckForChosenTemplate::class
+        'template.chosen' => \App\Http\Middleware\CheckForChosenTemplate::class,
+        'cover-review' => \App\Http\Middleware\RedirectToCoverReview::class,
+        'cover-check' => \App\Http\Middleware\CheckForChosenCover::class
     ];
 
     /**

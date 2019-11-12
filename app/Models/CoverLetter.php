@@ -12,7 +12,7 @@ class CoverLetter extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'template_id', 'job', 'employer', 'strengths', 'experience', 'styles'
+        'user_id', 'template_id', 'job', 'employer', 'strengths', 'experience', 'styles', 'first_name', 'last_name', 'complete'
     ];
 
 }

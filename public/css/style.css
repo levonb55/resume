@@ -397,6 +397,11 @@ footer ul{
 footer li{
     margin-bottom: 10px;
 }
+
+footer li a {
+    color: inherit;
+}
+
 .footer_title{
         border-bottom: 1px solid #ffffff91;
     padding-bottom: 20px;

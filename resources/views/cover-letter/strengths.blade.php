@@ -69,9 +69,15 @@
                 </div>
 
                 <div class="back_continue experience_page">
-                    <a href="{{ route('cover-letter.employer') }}" class="back_left">
-                        <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
-                    </a>
+                    @if(auth()->user()->coverLetter->complete)
+                        <a href="{{ route('cover-letter.review') }}" class="back_left">
+                            <p>Cancel</p>
+                        </a>
+                    @else
+                        <a href="{{ route('cover-letter.employer') }}" class="back_left">
+                            <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
+                        </a>
+                    @endif
                     <button type="submit" class="continue_right">
                         Continue <span class="fas fa-long-arrow-alt-right"></span>
                     </button>

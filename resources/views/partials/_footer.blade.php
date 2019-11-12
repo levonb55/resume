@@ -8,9 +8,9 @@
             <div class="col-sm-4">
                 <p class="footer_title">COMPANY NAME</p>
                 <ul>
-                    <li>Home</li>
-                    <li>Resume</li>
-                    <li>Cover letter</li>
+                    <li><a href="{{ route('home') }}">Home</a></li>
+                    <li><a href="{{ route('templates') }}">Resume</a></li>
+                    <li><a href="{{ route('cover-letter') }}">Cover letter</a></li>
                 </ul>
             </div>
             <div class="col-sm-4 social">

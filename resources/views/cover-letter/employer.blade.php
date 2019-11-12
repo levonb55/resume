@@ -51,12 +51,12 @@
                             <div class="skills_inp form_header">
                                 <div class="study">
                                     <label>Desired Company</label>
-                                    <input type="text" placeholder="Apple Inc." name="employer" value="{{ old('employer') ?? $employer}}">
+                                    <input type="text" placeholder="Apple Inc." name="employer" value="{{ old('employer') ?? $cover->employer}}">
                                     @error('employer')
                                         <strong><span class="text-danger header-error"> {{ $message }} </span></strong>
                                     @enderror
                                 </div>
-                               @if(!$employer)
+                               @if(!$cover->employer)
                                     <div class="skills_dont_job">
                                         <a href="{{ route('cover-letter.strengths') }}">I don't have a company in mind</a>
                                     </div>
@@ -83,9 +83,15 @@
                     </div>
                 </div>
                 <div class="back_continue experience_page">
-                    <a href="{{ route('cover-letter.job') }}" class="back_left">
-                        <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
-                    </a>
+                    @if($cover->complete)
+                        <a href="{{ route('cover-letter.review') }}" class="back_left">
+                            <p>Cancel</p>
+                        </a>
+                    @else
+                        <a href="{{ route('cover-letter.job') }}" class="back_left">
+                            <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
+                        </a>
+                    @endif
                     <button type="submit" class="continue_right">
                         Continue <span class="fas fa-long-arrow-alt-right"></span>
                     </button>

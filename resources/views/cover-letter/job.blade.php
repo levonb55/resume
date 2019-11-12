@@ -49,12 +49,12 @@
                             <div class="skills_inp form_header">
                                 <div class="study">
                                     <label>Desired Position</label>
-                                    <input type="text" placeholder="Accountant" name="job" value="{{ old('job') ?? $job }}">
+                                    <input type="text" placeholder="Accountant" name="job" value="{{ old('job') ?? $cover->job }}">
                                     @error('job')
                                         <strong><span class="text-danger header-error"> {{ $message }} </span></strong>
                                     @enderror
                                 </div>
-                               @if(!$job)
+                               @if(!$cover->job)
                                     <div class="skills_dont_job">
                                         <a href="{{ route('cover-letter.employer') }}">I don't have a job in mind</a>
                                     </div>
@@ -86,9 +86,15 @@
                 </div>
 
                 <div class="back_continue experience_page">
-                    <a href="{{ route('cover-letter.choose-template') }}" class="back_left">
-                        <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
-                    </a>
+                    @if($cover->complete)
+                        <a href="{{ route('cover-letter.review') }}" class="back_left">
+                            <p>Cancel</p>
+                        </a>
+                    @else
+                        <a href="{{ route('cover-letter.choose-template') }}" class="back_left">
+                            <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
+                        </a>
+                    @endif
                     <button type="submit" class="continue_right">
                         Continue <span class="fas fa-long-arrow-alt-right"></span>
                     </button>

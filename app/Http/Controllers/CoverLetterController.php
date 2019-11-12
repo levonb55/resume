@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class CoverLetterController extends Controller
 {
     const TEMPLATE = 1;
+    const COMPLETE = 1;
 
     public function index()
     {
@@ -38,9 +39,9 @@ class CoverLetterController extends Controller
 
     public function getJob()
     {
-        $job = auth()->user()->coverLetter->job;
+        $cover = auth()->user()->coverLetter;
 
-        return view('cover-letter.job', compact('job'));
+        return view('cover-letter.job', compact('cover'));
     }
 
     public function postJob(Request $request)
@@ -59,9 +60,9 @@ class CoverLetterController extends Controller
 
     public function getEmployer()
     {
-        $employer = auth()->user()->coverLetter->employer;
+        $cover = auth()->user()->coverLetter;
 
-        return view('cover-letter.employer', compact('employer'));
+        return view('cover-letter.employer', compact('cover'));
     }
 
     public function postEmployer(Request $request)
@@ -112,9 +113,9 @@ class CoverLetterController extends Controller
 
     public function getExperience()
     {
-        $experience = auth()->user()->coverLetter->experience;
+        $cover = auth()->user()->coverLetter;
 
-        return view('cover-letter.experience', compact('experience'));
+        return view('cover-letter.experience', compact('cover'));
     }
 
     public function postExperience(Request $request)
@@ -162,7 +163,7 @@ class CoverLetterController extends Controller
             ['styles' => serialize($request->input('styles'))]
         );
 
-        return 'Done';
+        return redirect()->route('cover-letter.name');
     }
 
     public function workingStyles()
@@ -177,5 +178,56 @@ class CoverLetterController extends Controller
             'Guardian' => 'You like stability, order, and rigor.',
             'Pioneer' => 'You value possibilities, take risks, and spark energy and imagination to your team.'
         ];
+    }
+
+    public function getName()
+    {
+        $cover = auth()->user()->coverLetter;
+
+        return view('cover-letter.name', compact('cover'));
+    }
+
+    public function postName(Request $request)
+    {
+        $request->validate([
+            'first_name' => 'required|string|min:1|max:255',
+            'last_name' => 'required|string|min:1|max:255',
+        ]);
+
+        auth()->user()->coverLetter()->updateOrCreate(
+            ['user_id' => auth()->id()],
+            [
+                'first_name' => $request->input('first_name'),
+                'last_name' => $request->input('last_name')
+            ]
+        );
+
+        return redirect()->route('cover-letter.review');
+    }
+
+    public function getReview()
+    {
+        $templates = CoverTemplate::all();
+        $coverLetter = auth()->user()->coverLetter;
+
+        if($coverLetter !== self::COMPLETE) {
+            $coverLetter->update(['complete' => self::COMPLETE]);
+        }
+
+        return view('cover-letter.review',  compact('templates',  'coverLetter'));
+    }
+
+    public function updateReview(Request $request)
+    {
+        $request->validate([
+            'template' => 'required|integer|min:1|max:3',
+        ]);
+
+        auth()->user()->coverLetter()->updateOrCreate(
+            ['user_id' => auth()->id()],
+            ['template_id' => $request->input('template')]
+        );
+
+        return back();
     }
 }

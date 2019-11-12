@@ -43,7 +43,7 @@
 
             <form action="{{ route('cover-letter.experience') }}" method="POST">
                 @csrf
-                <input type="hidden" value="{{ $experience ? $experience : 5 }}" name="experience" class="cover-experience">
+                <input type="hidden" value="{{ $cover->experience ? $cover->experience : 5 }}" name="experience" class="cover-experience">
                 <div class="clon step_four">
                     <div class="start_header ">
                         <div class="header_inputs">
@@ -59,7 +59,7 @@
                                 </div>
                             </div>
 
-                            @if(!$experience)
+                            @if(!$cover->experience)
                                 <div class="skills_dont_job">
                                     <a href="{{ route('cover-letter.style') }}">I don't have experience.</a>
                                 </div>
@@ -87,9 +87,15 @@
                     </div>
                 </div>
                 <div class="back_continue experience_page">
-                    <a href="{{ route('cover-letter.strengths') }}" class="back_left">
-                        <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
-                    </a>
+                    @if($cover->complete)
+                        <a href="{{ route('cover-letter.review') }}" class="back_left">
+                            <p>Cancel</p>
+                        </a>
+                    @else
+                        <a href="{{ route('cover-letter.strengths') }}" class="back_left">
+                            <p><span class="fas fa-long-arrow-alt-left"></span> Back</p>
+                        </a>
+                    @endif
                     <button type="submit" class="continue_right">
                         Continue <span class="fas fa-long-arrow-alt-right"></span>
                     </button>
