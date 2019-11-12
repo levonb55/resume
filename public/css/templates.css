@@ -26,10 +26,21 @@
     /*text-decoration: underline;*/
 }
 .resum_main{
-    display: flex;
-    justify-content: space-between;
+    /*display: flex;*/
+    /*justify-content: space-between;*/
     width: 100%;
 }
+
+.resum_main .left_resum{
+    float: left;
+    width: 68%;
+}
+
+.resum_main .right_resum{
+    float: right;
+    width: 24%;
+}
+
 .resum_main span{
     color: #005cbf;
     font-weight: 500;
@@ -44,9 +55,18 @@
     min-height: 170px;
 }
 .name_res {
-    display: flex;
+    /*display: flex;*/
 }
 
+.name_res #first_text2 {
+    float: left;
+    width: 5%;
+}
+
+.name_res #last_name2 {
+    float: right;
+    width: 91%;
+}
 
 /*example1 end*/
 /*example2*/
@@ -124,9 +144,13 @@
     border-color: black;
     background: black;
 }
+.example2 .profile {
+    word-break: break-all;
+}
 
 
-/*example2 end*/
+
+    /*example2 end*/
 /*example3*/
 .example3 {
     width: 100%;

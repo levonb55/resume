@@ -372,7 +372,7 @@ $(document).ready(function () {
 //
     $("#font_famly").on("change",function () {
         $("#sortable").css("font-family",this.value)
-    })
+    });
 
 
 //    prewiew

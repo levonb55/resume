@@ -1,12 +1,12 @@
 <div class="example example2">
-    <div class="">
+    <div>
         <div class="left_head">
             <div class="head">
                 <h1><span id="first_text2">{{ $credential->first_name ?? 'First Name' }} </span> <span id="last_name2">{{ $credential->last_name ?? 'Last Name' }}</span></h1>
             </div>
             <div class="info">
-                <ul>
-                    <li>
+                <div>
+                    <div>
                         @if($credential->address || $showDefault)
                             <span id="address_person">{{ $credential->address ? $credential->address : 'Street Address' }},</span>
                         @endif
@@ -22,22 +22,22 @@
                         @if($credential->zip || $showDefault)
                             <span id="zip_zip">{{ $credential->zip ? $credential->zip : 'Zip Code' }}</span>
                         @endif
-                    </li>
+                    </div>
 
                     @if($credential->phone || $showDefault)
-                        <li id="phone_phone">{{ $credential->phone ? $credential->phone : '+123456789' }}</li>
+                        <div id="phone_phone">{{ $credential->phone ? $credential->phone : '+123456789' }}</div>
                     @endif
 
-                    <li id="email_email">{{ $credential->email ?? 'name@example.com' }}</li>
-                </ul>
+                    <div id="email_email">{{ $credential->email ?? 'name@example.com' }}</div>
+                </div>
             </div>
 
         </div>
         <div class="resum">
-            <ul id="sortable" class="ui-sortable left">
+            <div id="sortable" style="width: 65%; float: left" class="ui-sortable left">
 
                 @if($credential->summary || $showDefault)
-                    <li class="summary red_item ui-state-default ui-sortable-handle">
+                    <div class="summary red_item ui-state-default ui-sortable-handle">
                         <h5>SUMMARY</h5>
                         <hr />
                         @if($credential->summary)
@@ -46,24 +46,24 @@
                             <p>Experienced Project Manager with vast IT experience. Skills include computer networking, analytical
                                 thinking and creative problem solving</p>
                         @endif
-                    </li>
+                    </div>
                 @endif
 
                 @if($experiences->count() || $showDefault)
-                    <li class="experience red_item ui-state-default ui-sortable-handle">
+                    <div class="experience red_item ui-state-default ui-sortable-handle">
                         <h5>WORK EXPERIENCE</h5>
                         <hr />
                         @if($experiences->count())
                             @foreach($experiences as $experience)
-                                <ul class="experience_example">
-                                    <li class="exp_left">
+                                <div class="experience_example">
+                                    <div class="exp_left">
                                         <p>{{ $experience->startDate() . ' - ' . $experience->endDate()}}</p>
-                                    </li>
-                                    <li class="exp_right">
+                                    </div>
+                                    <div class="exp_right">
                                         <h6>{{ $experience->title . ', ' . $experience->employer }}</h6>
                                         {!! $experience->description !!}
-                                    </li>
-                                </ul>
+                                    </div>
+                                </div>
                             @endforeach
                         @else
                             <div class="experience_example">
@@ -88,24 +88,24 @@
                                 </div>
                             </div>
                         @endif
-                    </li>
+                    </div>
                 @endif
 
                 @if($education->count() || $showDefault)
-                    <li class="education red_item ui-state-default ui-sortable-handle">
+                    <div class="education red_item ui-state-default ui-sortable-handle">
                         <h5>EDUCATION</h5>
                         <hr />
                         @if($education->count())
                             @foreach($education as $educationItem)
-                                <ul class="experience_example">
-                                    <li class="exp_left">
+                                <divl class="experience_example">
+                                    <div class="exp_left">
                                         <p>{{ $educationItem->startDate() . ' - ' . $educationItem->endDate()}}</p>
-                                    </li>
-                                    <li class="exp_right">
+                                    </div>
+                                    <div class="exp_right">
                                         <h6>{{ $educationItem->school . ', ' . $educationItem->study . ', ' . $educationItem->degree }}</h6>
                                         {!! $educationItem->description !!}
-                                    </li>
-                                </ul>
+                                    </div>
+                                </divl>
                             @endforeach
                         @else
                             <div class="experience_example">
@@ -119,11 +119,11 @@
                                 </div>
                             </div>
                         @endif
-                    </li>
+                    </div>
                 @endif
-            </ul>
+            </div>
 
-            <div class="right">
+            <div style="width: 27%; float: right; padding:0 10px" class="right">
 
                 @if($credential->skills || $showDefault)
                     <div class="skills">

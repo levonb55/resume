@@ -20,12 +20,12 @@
                         </div>
                         <div class="url">
                             <div class="url_top">
-                                <input type="text" placeholder="Personal link" name="profiles[]" value="{{ $profiles[0] ?? '' }}">
-                                <input type="text" placeholder="Personal link" name="profiles[]" value="{{ $profiles[1] ?? '' }}">
+                                <input type="text" placeholder="Personal link" name="profiles[]" value="{{ isset($profiles[0]) ? strip_tags($profiles[0]) : '' }}">
+                                <input type="text" placeholder="Personal link" name="profiles[]" value="{{ isset($profiles[1]) ? strip_tags($profiles[1]) : '' }}">
                             </div>
                             <div class="url_bottom">
-                                <input type="text" placeholder="Personal link" name="profiles[]" value="{{ $profiles[2] ?? '' }}">
-                                <input type="text" placeholder="Personal link" name="profiles[]" value="{{ $profiles[3] ?? '' }}">
+                                <input type="text" placeholder="Personal link" name="profiles[]" value="{{ isset($profiles[2]) ? strip_tags($profiles[2]) : '' }}">
+                                <input type="text" placeholder="Personal link" name="profiles[]" value="{{ isset($profiles[3]) ? strip_tags($profiles[3]) : '' }}">
                             </div>
                         </div>
                     </div>

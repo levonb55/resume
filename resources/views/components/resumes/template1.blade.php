@@ -1,7 +1,7 @@
 <div class="example example1">
     <div>
         <div class="head1">
-            <div class="name_res">
+            <div class="name_res clearfix">
                 <h2 id="first_text2">{{ $credential->first_name ?? 'First Name' }} </h2>
                 <h2 id="last_name2">{{ $credential->last_name ?? 'Last Name' }}</h2>
             </div>
@@ -53,7 +53,7 @@
 
                     @if($experiences->count())
                         @foreach($experiences as $experience)
-                            <ul class="resum_main">
+                            <ul class="resum_main clearfix">
                                 <li class="left_resum">
                                     <p class="font-weight-bold">{{ $experience->title . ', ' . $experience->employer }}</p>
                                     <span>{{ $experience->startDate() . ' - ' . $experience->endDate()}}</span>
@@ -65,7 +65,7 @@
                             </ul>
                         @endforeach
                     @else
-                        <div class="resum_main">
+                        <div class="resum_main clearfix">
                             <div class="left_resum  ">
                                 <p class="font-weight-bold">It Technician, International Mobilities</p>
                                 <span>Oct 2015-apr 2016</span>
@@ -88,7 +88,7 @@
 
                     @if($education->count())
                         @foreach($education as $educationItem)
-                            <ul class="resum_main">
+                            <ul class="resum_main clearfix">
                                 <li class="left_resum">
                                     <p class="font-weight-bold">
                                         {{ $educationItem->school . ', ' . $educationItem->study . ', ' . $educationItem->degree}}
@@ -102,7 +102,7 @@
                             </ul>
                         @endforeach
                     @else
-                        <div class="resum_main">
+                        <div class="resum_main clearfix">
                             <div class="left_resum">
                                 <p class="font-weight-bold">Bournville School Secondary School</p>
                                 <span>Oct 2015-apr 2016</span>
@@ -120,7 +120,7 @@
                 <li class="sec_resum red_item ui-state-default ui-sortable-handle">
                     <h5>Skills</h5>
                     <hr />
-                    <ul class="resum_main">
+                    <ul class="resum_main clearfix">
                         <li class="left_resum">
                             @if($credential->skills)
                                 {!! $credential->skills !!}
@@ -138,7 +138,7 @@
                     <li class="sec_resum red_item ui-state-default ui-sortable-handle">
                         <h5>{{ $extra->title }}</h5>
                         <hr />
-                        <ul class="resum_main">
+                        <ul class="resum_main clearfix">
                             <li class="left_resum">
                                 {!! $extra->content !!}
                             </li>

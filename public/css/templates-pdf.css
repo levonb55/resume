@@ -1,0 +1,114 @@
+.example {
+    font-family: "Segoe UI",sans-serif;
+}
+.example1 {
+    padding: 0;
+}
+
+.example hr {
+    display: none!important;
+}
+
+.example1 .name_res {
+    display: block!important;
+}
+
+.example1 h5 {
+    line-height: 1;
+    margin: 10px 0 0 0;
+    font-size: 16px;
+}
+
+.example2 h5 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.example2 ul {
+     list-style-type: disc;
+}
+
+.example2 {
+    padding: 0;
+}
+
+.example2 .left_head {
+    display: block;
+}
+
+.example2 .left_head .head {
+    float: left;
+}
+
+.example2 .left_head .info {
+    float: right;
+}
+
+.example2 .left_head .head {
+    width: 50%;
+    color: #89aeca;
+}
+
+.example2 .experience_example {
+    display: block;
+}
+
+.example2 .experience_example .exp_left {
+    float: left;
+    width: 35%;
+}
+
+.example2 .experience_example .exp_left p {
+    /*width: 90%;*/
+}
+
+.example2 .experience_example .exp_right {
+    float: right;
+    width: 65%;
+}
+
+.example3 {
+    padding: 0;
+}
+
+.example3 .head {
+    display: block;
+}
+
+.example3 .head:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.example3 .head .logo{
+    float: left;
+    width: 80px!important;
+    height: 60px;
+    padding: 10px 25px;
+}
+
+.example3 .head .logo div{
+    font-weight: bold;
+}
+
+.example3 .head .name_info{
+    float: right;
+    width: 500px;
+}
+.example3 .name_info h1 {
+     margin: 0;
+     line-height: 1;
+}
+
+.example3 h5 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: lighter;
+}
+
+.example3 p {
+    font-size: 14px;
+    font-weight: 600!important;
+}
