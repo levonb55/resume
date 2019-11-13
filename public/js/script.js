@@ -224,8 +224,7 @@
 // })
 
 
-
-function cl3(){
+function cl3() {
     return "<div class=\"the_company websites\">\n" +
         "                <div class=\"url\">\n" +
         "                    <div class=\"url_top\">\n" +
@@ -239,7 +238,8 @@ function cl3(){
         "                </div>\n" +
         "            </div>";
 }
-$("#clone_aparat3").on("click",function () {
+
+$("#clone_aparat3").on("click", function () {
     $('.clon_here').append(cl3());
 })
 
@@ -253,7 +253,7 @@ $(document).on("click", ".text_button button", function (e) {
     var add = $(this).siblings("p").html();
     var editorId = $(this).parents('.box1').siblings('.box2').find('textarea').attr('id');
     CKEDITOR.instances[editorId].insertText(add);
-    $("#"+editorId).val(CKEDITOR.instances[editorId].getData());
+    $("#" + editorId).val(CKEDITOR.instances[editorId].getData());
 });
 
 $(document).ready(function () {
@@ -263,21 +263,18 @@ $(document).ready(function () {
     // })
 
 
-
     $(".red_item").hover(
-        function() {
-        // console.log("s")
-        $(this).addClass("red_active");
-        $(this).children(".red_tools").addClass("red_tools_active");
-    },function() {
+        function () {
+            // console.log("s")
+            $(this).addClass("red_active");
+            $(this).children(".red_tools").addClass("red_tools_active");
+        }, function () {
             $(this).removeClass("red_active");
             $(this).children(".red_tools").removeClass("red_tools_active");
-    })
+        })
 
 
-
-
-    $(".tool2").on("mousedown",function () {
+    $(".tool2").on("mousedown", function () {
         $(this).parents("#sortable").sortable();
         $(this).parents("#sortable").disableSelection();
     })
@@ -287,8 +284,8 @@ $(document).ready(function () {
 
 
     //select accordeon
-    $(function() {
-        var Accordion = function(el, multiple) {
+    $(function () {
+        var Accordion = function (el, multiple) {
             this.el = el || {};
             this.multiple = multiple || false;
 
@@ -298,7 +295,7 @@ $(document).ready(function () {
             links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
         }
 
-        Accordion.prototype.dropdown = function(e) {
+        Accordion.prototype.dropdown = function (e) {
             var $el = e.data.el;
             $this = $(this),
                 $next = $this.next();
@@ -308,7 +305,8 @@ $(document).ready(function () {
 
             if (!e.data.multiple) {
                 $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
-            };
+            }
+            ;
         }
 
         var accordion = new Accordion($('#accordion'), false);
@@ -317,70 +315,70 @@ $(document).ready(function () {
 
 //    range fonts
     $('#range-value').html($('#input-range').attr('value'));
-    $('#input-range').on('input', function(){
+    $('#input-range').on('input', function () {
         $('#range-value').html(this.value + "pt");
-        $('#sortable p,.red_left_side li').css("font-size",this.value + "pt")
+        $('#sortable p,.red_left_side li').css("font-size", this.value + "pt")
     });
 //
     $('#range-value1').html($('#input-range1').attr('value'));
-    $('#input-range1').on('input', function(){
+    $('#input-range1').on('input', function () {
         $('#range-value1').html(this.value + "pt");
-        $("#sortable h5").css("font-size",this.value + "pt")
+        $("#sortable h5").css("font-size", this.value + "pt")
     });
 // //
     $('#range-value2').html($('#input-range2').attr('value'));
-    $('#input-range2').on('input', function(){
+    $('#input-range2').on('input', function () {
         $('#range-value2').html(this.value + "px");
-        $("#sortable > li").css("margin-bottom",this.value + "px")
+        $("#sortable > li").css("margin-bottom", this.value + "px")
     });
 // //
     $('#range-value3').html($('#input-range3').attr('value'));
-    $('#input-range3').on('input', function(){
+    $('#input-range3').on('input', function () {
         $('#range-value3').html(this.value + "px");
-        $("#sortable p").css("margin",this.value + "px 0px")
+        $("#sortable p").css("margin", this.value + "px 0px")
     });
 // //
     $('#range-value4').html($('#input-range4').attr('value'));
-    $('#input-range4').on('input', function(){
+    $('#input-range4').on('input', function () {
         $('#range-value4').html(this.value + "px");
-        $("#sortable p").css("line-height",this.value + "px")
+        $("#sortable p").css("line-height", this.value + "px")
     });
 // //
     $('#range-value5').html($('#input-range5').attr('value'));
-    $('#input-range5').on('input', function(){
+    $('#input-range5').on('input', function () {
         $('#range-value5').html(this.value + "px");
-        $("#sortable").css({"margin-top":this.value + "px","margin-bottom":this.value + "px"});
+        $("#sortable").css({"margin-top": this.value + "px", "margin-bottom": this.value + "px"});
     });
 // //
     $('#range-value6').html($('#input-range6').attr('value'));
-    $('#input-range6').on('input', function(){
+    $('#input-range6').on('input', function () {
         $('#range-value6').html(this.value + "px");
-        $("#sortable").css({"margin-left":this.value + "px","margin-right":this.value + "px"});
+        $("#sortable").css({"margin-left": this.value + "px", "margin-right": this.value + "px"});
     });
 // //
     $('#range-value7').html($('#input-range7').attr('value'));
-    $('#input-range7').on('input', function(){
+    $('#input-range7').on('input', function () {
         $('#range-value7').html(this.value + "px");
-        $("#sortable p").css("padding-left",this.value + "px")
+        $("#sortable p").css("padding-left", this.value + "px")
     });
 // //
     $('#range-value8').html($('#input-range8').attr('value'));
-    $('#input-range8').on('input', function(){
+    $('#input-range8').on('input', function () {
         $('#range-value8').html(this.value);
-        $("#sortable p,#sortable li").css("font-weight",this.value)
+        $("#sortable p,#sortable li").css("font-weight", this.value)
     });
 //
-    $("#font_famly").on("change",function () {
-        $("#sortable").css("font-family",this.value)
+    $("#font_famly").on("change", function () {
+        $("#sortable").css("font-family", this.value)
     });
 
 
 //    prewiew
-$("#add_sec").click(function (e) {
-    e.preventDefault();
-    $(this).find('i').toggleClass('fa-plus').toggleClass('fa-minus');
-    $(this).siblings(".das_inp").toggleClass("d-none");
-})
+    $("#add_sec").click(function (e) {
+        e.preventDefault();
+        $(this).find('i').toggleClass('fa-plus').toggleClass('fa-minus');
+        $(this).siblings(".das_inp").toggleClass("d-none");
+    })
     // $(document).on("click", ".preview-resume", function () {
     //     var mod = "<!-- Modal -->\n" +
     //         "<div class=\"modal fade\" id=\"exampleModalCenter\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">\n" +
@@ -483,11 +481,6 @@ $("#add_sec").click(function (e) {
     //
     // })
 })
-$(".str_button").on("click",function () {
-    $(this).children(".fa-check").toggleClass("d-none");
-    $(this).toggleClass("btn_tool_active")
-})
-
 
 // $( "#slider" ).slider({
 //     value: 4,
@@ -521,14 +514,14 @@ $(".str_button").on("click",function () {
 //     });
 
 //Adds commas to template 1 location part
-$('.example1 .comma').each(function(){
-    if($(this).text().length > 2) {
+$('.example1 .comma').each(function () {
+    if ($(this).text().length > 2) {
         $(this).append(',');
     }
 });
 
 //Highlights template
-$('.imgClickHandle').on('click',function () {
+$('.imgClickHandle').on('click', function () {
     $('.imgClickHandle').removeClass('active-template');
     $(this).addClass('active-template');
 });
@@ -542,8 +535,31 @@ $('.add-custom-strength').on('click', function (e) {
     e.preventDefault();
 
     let input = $(this).siblings('input');
-    if(!input.val()) { return false; }
+    if (!input.val()) {
+        return false;
+    }
     $('.strength-options').append(`<input type="checkbox" name="strengths[]" value="${input.val()}"> ${input.val()}`);
 
     input.val('');
+});
+
+
+$(document).ready(function () {
+    $('.step-strengths a').on('click', function () {
+        let current = $(this);
+        current.next().click();
+        let currentActive = $(this).closest('.step-strengths');
+        currentActive.toggleClass('active');
+    });
+
+    $(".btn_tool input").on('click',function (e) {
+        e.stopPropagation();
+    });
+    $(".btn_tool").on("click", function () {
+        let current = $(this).find('input');
+        current.click();
+        let currentActive = $(this);
+        currentActive.toggleClass('active');
+        console.log('kuku');
+    });
 });

@@ -658,9 +658,11 @@ main{
 .das_inp{
     display: flex;
     justify-content: center;
+    width: 90%;
+    margin: auto;
 }
 .das_inp input[type="text"] {
-    width: 65%;
+    width: 100%;
     padding: 10px 5px;
     border-radius: 8px 0px 0px 8px;
     border: 1px solid gainsboro;

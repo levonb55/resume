@@ -126,7 +126,7 @@
     {{--                    </div>--}}
 
                         @foreach($workingStyles as $key => $workingStyle)
-                            <div class="btn btn_tool str_button">
+                            <div class="btn btn_tool str_button ">
                                 <div class="str_btn_head">
                                     <input type="checkbox" name="styles[]" value="{{ $key }}"
                                             {{ in_array($key, $pickedStyles) ? 'checked' : ''  }}>

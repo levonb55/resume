@@ -1,1 +1,1 @@
-<div style="width: 1000px; text-align: center">Template 1</div>
+<div style="width: 1250px; text-align: center">Template 1</div>

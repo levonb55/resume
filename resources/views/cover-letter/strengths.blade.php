@@ -53,8 +53,13 @@
                     </div>
                     <div class="start_body strength-options">
                         @foreach($strengths as $strength)
-                            <input type="checkbox" name="strengths[]" value="{{ $strength }}"
-                                    {{ in_array($strength, $pickedStrengths) ? 'checked' : ''  }}>{{ $strength }}
+
+                            <div class="step-strengths">
+                                <a href="javascript:;">{{ $strength }}</a>
+                                <input type="checkbox" class="" name="strengths[]" value="{{ $strength }}"
+                                    {{ in_array($strength, $pickedStrengths) ? 'checked' : ''  }}>
+
+                            </div>
                         @endforeach
                     </div>
                 </div>

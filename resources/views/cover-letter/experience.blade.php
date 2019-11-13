@@ -52,6 +52,7 @@
 
                             <div class="skills_inp form_header">
                                 <div class="study">
+                                    <h1>Years</h1>
                                     <div id="slider"></div>
                                     @error('experience')
                                         <strong><span class="text-danger header-error"> {{ $message }} </span></strong>

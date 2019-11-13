@@ -31,7 +31,7 @@ $( "#slider" ).slider({
 
     });
 
-$('#slider label').eq(9).html('10+ Years');
+$('#slider label').eq(9).html('10+');
 
 //Changes input value of cover experience
 $('#slider').slider({
