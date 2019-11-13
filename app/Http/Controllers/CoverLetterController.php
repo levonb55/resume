@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CoverLetter;
 use App\Models\CoverTemplate;
 use Illuminate\Http\Request;
+use Mpdf\Mpdf;
 
 class CoverLetterController extends Controller
 {
@@ -229,5 +230,53 @@ class CoverLetterController extends Controller
         );
 
         return back();
+    }
+
+    public function downloadPdf()
+    {
+        $mpdf = new Mpdf();
+
+        // Buffer the following html with PHP so we can store it to a variable later
+        ob_start();
+
+        // This is where your script would normally output the HTML using echo or print
+        echo view('downloads.cover-letter')->render();
+
+        // Now collect the output buffer into a variable
+        $html = ob_get_contents();
+        ob_end_clean();
+
+        // send the captured HTML from the output buffer to the mPDF class for processing
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();
+    }
+
+    public function downloadWord()
+    {
+        $userId = auth()->id();
+        $phpWord = new \PhpOffice\PhpWord\PhpWord();
+        $section = $phpWord->addSection();
+        $html = view('components.cover-letters.template' . auth()->user()->coverLetter->template_id)->render();
+        \PhpOffice\PhpWord\Shared\Html::addHtml($section, $html, false, false);
+        $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+        $objectWriter->save(public_path('assets/downloads/cover-letter' . $userId . '.docx'));
+
+        return response()->download(public_path('assets/downloads/cover-letter' . $userId . '.docx'), 'cover-letter.docx')
+            ->deleteFileAfterSend();
+    }
+
+    public function downloadTxt()
+    {
+        $cover = auth()->user()->coverLetter;
+
+        $content = view('components.cover-letters.template' . $cover->template_id)->render();
+        $content = str_replace("\r\n",'', strip_tags($content));
+
+        $headers = [
+            'Content-type' => 'text/plain',
+            'Content-Disposition' => sprintf('attachment; filename="%s"', "cover-letter.txt")
+        ];
+
+        return response()->make($content, 200, $headers);
     }
 }

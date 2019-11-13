@@ -25,6 +25,9 @@ class CreateCoverLettersTable extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->boolean('complete')->default(false);
+            $table->tinyInteger('pdf')->default(0);
+            $table->tinyInteger('word')->default(0);
+            $table->tinyInteger('txt')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

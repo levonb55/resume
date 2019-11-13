@@ -146,20 +146,20 @@
 
                                <ul>
                                    <li>
-                                       <input type="radio" id="a1" name="a" value='download-resume-pdf' class="resume-format" checked>
+                                       <input type="radio" id="a1" name="a" value='download-resume-pdf' class="download-format" checked>
                                        <label for="a1">PDF</label><span class="badge badge-secondary" title="Maximum permitted downloads">{{ $credential->pdf }}</span>
                                    </li>
                                    <li>
-                                       <input type="radio" id="a2" name="a" value='download-resume-word' class="resume-format">
+                                       <input type="radio" id="a2" name="a" value='download-resume-word' class="download-format">
                                        <label for="a2">Word</label><span class="badge badge-secondary" title="Maximum permitted downloads">{{ $credential->word }}</span>
                                    </li>
                                    <li>
-                                       <input type="radio" id="a3" name="a" value='download-resume-txt' class="resume-format">
+                                       <input type="radio" id="a3" name="a" value='download-resume-txt' class="download-format">
                                        <label for="a3">ASCII</label><span class="badge badge-secondary" title="Maximum permitted downloads">{{ $credential->txt }}</span>
                                    </li>
                                </ul>
                                <button class="btn btn_tool">
-                                   <a href="{{ route('download-resume-pdf') }}" class="resume-download-btn" target="_blank">
+                                   <a href="{{ route('download-resume-pdf') }}" class="download-btn" target="_blank">
                                        <i class="fas fa-download"></i>Download
                                    </a>
                                </button>

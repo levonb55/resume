@@ -533,9 +533,9 @@ $('.imgClickHandle').on('click',function () {
     $(this).addClass('active-template');
 });
 
-
-$('.resume-format').on('change', function () {
-    $('.resume-download-btn').attr('href', appUrl + '/' + $(this).val());
+//Changes download btn url for different formats
+$('.download-format').on('change', function () {
+    $('.download-btn').attr('href', appUrl + '/' + $(this).val());
 });
 
 $('.add-custom-strength').on('click', function (e) {

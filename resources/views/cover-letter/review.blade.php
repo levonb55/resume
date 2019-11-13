@@ -129,23 +129,22 @@
                         <div class="red_tools2">
                             <div class="red_tools2_tool">
                                 <h5>Download formats</h5>
-
                                 <ul>
                                     <li>
-                                        <input type="radio" id="a1" value='download-resume-pdf' class="resume-format" checked>
+                                        <input type="radio" id="a1" name="a" value='download-cover-pdf' class="download-format" checked>
                                         <label for="a1">PDF</label><span class="badge badge-secondary" title="Maximum permitted downloads">{{ $coverLetter->pdf }}</span>
                                     </li>
                                     <li>
-                                        <input type="radio" id="a2" value='download-resume-word' class="resume-format">
+                                        <input type="radio" id="a2" name="a" value='download-cover-word' class="download-format">
                                         <label for="a2">Word</label><span class="badge badge-secondary" title="Maximum permitted downloads">{{ $coverLetter->word }}</span>
                                     </li>
                                     <li>
-                                        <input type="radio" id="a3" value='download-resume-txt' class="resume-format">
+                                        <input type="radio" id="a3" name="a" value='download-cover-txt' class="download-format">
                                         <label for="a3">ASCII</label><span class="badge badge-secondary" title="Maximum permitted downloads">{{ $coverLetter->txt }}</span>
                                     </li>
                                 </ul>
                                 <button class="btn btn_tool">
-                                    <a href="#" class="resume-download-btn" target="_blank">
+                                    <a href="{{ route('download-cover-pdf') }}" class="download-btn" target="_blank">
                                         <i class="fas fa-download"></i>Download
                                     </a>
                                 </button>

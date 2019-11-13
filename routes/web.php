@@ -98,6 +98,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('cover-letter/name', 'CoverLetterController@postName')->name('cover-letter.name')->middleware('cover-review');
         Route::get('cover-letter/review', 'CoverLetterController@getReview')->name('cover-letter.review');
         Route::put('cover-letter/review', 'CoverLetterController@updateReview')->name('cover-letter.review-update');
+        Route::get('download-cover-pdf', 'CoverLetterController@downloadPdf')->name('download-cover-pdf');
+        Route::get('download-cover-word', 'CoverLetterController@downloadWord')->name('download-cover-word');
+        Route::get('download-cover-txt', 'CoverLetterController@downloadTxt')->name('download-cover-txt');
     });
 });
 
