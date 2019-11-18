@@ -66,6 +66,18 @@ class CoverLetterController extends Controller
         return view('cover-letter.employer', compact('cover'));
     }
 
+    public function searchEmployer($employer)
+    {
+        if(request()->ajax()) {
+            $employersXML = file_get_contents('https://www.cover-letter-now.com/eb/api/v1/country/AM/employers?search_string=' . $employer);
+            $employers = json_decode($employersXML, TRUE);
+
+            return response()->json($employers);
+        }
+
+        return abort(404);
+    }
+
     public function postEmployer(Request $request)
     {
         $request->validate([

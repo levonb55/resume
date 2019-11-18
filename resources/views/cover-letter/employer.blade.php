@@ -5,6 +5,7 @@
 @section('extra-styles')
     <link rel="stylesheet" href="{{ asset('css/Lcss.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/libs/css/jquery-ui.min.css') }}">
 @endsection
 
 @section('content')
@@ -51,7 +52,7 @@
                             <div class="skills_inp form_header">
                                 <div class="study">
                                     <label>Desired Company</label>
-                                    <input type="text" placeholder="Apple Inc." name="employer" value="{{ old('employer') ?? $cover->employer}}">
+                                    <input type="text" placeholder="Apple Inc." class="employer" name="employer" value="{{ old('employer') ?? $cover->employer}}">
                                     @error('employer')
                                         <strong><span class="text-danger header-error"> {{ $message }} </span></strong>
                                     @enderror
@@ -99,4 +100,8 @@
             </form>
         </section>
     </main>
+@endsection
+
+@section('extra-scripts')
+    <script src="{{ asset('assets/libs/js/jquery-ui.min.js') }}"></script>
 @endsection

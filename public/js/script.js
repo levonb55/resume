@@ -563,3 +563,36 @@ $(document).ready(function () {
         console.log('kuku');
     });
 });
+
+//Brings up employers list
+$('.employer').on('keyup', function () {
+    let inputVal = $(this).val();
+    if(!inputVal) {
+        $(this).siblings('ul').html('');
+        return;
+    }
+
+    if(item = sessionStorage.getItem('employer-' + inputVal)) {
+        $(this).autocomplete({
+            source: outputHintedJobs(JSON.parse(item))
+        });
+    } else {
+        $.get(appUrl + '/cover-letter/employer-search/' + $(this).val())
+            .then(response => {
+                $(this).autocomplete({
+                    source: outputHintedJobs(response)
+                });
+
+                sessionStorage.setItem('employer-' + inputVal, JSON.stringify(response));
+            })
+            .catch(() => {
+                console.log('An error happened!');
+            });
+    }
+});
+
+function outputHintedJobs(jobList) {
+    return  jobList.map(data => {
+        return data.employer_name;
+    });
+}

@@ -87,6 +87,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('cover-letter/job', 'CoverLetterController@getJob')->name('cover-letter.job');
         Route::post('cover-letter/job', 'CoverLetterController@postJob')->name('cover-letter.job')->middleware('cover-review');
         Route::get('cover-letter/employer', 'CoverLetterController@getEmployer')->name('cover-letter.employer');
+        Route::get('cover-letter/employer-search/{employer}', 'CoverLetterController@searchEmployer')->name('cover-letter.employer-search');
         Route::post('cover-letter/employer', 'CoverLetterController@postEmployer')->name('cover-letter.employer')->middleware('cover-review');
         Route::get('cover-letter/strengths', 'CoverLetterController@getStrengths')->name('cover-letter.strengths');
         Route::post('cover-letter/strengths', 'CoverLetterController@postStrengths')->name('cover-letter.strengths')->middleware('cover-review');
