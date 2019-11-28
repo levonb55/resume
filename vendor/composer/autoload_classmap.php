@@ -39,6 +39,7 @@ return array(
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Requests\\CheckoutRequest' => $baseDir . '/app/Http/Requests/CheckoutRequest.php',
+    'App\\Http\\Requests\\StoreResumeFormatting' => $baseDir . '/app/Http/Requests/StoreResumeFormatting.php',
     'App\\Http\\Requests\\StoreResumeHeader' => $baseDir . '/app/Http/Requests/StoreResumeHeader.php',
     'App\\Http\\ViewComposers\\ResumeTemplateComposer' => $baseDir . '/app/Http/ViewComposers/ResumeTemplateComposer.php',
     'App\\Models\\CoverLetter' => $baseDir . '/app/Models/CoverLetter.php',

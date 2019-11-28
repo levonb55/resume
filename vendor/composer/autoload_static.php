@@ -510,6 +510,7 @@ class ComposerStaticInit0b7728406d069b41eff85aaad1b02a1d
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\CheckoutRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CheckoutRequest.php',
+        'App\\Http\\Requests\\StoreResumeFormatting' => __DIR__ . '/../..' . '/app/Http/Requests/StoreResumeFormatting.php',
         'App\\Http\\Requests\\StoreResumeHeader' => __DIR__ . '/../..' . '/app/Http/Requests/StoreResumeHeader.php',
         'App\\Http\\ViewComposers\\ResumeTemplateComposer' => __DIR__ . '/../..' . '/app/Http/ViewComposers/ResumeTemplateComposer.php',
         'App\\Models\\CoverLetter' => __DIR__ . '/../..' . '/app/Models/CoverLetter.php',

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCoverFormatting;
 use App\Models\CoverLetter;
 use App\Models\CoverTemplate;
 use Illuminate\Http\Request;
@@ -222,24 +223,30 @@ class CoverLetterController extends Controller
     {
         $templates = CoverTemplate::all();
         $coverLetter = auth()->user()->coverLetter;
+        $fonts = $this->getFonts();
 
         if($coverLetter !== self::COMPLETE) {
             $coverLetter->update(['complete' => self::COMPLETE]);
         }
 
-        return view('cover-letter.review',  compact('templates',  'coverLetter'));
+        return view('cover-letter.review',  compact('templates',  'coverLetter', 'fonts'));
     }
 
-    public function updateReview(Request $request)
+    public function updateReview(StoreCoverFormatting $request)
     {
-        $request->validate([
-            'template' => 'required|integer|min:1|max:3',
+        auth()->user()->coverLetter()->update([
+            'template_id' => $request->input('template_id'),
+            'font_family' => $this->getFonts()[$request->input('font_family')],
+            'font_size' => $request->input('font_size'),
+            'heading_size' => $request->input('heading_size'),
+            'section_spacing' => $request->input('section_spacing'),
+            'par_spacing' => $request->input('par_spacing'),
+            'line_spacing' => $request->input('line_spacing'),
+            'tb_margin' => $request->input('tb_margin'),
+            'side_margin' => $request->input('side_margin'),
+            'par_indent' => $request->input('par_indent'),
+            'font_weight' => $request->input('font_weight')
         ]);
-
-        auth()->user()->coverLetter()->updateOrCreate(
-            ['user_id' => auth()->id()],
-            ['template_id' => $request->input('template')]
-        );
 
         return back();
     }

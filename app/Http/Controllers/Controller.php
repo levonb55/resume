@@ -10,4 +10,14 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function getFonts()
+    {
+        return [
+            1 => 'Arial',
+            2 => 'Roboto',
+            3 => 'Segoe UI',
+            4 => 'Open Sans'
+        ];
+    }
 }

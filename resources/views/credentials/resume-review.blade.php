@@ -130,7 +130,7 @@
                                    <li>
                                        <div class="range-slider">
                                            <label for="input-range8">Font weight։ <span class="range-value" id="range-value8"></span></label>
-                                           <input class="input-range" name="font_weight" id="input-range8" type="range" value="{{ $credential->font_weight }}" min="200" max="900">
+                                           <input class="input-range" name="font_weight" id="input-range8" type="range" value="{{ $credential->font_weight }}" min="100" max="900">
                                        </div>
                                    </li>
                                </ul>
