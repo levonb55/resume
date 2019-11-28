@@ -481,7 +481,7 @@ $(document).ready(function () {
     //
     //
     // })
-})
+});
 
 // $( "#slider" ).slider({
 //     value: 4,
@@ -539,29 +539,14 @@ $('.add-custom-strength').on('click', function (e) {
     if (!input.val()) {
         return false;
     }
-    $('.strength-options').append(`<input type="checkbox" name="strengths[]" value="${input.val()}"> ${input.val()}`);
-
+    // $('.strength-options').append(`<input type="checkbox" name="strengths[]" value="${input.val()}"> ${input.val()}`);
+    $('.strength-options').append(`<label class="step-strengths select_item"><input type="checkbox" name="strengths[]" value="${input.val()}"> ${input.val()}</label>`);
     input.val('');
 });
 
-
-$(document).ready(function () {
-    $('.step-strengths a').on('click', function () {
-        let current = $(this);
-        current.next().click();
-        let currentActive = $(this).closest('.step-strengths');
-        currentActive.toggleClass('active');
-    });
-
-    $(".btn_tool input").on('click',function (e) {
-        e.stopPropagation();
-    });
-    $(".btn_tool").on("click", function () {
-        let current = $(this).find('input');
-        current.click();
-        let currentActive = $(this);
-        currentActive.toggleClass('active');
-    });
+//Adds custom check sign
+$(document).on('change', '.select_item', function () {
+    $(this).toggleClass('active');
 });
 
 //Brings up employers list

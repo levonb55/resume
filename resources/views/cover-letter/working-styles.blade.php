@@ -126,7 +126,7 @@
     {{--                    </div>--}}
 
                         @foreach($workingStyles as $key => $workingStyle)
-                            <div class="btn btn_tool str_button ">
+                            <label class="btn btn_tool str_button select_item {{ in_array($key, $pickedStyles) ? 'active' : ''  }}">
                                 <div class="str_btn_head">
                                     <input type="checkbox" name="styles[]" value="{{ $key }}"
                                             {{ in_array($key, $pickedStyles) ? 'checked' : ''  }}>
@@ -136,7 +136,7 @@
                                     {{ $workingStyle }}
                                 </div>
                                 <span class="fas fa-check d-none"></span>
-                            </div>
+                            </label>
                         @endforeach
                         @error('styles')
                             <strong><span class="text-danger header-error"> {{ $message }} </span></strong>
