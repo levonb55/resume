@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreResumeFormatting;
 use App\Http\Requests\StoreResumeHeader;
 use App\Models\Credential;
 use App\Models\Experience;
@@ -112,19 +113,40 @@ class CredentialController extends Controller
         $templates = Template::all();
         $credential = auth()->user()->credential;
         $extraCredentials = ExtraCredential::getExtraCredentials();
+        $fonts = $this->getFonts();
         auth()->user()->credential()->update(['resume_complete' => self::RESUME_COMPLETE]);
         Session::forget('add-sections');
 
-        return view('credentials.resume-review', compact('credential','extraCredentials', 'templates'));
+        return view('credentials.resume-review', compact('credential','extraCredentials', 'templates', 'fonts'));
     }
 
-    public function updateResumeReview(Request $request)
+    public function updateResumeReview(StoreResumeFormatting $request)
     {
-        auth()->user()->credential()->update(
-            ['template_id' => $request->template]
-        );
+        auth()->user()->credential()->update([
+            'template_id' => $request->input('template_id'),
+            'font_family' => $this->getFonts()[$request->input('font_family')],
+            'font_size' => $request->input('font_size'),
+            'heading_size' => $request->input('heading_size'),
+            'section_spacing' => $request->input('section_spacing'),
+            'par_spacing' => $request->input('par_spacing'),
+            'line_spacing' => $request->input('line_spacing'),
+            'tb_margin' => $request->input('tb_margin'),
+            'side_margin' => $request->input('side_margin'),
+            'par_indent' => $request->input('par_indent'),
+            'font_weight' => $request->input('font_weight')
+        ]);
 
         return back();
+    }
+
+    public function getFonts()
+    {
+        return [
+            1 => 'Arial',
+            2 => 'Roboto',
+            3 => 'Segoe UI',
+            4 => 'Open Sans'
+        ];
     }
 
 }

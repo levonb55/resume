@@ -57,7 +57,7 @@
                                                    alt="Resume"
                                                    class="imgClickHandle {{ $credential->template_id === $template->id ? 'active-template' : null }}"
                                                >
-                                               <input type="radio" class="d-none" name="template" value="{{ $template->id }}" {{ $credential->template_id == $template->id ? 'checked' : '' }}>
+                                               <input type="radio" class="d-none" name="template_id" value="{{ $template->id }}" {{ $credential->template_id == $template->id ? 'checked' : '' }}>
                                            </label>
                                        </li>
                                    @endforeach
@@ -72,72 +72,68 @@
                                </div>
                                <ul class="submenu submenu2">
                                    <li>
-                                       <select class="browser-default custom-select" id="font_famly">
-                                           <option selected>Font style։ Arial</option>
-                                           <option value="Arial">Arial</option>
-                                           <option value="Roboto-Regular">Roboto-Regular</option>
-                                           <option value="Segoe UI Symbol">Segoe UI Symbol</option>
-                                           <option value="BlinkMacSystemFont">BlinkMacSystemFont</option>
+                                       Font style
+                                       <select class="browser-default custom-select" id="font_famly" name="font_family">
+                                           @foreach($fonts as $key => $font)
+                                               <option value="{{ $key }}" {{ $font === $credential->font_family ? 'selected' : '' }}>{{ $font }}</option>
+                                           @endforeach
                                        </select>
                                    </li>
                                    <li>
                                        <div class="range-slider">
-                                           <label for="amoun">Font size։ <span class="range-value" id="range-value"></span></label>
-                                           <input class="input-range" id="input-range" id="amoun" type="range" value="10pt" min="8" max="14">
+                                           <label for="input">Font size։ <span class="range-value" id="range-value"></span></label>
+                                           <input class="input-range" name="font_size" id="input-range"  type="range" value="{{ $credential->font_size }}" min="8" max="20">
                                        </div>
                                    </li>
                                    <li>
                                        <div class="range-slider">
-                                           <label for="amoun1">Heading size։ <span class="range-value" id="range-value1"></span></label>
-                                           <input class="input-range" id="input-range1" id="amoun1" type="range" value="10pt" min="8" max="24">
+                                           <label for="range1">Heading size։ <span class="range-value" id="range-value1"></span></label>
+                                           <input class="input-range" name="heading_size" id="input-range1"  type="range" value="{{ $credential->heading_size }}" min="8" max="30">
                                        </div>
                                    </li>
                                    <li>
                                        <div class="range-slider">
-                                           <label for="amoun2">Section spacing: <span class="range-value" id="range-value2"></span></label>
-                                           <input class="input-range" id="input-range2" id="amoun2" type="range" value="10px" min="8" max="70">
+                                           <label for="range2">Section spacing: <span class="range-value" id="range-value2"></span></label>
+                                           <input class="input-range" name="section_spacing" id="input-range2" type="range" value="{{ $credential->section_spacing }}" min="8" max="70">
                                        </div>
                                    </li>
                                    <li>
                                        <div class="range-slider">
-                                           <label for="amoun3">Paragraph spacing։ <span class="range-value" id="range-value3"></span></label>
-                                           <input class="input-range" id="input-range3" id="amoun3" type="range" value="10px" min="1" max="40">
+                                           <label for="input-range3">Paragraph spacing։ <span class="range-value" id="range-value3"></span></label>
+                                           <input class="input-range" name="par_spacing" id="input-range3" type="range" value="{{ $credential->par_spacing }}" min="1" max="40">
                                        </div>
                                    </li>
                                    <li>
                                        <div class="range-slider">
-                                           <label for="amoun4">Line spacing։ <span class="range-value" id="range-value4"></span></label>
-                                           <input class="input-range" id="input-range4" id="amoun4" type="range" value="10px" min="10" max="50">
+                                           <label for="input-range4">Line spacing։ <span class="range-value" id="range-value4"></span></label>
+                                           <input class="input-range" name="line_spacing" id="input-range4" type="range" value="{{ $credential->line_spacing }}" min="10" max="50">
                                        </div>
                                    </li>
                                    <li>
                                        <div class="range-slider">
-                                           <label for="amoun5">Top & Bottom margin։ <span class="range-value" id="range-value5"></span></label>
-                                           <input class="input-range" id="input-range5" id="amoun5" type="range" value="10px" min="20" max="130">
+                                           <label for="input-range5">Top & Bottom margin։ <span class="range-value" id="range-value5"></span></label>
+                                           <input class="input-range" name="tb_margin" id="input-range5" type="range" value="{{ $credential->tb_margin }}" min="20" max="130">
                                        </div>
                                    </li>
                                    <li>
                                        <div class="range-slider">
-                                           <label for="amoun6">Side margin։ <span class="range-value" id="range-value6"></span></label>
-                                           <input class="input-range" id="input-range6" id="amoun6" type="range" value="10px" min="1" max="100">
+                                           <label for="input-range6">Side margin։ <span class="range-value" id="range-value6"></span></label>
+                                           <input class="input-range" name="side_margin" id="input-range6" type="range" value="{{ $credential->side_margin }}" min="1" max="100">
                                        </div>
                                    </li>
                                    <li>
                                        <div class="range-slider">
-                                           <label for="amoun7">Paragraph indent։ <span class="range-value" id="range-value7"></span></label>
-                                           <input class="input-range" id="input-range7" id="amoun7" type="range" value="10px" min="1" max="70">
+                                           <label for="input-range7">Paragraph indent։ <span class="range-value" id="range-value7"></span></label>
+                                           <input class="input-range" name="par_indent" id="input-range7" type="range" value="{{ $credential->par_indent }}" min="1" max="70">
                                        </div>
                                    </li>
                                    <li>
                                        <div class="range-slider">
-                                           <label for="amoun8">Font weight։ <span class="range-value" id="range-value8"></span></label>
-                                           <input class="input-range" id="input-range8" id="amoun8" type="range" value="200" min="200" max="900">
+                                           <label for="input-range8">Font weight։ <span class="range-value" id="range-value8"></span></label>
+                                           <input class="input-range" name="font_weight" id="input-range8" type="range" value="{{ $credential->font_weight }}" min="200" max="900">
                                        </div>
                                    </li>
-
-
                                </ul>
-
                            </li>
                        </ul>
                        <div class="red_tools2">
