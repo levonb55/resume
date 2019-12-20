@@ -188,11 +188,9 @@ $(document).on('keyup', '.prof-search', function() {
 });
 
 function outputHintedJobs(jobList) {
-    let result = jobList.map(data => {
+    return jobList.map(data => {
         return data['title'];
     });
-
-    return result;
 }
 
 //Suggests responsibilities based on the selected profession

@@ -559,13 +559,13 @@ $('.employer').on('keyup', function () {
 
     if(item = sessionStorage.getItem('employer-' + inputVal)) {
         $(this).autocomplete({
-            source: outputHintedJobs(JSON.parse(item))
+            source: outputHintedEmployers(JSON.parse(item))
         });
     } else {
         $.get(appUrl + '/cover-letter/employer-search/' + $(this).val())
             .then(response => {
                 $(this).autocomplete({
-                    source: outputHintedJobs(response)
+                    source: outputHintedEmployers(response)
                 });
 
                 sessionStorage.setItem('employer-' + inputVal, JSON.stringify(response));
@@ -576,8 +576,8 @@ $('.employer').on('keyup', function () {
     }
 });
 
-function outputHintedJobs(jobList) {
-    return  jobList.map(data => {
+function outputHintedEmployers(employerList) {
+    return  employerList.map(data => {
         return data.employer_name;
     });
 }
