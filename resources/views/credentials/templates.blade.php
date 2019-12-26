@@ -34,8 +34,8 @@
 						<div class="custom-nav owl-nav"></div>
 					</div>
 				</div>
+{{--                <div class="center-slider"></div>--}}
 			</div>
-
 			<div class="text-center my-4">Click on an image to choose a template.</div>
 			<button class="btn btn-blue d-block mx-auto" type="submit" >Next</button>
 		</form>
@@ -46,32 +46,34 @@
 	<script src="{{asset('assets/libs/js/owl.carousel.min.js')}}"></script>
 {{--	<script src="{{asset('js/carousel.js')}}"></script>--}}
 	<script>
-		$('#owl6').owlCarousel({
-			items: {{ $templates->count() }},
-			loop: true,
-			margin: 10,
-			dots: false,
-			center: true,
-			startPosition: {{ auth()->user()->credential ? auth()->user()->credential->template_id - 1 : 3 }},
-			nav: true,
-			navText: [
-				'<img src="./assets/images/left-arrow.png">',
-				'<img src="./assets/images/right-arrow.png">'
-			],
-			navContainer: '.main-content .custom-nav',
-			mouseDrag: false,
-			responsiveClass: true,
-			responsive: {
-				0: {
-					items: 1,
-				},
-				600: {
-					items: 2,
-				},
-				1000: {
-					items: 3,
-				}
-			}
-		});
+		$(document).ready(function () {
+            $('#owl6').owlCarousel({
+                items: "{{ $templates->count() }}",
+                loop: true,
+                margin: 10,
+                dots: false,
+                center: true,
+                startPosition: "{{ auth()->user()->credential ? auth()->user()->credential->template_id - 1 : 3 }}",
+                nav: true,
+                navText: [
+                    '<img src="./assets/images/left-arrow.png">',
+                    '<img src="./assets/images/right-arrow.png">'
+                ],
+                navContainer: '.main-content .custom-nav',
+                mouseDrag: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                    },
+                    600: {
+                        items: 2,
+                    },
+                    1000: {
+                        items: 3,
+                    }
+                }
+            });
+        });
 	</script>
 @endsection
