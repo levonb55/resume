@@ -248,7 +248,7 @@ $('#experience-form').on('submit', function (e) {
 
 //Disables experience end date
 $(document).on('click', '.exp-check', function () {
-    $(this).parents('.job_area').find('.exp-end-date').attr('disabled', function(_, attr){ return !attr});
+    $(this).parents('.job_area').find('.exp-end-date').attr('disabled', function(_, attr){ return !attr}).toggleClass('disabled_date');
 });
 
 //Reorders experience

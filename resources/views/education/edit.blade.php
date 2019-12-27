@@ -178,6 +178,9 @@
                 </div>
 
                 <div class="back_continue experience_page">
+                    <a href="{{ route('education.index') }}" class="back_left">
+                        <p>Cancel</p>
+                    </a>
                     <button type="submit" value="Continue" class="continue_right">
                         Continue<span class="fas fa-long-arrow-alt-right"></span>
                     </button>

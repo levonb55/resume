@@ -117,7 +117,7 @@
                                         </div>
                                         <div class="data_input">
                                             <label>End Date</label>
-                                            <input type="date" value="{{ $experience->end_date }}" name="end_date" class="exp-end-date">
+                                            <input type="date" value="{{ $experience->end_date }}" name="end_date" class="exp-end-date {{ !$experience->end_date ? 'disabled_date' : '' }}">
                                             @error('end_date')
                                                 <span class="text-danger mb-2"> {{ $message }} </span>
                                             @enderror
@@ -227,6 +227,9 @@
                 </div>
 
                 <div class="back_continue experience_page">
+                    <a href="{{ route('experience.index') }}" class="back_left">
+                        <p>Cancel</p>
+                    </a>
                     <button type="submit" value="Continue" class="continue_right">
                         Continue<span class="fas fa-long-arrow-alt-right"></span>
                     </button>

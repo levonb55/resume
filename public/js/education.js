@@ -193,5 +193,5 @@ $(".reorder-education").on("mousedown",function () {
 
 //Disables education end date
 $(document).on('click', '.edu-check', function () {
-    $(this).parents('.education_area').find('.edu-end-date').attr('disabled', function(_, attr){ return !attr});
+    $(this).parents('.education_area').find('.edu-end-date').attr('disabled', function(_, attr){ return !attr}).toggleClass('disabled_date');
 });

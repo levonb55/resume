@@ -78,7 +78,16 @@ class ExperienceController extends Controller
     {
         $this->makeValidation($request->all())->validate();
 
-        $experience->update(request(['title', 'employer', 'city', 'state', 'start_date', 'end_date', 'description']));
+//        $experience->update(request(['title', 'employer', 'city', 'state', 'start_date', 'end_date', 'description']));
+        $experience->update([
+            'title' => $request->input('title'),
+            'employer' => $request->input('employer'),
+            'city' => $request->input('city'),
+            'state' => $request->input('state'),
+            'start_date' => $request->input('start_date'),
+            'end_date' => $request->input('end_date') ?? null,
+            'description' => $request->input('description')
+        ]);
 
         return redirect()->route('experience.index');
     }
