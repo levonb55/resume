@@ -977,7 +977,7 @@ button.owl-dot.active {
     cursor: progress;
 }
 
-.disabled_date {
+.end-date:disabled {
     background-color: #e8e8e8 !important;
 }
 

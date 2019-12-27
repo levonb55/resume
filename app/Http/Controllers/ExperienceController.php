@@ -106,7 +106,7 @@ class ExperienceController extends Controller
             'city' => 'required|string|min:2|max:255',
             'state' => 'required|string|min:2|max:255',
             'start_date' => 'required|date',
-            'end_date' => 'sometimes|nullable|date|after:start_date',
+            'end_date' => 'required_without:current|date|after:start_date',
             'description' => 'nullable|string|min:10|max:1000'
         ]);
     }

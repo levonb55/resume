@@ -66,7 +66,16 @@ class EducationController extends Controller
     {
         $this->makeValidation($request->all())->validate();
 
-        $education->update(request(['school', 'location', 'degree', 'study', 'start_date', 'end_date', 'description']));
+//        $education->update(request(['school', 'location', 'degree', 'study', 'start_date', 'end_date', 'description']));
+        $education->update([
+            'school' => $request->input('school'),
+            'location' => $request->input('location'),
+            'degree' => $request->input('degree'),
+            'study' => $request->input('study'),
+            'start_date' => $request->input('start_date'),
+            'end_date' => $request->input('end_date') ?? null,
+            'description' => $request->input('description')
+        ]);
 
         return redirect()->route('education.index');
     }
@@ -85,7 +94,7 @@ class EducationController extends Controller
             'degree' => 'required|string|min:2|max:255',
             'study' => 'required|string|min:2|max:255',
             'start_date' => 'required|date',
-            'end_date' => 'sometimes|nullable|date|after:start_date',
+            'end_date' => 'required_without:current|date|after:start_date',
             'description' => 'nullable|string|min:10|max:1000'
         ]);
     }

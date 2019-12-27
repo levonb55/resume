@@ -59,14 +59,14 @@ function addExperience(index) {
                             </div>
                              <div class="data_input">
                                 <label>End Date</label>
-                                <input type="date"  name="experience${counter}[end_date]" class="exp-end-date">
+                                <input type="date"  name="experience${counter}[end_date]" class="exp-end-date end-date">
                                 <span class="text-danger mb-2 error" id="experience${counter}_end_date"></span>
                             </div>
                         </div>
                     </div>
     
-                    <label  for="present${counter}" class="containera Work_here">I currently work here
-                        <input type="checkbox" class="exp-check" id="present${counter}">
+                    <label  for="experience${counter}_current" class="containera Work_here">I currently work here
+                        <input type="checkbox" class="exp-check" id="experience${counter}_current" name="experience${counter}[current]">
                         <span class="checkmark"></span>
                     </label>
                 </div>
@@ -248,7 +248,7 @@ $('#experience-form').on('submit', function (e) {
 
 //Disables experience end date
 $(document).on('click', '.exp-check', function () {
-    $(this).parents('.job_area').find('.exp-end-date').attr('disabled', function(_, attr){ return !attr}).toggleClass('disabled_date');
+    $(this).parents('.job_area').find('.end-date').attr('disabled', function(_, attr){ return !attr});
 });
 
 //Reorders experience

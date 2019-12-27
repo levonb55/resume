@@ -100,32 +100,36 @@
                                             <span class="text-danger mb-2"> {{ $message }} </span>
                                         @enderror
                                     </div>
-                                    <div class="graduation">
-                                        <div class="study">
+                                    <div class="graduation graduationFlex">
+                                        <div class="study studyWidth">
                                             <label>Field Of Study</label>
                                             <input type="text" name="study" value="{{ $education->study }}">
                                             @error('study')
                                                 <span class="text-danger mb-2"> {{ $message }} </span>
                                             @enderror
                                         </div>
-                                        <div class="graduation_year mt-4">
-                                            <label>Start Date</label>
-                                            <input type="date" name="start_date" value="{{ $education->start_date }}">
-                                            @error('start_date')
-                                                <span class="text-danger mb-2"> {{ $message }} </span>
-                                            @enderror
+                                        <div class="time_input">
+                                            <div class="data_input">
+                                                <label>Start Date</label>
+                                                <input type="date" name="start_date" value="{{ $education->start_date }}">
+                                                @error('start_date')
+                                                    <span class="text-danger mb-2"> {{ $message }} </span>
+                                                @enderror
+                                            </div>
 
-                                            <label>End Date</label>
-                                            <input type="date" name="end_date" value="{{ $education->end_date }}" class="edu-end-date">
-                                            @error('end_date')
-                                                <span class="text-danger mb-2"> {{ $message }} </span>
-                                            @enderror
+                                            <div class="data_input">
+                                                <label>End Date</label>
+                                                <input type="date" name="end_date" value="{{ $education->end_date }}" class="edu-end-date end-date" {{ !$education->end_date ? 'disabled' : '' }}>
+                                                @error('end_date')
+                                                    <span class="text-danger mb-2"> {{ $message }} </span>
+                                                @enderror
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <label  for="present-1" class="containera Work_here">I currently study here
-                                    <input type="checkbox" class="edu-check" id="present-1">
+                                <label  for="current" class="containera Work_here">I currently study here
+                                    <input type="checkbox" class="edu-check" id="current" name="current" {{ !$education->end_date ? 'checked' : '' }}>
                                     <span class="checkmark"></span>
                                 </label>
 

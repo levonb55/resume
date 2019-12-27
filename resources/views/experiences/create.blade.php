@@ -111,14 +111,14 @@
                                         </div>
                                         <div class="data_input">
                                             <label>End Date</label>
-                                            <input type="date"  name="experience1[end_date]" class="exp-end-date">
+                                            <input type="date"  name="experience1[end_date]" class="exp-end-date end-date">
                                             <span class="text-danger mb-2 error" id="experience1_end_date"></span>
                                         </div>
                                     </div>
                                 </div>
 
-                                <label  for="present1" class="containera Work_here">I currently work here
-                                    <input type="checkbox" class="exp-check" id="present1">
+                                <label  for="experience1_current" class="containera Work_here">I currently work here
+                                    <input type="checkbox" class="exp-check" id="experience1_current" name="experience1[current]">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>

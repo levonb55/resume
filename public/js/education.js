@@ -60,15 +60,15 @@ function addEducation(index) {
                                     </div>
                                     <div class="data_input">
                                         <label>End Date</label>
-                                        <input type="date"  name="education${index}[end_date]" class="edu-end-date">
+                                        <input type="date"  name="education${index}[end_date]" class="edu-end-date end-date">
                                         <span class="text-danger mb-2 error" id="education${index}_end_date"></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         
-                        <label  for="present-${index}" class="containera Work_here">I currently study here
-                            <input type="checkbox" class="edu-check" id="present-${index}">
+                        <label  for="current-${index}" class="containera Work_here">I currently study here
+                            <input type="checkbox" class="edu-check" id="current-${index}" name="education${index}[current]">
                             <span class="checkmark"></span>
                         </label>
                                 
@@ -193,5 +193,5 @@ $(".reorder-education").on("mousedown",function () {
 
 //Disables education end date
 $(document).on('click', '.edu-check', function () {
-    $(this).parents('.education_area').find('.edu-end-date').attr('disabled', function(_, attr){ return !attr}).toggleClass('disabled_date');
+    $(this).parents('.education_area').find('.end-date').attr('disabled', function(_, attr){ return !attr});
 });

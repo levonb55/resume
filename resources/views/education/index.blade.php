@@ -99,7 +99,7 @@
                         <div class="rew_position">
                             <h5>{{ $educationItem->degree }}</h5>
                             <h5>{{ $educationItem->location }}</h5>
-                            <h5>{{ $educationItem->graduation_year ?? 'Present'}}</h5>
+                            <h5>{{ $educationItem->end_date ? date('Y', strtotime($educationItem->end_date)) : 'Present'}}</h5>
                         </div>
                     </div>
 

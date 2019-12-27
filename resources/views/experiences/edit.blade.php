@@ -117,7 +117,7 @@
                                         </div>
                                         <div class="data_input">
                                             <label>End Date</label>
-                                            <input type="date" value="{{ $experience->end_date }}" name="end_date" class="exp-end-date {{ !$experience->end_date ? 'disabled_date' : '' }}">
+                                            <input type="date" value="{{ $experience->end_date }}" name="end_date" class="exp-end-date end-date" {{ !$experience->end_date ? 'disabled' : '' }}>
                                             @error('end_date')
                                                 <span class="text-danger mb-2"> {{ $message }} </span>
                                             @enderror
@@ -125,8 +125,8 @@
                                     </div>
                                 </div>
 
-                                <label  for="present1" class="containera Work_here">I currently work here
-                                    <input type="checkbox" class="exp-check" id="present1">
+                                <label  for="current" class="containera Work_here">I currently work here
+                                    <input type="checkbox" class="exp-check" id="current" name="current" {{ !$experience->end_date ? 'checked' : '' }}>
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
