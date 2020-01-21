@@ -103,6 +103,15 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('download-cover-word', 'CoverLetterController@downloadWord')->name('download-cover-word');
         Route::get('download-cover-txt', 'CoverLetterController@downloadTxt')->name('download-cover-txt');
     });
+
+    //Template views
+    Route::view('/template-4', 'components.resumes.template4');
+    Route::view('/template-5', 'components.resumes.template5');
+    Route::view('/template-6', 'components.resumes.template6');
+    Route::view('/template-7', 'components.resumes.template7');
+    Route::view('/template-8', 'components.resumes.template8');
+    Route::view('/template-9', 'components.resumes.template9');
+    Route::view('/template-10', 'components.resumes.template10');
 });
 
 

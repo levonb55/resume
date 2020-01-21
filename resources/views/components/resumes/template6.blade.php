@@ -1,0 +1,1 @@
+<h1>Template 6</h1>

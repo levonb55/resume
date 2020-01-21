@@ -1,0 +1,1 @@
+<h1>Template 7</h1>
