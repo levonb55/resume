@@ -24,7 +24,7 @@ class StoreResumeFormatting extends FormRequest
     public function rules()
     {
         return [
-            'template_id' => 'required|integer|min:1|max:3',
+            'template_id' => 'required|integer|min:1|max:10',
             'font_family' => 'required|integer|min:1|max:4',
             'font_size' => 'required|integer|min:1|max:40',
             'heading_size' => 'required|integer|min:1|max:30',

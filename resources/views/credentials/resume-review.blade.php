@@ -5,12 +5,7 @@
 @section('extra-styles')
     <link rel="stylesheet" href="{{ asset('css/Lcss.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/templates.css') }}">
 
-
-    <style>
-
-    </style>
 @endsection
 
 @section('content')
@@ -20,7 +15,7 @@
     <main>
         <section class="redaktor_section">
             <div class="row red_row">
-                <form action="{{ route('resume-review.update', $credential->template_id) }}" method="POST" class="d-inline-flex">
+                <form action="{{ route('resume-review.update', $credential->template_id) }}" method="POST">
                     @csrf
                     @method('PUT')
 

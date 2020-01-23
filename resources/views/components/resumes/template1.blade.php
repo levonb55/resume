@@ -14,7 +14,7 @@
                 @if($credential->city || $showDefault)
                     <span id="sity_sity">{{ $credential->city ? $credential->city : 'City' }}</span>
                 @endif
-
+w2
                 @if($credential->state || $showDefault)
                     <span id="state">{{ $credential->state ? $credential->state : 'State' }}</span>
                 @endif

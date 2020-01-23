@@ -317,7 +317,7 @@ $(document).ready(function () {
     $('#range-value').html($('#input-range').attr('value') + 'px');
     $('#input-range').on('input', function () {
         $('#range-value').html(this.value + "px");
-        $('#sortable p,.red_left_side li').css("font-size", this.value + "px");
+        $('#sortable p,.red_left_side li, #sortable span').css("font-size", this.value + "px");
     });
 //
     $('#range-value1').html($('#input-range1').attr('value') + 'px');
@@ -329,7 +329,7 @@ $(document).ready(function () {
     $('#range-value2').html($('#input-range2').attr('value') + 'px');
     $('#input-range2').on('input', function () {
         $('#range-value2').html(this.value + "px");
-        $("#sortable > li").css("margin-bottom", this.value + "px")
+        $("#sortable > li,#sortable .example4-row").css("margin-bottom", this.value + "px")
     });
 // //
     $('#range-value3').html($('#input-range3').attr('value') + 'px');
@@ -365,7 +365,7 @@ $(document).ready(function () {
     $('#range-value8').html($('#input-range8').attr('value'));
     $('#input-range8').on('input', function () {
         $('#range-value8').html(this.value);
-        $("#sortable p,#sortable li").css("font-weight", this.value)
+        $("#sortable p,#sortable li,#sortable span").css("font-weight", this.value)
     });
 //
     $("#font_famly").on("change", function () {

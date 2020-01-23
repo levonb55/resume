@@ -1,4 +1,4 @@
-<div class="example  example3">
+<div class="example example3">
     <div>
         <div class="head">
             <div class="logo">
