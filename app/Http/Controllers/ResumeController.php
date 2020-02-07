@@ -16,7 +16,8 @@ class ResumeController extends Controller
         $api_endpoint = "https://selectpdf.com/api2/convert/";
         $key = 'b9694b72-fb6b-46d2-87e4-85cb661f9cbd';
 //        $test_url = 'http://greatexpertdev.site/laravel/resume-builder/public/resume/review';
-        $test_url = 'http://greatexpertdev.site/laravel/resume-builder/public/resume/review/pdf/' . request('user');
+//        $test_url = 'http://greatexpertdev.site/laravel/resume-builder/public/resume/review/pdf/' . request('user');
+        $test_url = 'http://greatexpertdev.site/laravel/resume-builder/public/resume/review/pdf';
 
         $parameters = array ('key' => $key, 'url' => $test_url);
         $result = @file_get_contents("$api_endpoint?" . http_build_query($parameters));
@@ -80,6 +81,11 @@ class ResumeController extends Controller
 //        }
 //
 //        return redirect()->route('checkout')->with('payment-warning', '');
+    }
+
+    public function getResumePdf()
+    {
+        return view('downloads.resume');
     }
 
     public function downloadResumeWord()
