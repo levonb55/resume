@@ -17,7 +17,8 @@ class ResumeController extends Controller
         $key = 'b9694b72-fb6b-46d2-87e4-85cb661f9cbd';
 //        $test_url = 'http://greatexpertdev.site/laravel/resume-builder/public/resume/review';
 //        $test_url = 'http://greatexpertdev.site/laravel/resume-builder/public/resume/review/pdf/' . request('user');
-        $test_url = 'http://greatexpertdev.site/laravel/resume-builder/public/resume/review/pdf';
+//        $test_url = 'http://greatexpertdev.site/laravel/resume-builder/public/resume/review/pdf';
+        $test_url = 'http://greatexpertdev.site/laravel/resume-builder/public/review/pdf';
 
         $parameters = array ('key' => $key, 'url' => $test_url);
         $result = @file_get_contents("$api_endpoint?" . http_build_query($parameters));
