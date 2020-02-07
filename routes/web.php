@@ -15,6 +15,7 @@
 Route::get('/', 'PageController@home')->name('home');
 Route::get('jobs', 'PageController@jobs')->name('jobs');
 Route::get('contact', 'PageController@contact')->name('contact');
+Route::get('review/pdf/{user}', 'ResumeController@downloadResumePdf')->name('resume.pdf');
 
 //Authentication routes
 Auth::routes();
@@ -71,7 +72,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::delete('custom-section/{custom}', 'ExtraCredentialController@destroyCustomSection')->name('custom-section.destroy')->middleware('owner');
         Route::get('resume/review', 'CredentialController@getResumeReview')->name('resume-review');
         Route::put('resume/{resume}/review', 'CredentialController@updateResumeReview')->name('resume-review.update');
-        Route::get('download-resume-pdf', 'ResumeController@downloadResumePdf')->name('download-resume-pdf');
+//        Route::get('download-resume-pdf', 'ResumeController@downloadResumePdf')->name('download-resume-pdf');
         Route::get('download-resume-word', 'ResumeController@downloadResumeWord')->name('download-resume-word');
         Route::get('download-resume-txt', 'ResumeController@downloadResumeTxt')->name('download-resume-txt');
         Route::get('checkout', 'CheckoutController@getCheckout')->name('checkout');

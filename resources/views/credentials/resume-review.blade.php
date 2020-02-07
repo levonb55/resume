@@ -137,7 +137,8 @@
 
                                <ul>
                                    <li>
-                                       <input type="radio" id="a1" name="a" value='download-resume-pdf' class="download-format" checked>
+{{--                                       <input type="radio" id="a1" name="a" value='download-resume-pdf' class="download-format" checked>--}}
+                                       <input type="radio" id="a1" name="a" value='resume.pdf' class="download-format" checked>
                                        <label for="a1">PDF</label><span class="badge badge-secondary" title="Maximum permitted downloads">{{ $credential->pdf }}</span>
                                    </li>
                                    <li>
@@ -150,7 +151,8 @@
                                    </li>
                                </ul>
                                <button class="btn btn_tool">
-                                   <a href="{{ route('download-resume-pdf') }}" class="download-btn" target="_blank">
+{{--                                   <a href="{{ route('download-resume-pdf') }}" class="download-btn" target="_blank">--}}
+                                   <a href="{{ route('resume.pdf', $credential->template_id) }}" class="download-btn" target="_blank">
                                        <i class="fas fa-download"></i>Download
                                    </a>
                                </button>
