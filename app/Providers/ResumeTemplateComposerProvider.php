@@ -35,9 +35,5 @@ class ResumeTemplateComposerProvider extends ServiceProvider
             'resumes.*',
             'App\Http\ViewComposers\ResumeTemplateComposer'
         );
-        view()->composer(
-            'downloads.resume',
-            'App\Http\ViewComposers\ResumeTemplateComposer'
-        );
     }
 }

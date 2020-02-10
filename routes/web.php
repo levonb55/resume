@@ -15,8 +15,6 @@
 Route::get('/', 'PageController@home')->name('home');
 Route::get('jobs', 'PageController@jobs')->name('jobs');
 Route::get('contact', 'PageController@contact')->name('contact');
-//Route::get('review/pdf/{user}', 'ResumeController@getResumePdf')->name('resume.pdf');
-Route::get('review/pdf', 'ResumeController@getResumePdf')->name('resume.pdf');
 
 //Authentication routes
 Auth::routes();
