@@ -23,8 +23,6 @@ Auth::routes();
 Route::get('register', 'Auth\LoginController@showLoginForm')->name('register');
 Route::get('logout', 'Auth\LoginController@logout');
 
-Route::get('resume/review', 'CredentialController@getResumeReview')->name('resume-review');
-
 //Private routes
 Route::group(['middleware' => ['auth']], function () {
 
@@ -73,8 +71,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('custom-section', 'ExtraCredentialController@storeCustomSection')->name('custom-section.store')->middleware('resume-review');
         Route::post('custom-section/add', 'ExtraCredentialController@addCustomSection')->name('custom-section.add');
         Route::delete('custom-section/{custom}', 'ExtraCredentialController@destroyCustomSection')->name('custom-section.destroy')->middleware('owner');
-//        Route::get('resume/review', 'CredentialController@getResumeReview')->name('resume-review');
-        Route::post('resume/review', 'CredentialController@postResumeReview')->name('resume-review');
+        Route::get('resume/review', 'CredentialController@getResumeReview')->name('resume-review');
         Route::put('resume/{resume}/review', 'CredentialController@updateResumeReview')->name('resume-review.update');
         Route::get('download-resume-pdf', 'ResumeController@downloadResumePdf')->name('download-resume-pdf');
         Route::get('download-resume-word', 'ResumeController@downloadResumeWord')->name('download-resume-word');
