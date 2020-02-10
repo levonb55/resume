@@ -23,6 +23,8 @@ Auth::routes();
 Route::get('register', 'Auth\LoginController@showLoginForm')->name('register');
 Route::get('logout', 'Auth\LoginController@logout');
 
+Route::get('resume/review', 'CredentialController@getResumeReview')->name('resume-review');
+
 //Private routes
 Route::group(['middleware' => ['auth']], function () {
 
@@ -81,7 +83,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('checkout', 'CheckoutController@postCheckout')->name('checkout');
 
     });
-    Route::get('resume/review', 'CredentialController@getResumeReview')->name('resume-review');
 
 
     //Cover Letter Routes
